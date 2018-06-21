@@ -3,9 +3,8 @@ var token;
 var userId = localStorage.getItem("userId") || 22;
 var imgNum = 0;
 //	发帖子
-
+var imgArray=[];
 $(function() {
-
 	//	点击选择图片
 	$('.choose_game').css({'border-radius':'20px','background-color':'#e6ebec'})
 	var h = $(window).height()
@@ -23,9 +22,9 @@ $(function() {
 	});
 
 	document.getElementById('choose_img').addEventListener('tap', function() {
+		
 		if(mui.os.plus) {
 			var buttonTit = [
-
 				{
 					title: "从手机相册选择"
 				}
@@ -36,10 +35,12 @@ $(function() {
 				cancel: "取消",
 				buttons: buttonTit
 			}, function(b) { /*actionSheet 按钮点击事件*/
+				
 				switch(b.index) {
 					case 0:
 						break;
 					case 1:
+					  
 						galleryImgs(); /*打开相册*/
 						break;
 					default:
@@ -49,48 +50,58 @@ $(function() {
 		}
 	}, false);
 
+
+	
+	
+	
+	
 	$('body').on('click', '.delete_img', function() {
 		$(this).parent().parent('.show_imgcontent').remove()
 		$('.img_num').text($('.show_imgs > .show_imgcontent').length + "/9")
 	})
 
+	
 	$('.publish').click(function() {
-		mui.toast("正在发布，请等待")
+		
+
+	var content=$("#strategy_textarea").html();
+
+  var indexSrc=$("#strategy_textarea img:first").attr("src");
+ if(indexSrc!==undefined){
+	 var indexImg=indexSrc;
+ }else{
+	  indexImg=""
+ }
+
+		
 		var str = $('.strategy_title').val();
-		var content = $('#strategy_textarea').val();
-		content = content.replace(new RegExp("\n", "gm"), "<br/>");
-		var title = str.replace(/[\ |\~|\`|\!|\@|\#|\$|\%|\^|\&|\*|\(|\)|\-|\_|\+|\=|\||\\|\[|\]|\{|\}|\;|\:|\"|\'|\,|\<|\.|\>|\/|\?]/g, "");
+	 	var title = str.replace(/[\ |\~|\`|\!|\@|\#|\$|\%|\^|\&|\*|\(|\)|\-|\_|\+|\=|\||\\|\[|\]|\{|\}|\;|\:|\"|\'|\,|\<|\.|\>|\/|\?]/g, "");
 		var gameName = $('.choose_game').val().replace(/[\ |\~|\`|\!|\@|\#|\$|\%|\^|\&|\*|\(|\)|\-|\_|\+|\=|\||\\|\[|\]|\{|\}|\;|\:|\"|\'|\,|\<|\.|\>|\/|\?]/g, "");
+
 		if(title && content && gameName){
+			mui.toast("正在发布，请等待");
 			$.ajax({
-				type: "get",
+				type: "post",
 				url: config.data + "strategy/addStrategyMsg",
 				async: true,
 				data: {
 					userId: userId,
 					title: title,
-					detail: content,
-					gameName: gameName
+					detail:content,
+					gameName: gameName,
+					top_img_src:indexImg
 				},
 				success: function(data) {
-					if(data.state) {
-						strategyId = data.strategyId;
-						//					alert("straid==" + strategyId)
-						//					upload();
-						if($('.show_imgs').find('.show_imgcontent').length > 0){
-							$('.show_imgcontent').each(function(index) {
-							
-								var path = $(this).attr('data-src');
-								// 上传图片
-								upLoad(strategyId, 'startegy/startegyId' + strategyId + '/img' + index, path)
-		
-							});
-						}else{
-							mui.back()
-						}
-						
+					if(data.state){
+						mui.toast("上传成功");
+						 $("#strategy_textarea").html("");
+		         $(".strategy_title").val("");
+		         $(".choose_game").val("");
+						 setTimeout(function(){
+							 mui.back();
+						 },3000);					 
 					} else {
-	
+	          mui.toast("上传失败");
 					}
 				}
 			});
@@ -104,47 +115,75 @@ $(function() {
 
 // 从相册中选择图片   
 function galleryImgs() {
-	// 从相册中选择图片  
+	// 从相册中选择图片 
+
 	plus.gallery.pick(function(e) {
+    mui.toast("正在上传,请等待");
+		var uploader = plus.uploader.createUpload(config.url_upload+"adminStrategy/img?title=strategy&token=token&url="+config.url_upload,{
+					method: "post"
+				}, function(t, status) {
+					 var res =JSON.parse(t.responseText)
+					 // return false;
+					  if(res.errno==0){
+						  var src=res.data[0];
+							appendHtml(`<img style="width:95%;height:auto;" src="${src}"/>`);						
+					  }else{
+						  mui.toast("上传图片失败")
+					  }
+		
+				});
 
-		for(var i in e.files) {
-
-			var fileSrc = e.files[i];
-			console.log(fileSrc)
-			var token;
-
-			if($('.show_imgs > .show_imgcontent').length < 9) {
-				var div =
-					"<div class='show_imgcontent' data-src = '" + fileSrc + "'>" +
-					"<div class='img_box'>" +
-					"<img class='show_img'  data-preview-group='2' data-preview-src='' src='" + fileSrc + "'>" +
-
-					"</img>" +
-					"<div class='delete_img'></div>" +
-					"</div>" +
-					"</div>";
-				$('.show_imgs').append(div)
-
-				$('.img_num').text($('.show_imgs > .show_imgcontent').length + "/9")
-			}
-
-		}
+				uploader.addFile(e.files[0],{
+					"key": "file"
+				}); // 固定值，千万不要改！！！！！！
+				
+				uploader.start();
+				
 
 	}, function(e) {
 		console.log("取消选择图片");
 	}, {
 		filter: "image",
 		multiple: true,
-		maximum: 9,
+		maximum:1,
 		system: false,
 		onmaxed: function() {
-			plus.nativeUI.alert('最多只能选择9张图片');
+			plus.nativeUI.alert('最多只能选择1张图片');
 		}
 	});
 }
 
-//	选择图片结束
 
+//插入图片
+function appendHtml(src){
+ //alert(src);
+ var sel, range;
+ if(window.getSelection){
+	  var sel=window.getSelection();
+		if (sel.getRangeAt && sel.rangeCount) {
+			range = sel.getRangeAt(0);
+      range.deleteContents();
+      var el =document.createElement("div");
+			el.innerHTML =src;
+			 var frag = window.parent.document.createDocumentFragment(), node, lastNode;
+        while ((node = el.firstChild)) {
+            lastNode = frag.appendChild(node);
+        }
+        range.insertNode(frag);
+				if (lastNode) {
+            range = range.cloneRange();
+            range.setStartAfter(lastNode);
+            range.collapse(true);
+            sel.removeAllRanges();
+            sel.addRange(range);
+        }
+		}
+ }
+}
+
+
+
+//	选择图片结束
 //上传图片
 function upLoad(strategyId, key, path) {
 	getUpToken('img', key, function(token) {
@@ -176,9 +215,10 @@ function upLoad(strategyId, key, path) {
 
 		uploader.addData("key", key);
 		uploader.addData("token", token);
-		uploader.addFile(path, {
+		uploader.addFile(path,{
 			"key": "file"
 		}); // 固定值，千万不要改！！！！！！
+		
 		uploader.start();
 	})
 }

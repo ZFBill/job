@@ -35,6 +35,30 @@
 .comment_info{
 	margin-top: 0.6rem;
 }
+.comment_summary{
+	margin: 0.625rem 0;
+	height: 5rem;
+	line-height: 5rem;
+	margin-right: 0.625rem;
+	background-color: rgb(245,245,245);
+}
+.comment_summary_img{
+	width: 5rem;
+	height: 5rem;
+	background-position: center;
+	background-repeat:no-repeat;
+	background-size: cover;
+	
+	
+}
+.comment_summary_art{
+	padding: 0 0.5rem;
+	width: 9rem;
+	white-space:nowrap; 
+	text-overflow:ellipsis; 
+	-o-text-overflow:ellipsis; 
+	overflow: hidden; 
+}
 
 .news_allReply{
 	width: 100%;

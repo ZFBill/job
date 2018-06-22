@@ -23,6 +23,8 @@ $(function() {
 		var strategyId = self.strategyId;
 		var proId = self.proId;
 		var old_back = mui.back;
+		var target_img = self.target_img;
+		var target_title = self.target_title;
 		mui.back = function() {
 			if(plus.webview.getWebviewById("strategy_details.html")) {
 				var wobj = plus.webview.getWebviewById("strategy_details.html");
@@ -74,7 +76,10 @@ $(function() {
 						content: content,
 						targetCommentId: strategyId,
 						targetUserId: proId,
-						series: 1
+						series: 1,
+						target_img:target_img,
+						targetid:strategyId,
+						target_title:target_title
 					},
 					success: function(data) {
 						if(data.state) {

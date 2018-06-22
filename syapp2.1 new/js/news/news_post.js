@@ -104,6 +104,7 @@ $(function() {
 				mui.openWindow({
 					url: "news_allComments.html",
 					id: "news_allComments.html",
+					createNew: true,  
 					extras: {
 						newsId: newsId,
 						commentId: commentId,

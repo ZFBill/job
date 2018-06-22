@@ -582,6 +582,7 @@ $(function() {
 			mui.openWindow({
 				url: "game_allComments.html",
 				id: "game_allComments.html",
+				createNew: true,  
 				extras: {
 					commentId: $(this).attr('data-id'),
 					gameId: gameId,

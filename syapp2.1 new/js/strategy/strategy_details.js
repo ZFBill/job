@@ -3,6 +3,8 @@ var proId;
 var strategyId;
 var page = 0;
 var sort = "add_time";
+var target_img;
+var target_title;
 $(function() {
 
 	$('.news_review').click(function() {
@@ -34,7 +36,7 @@ $(function() {
 				longtap: true, //默认为false
 				swipe: true, //默认为true
 				drag: true, //默认为true
-				hold: false, //默认为false，不监听
+				hold: true, //默认为false，不监听
 				release: false //默认为false，不监听
 			},
 			pullRefresh: {
@@ -83,6 +85,8 @@ $(function() {
 					$('.news_userInfo_name').text(str.nick_name);
 					$('.news_userInfo_date').text(str.add_time);
 					$('.news_post_content_detail').html(str.detail);
+					target_img = str.top_img_src;
+					target_title = str.title;
 					if(str.imgList) {
 						var string = str.imgList;
 						var result = string.split(",");
@@ -122,18 +126,26 @@ $(function() {
 		})
 
 		//		长按保存图片
-		$('body').on('longtap', 'img', function() {
-
+		$('body').on('tap', 'img', function() {
 			var picurl = $(this).attr("src")
 			var picname;
-			if(picurl.indexOf("/")>0)//如果包含有"/"号 从最后一个"/"号+1的位置开始截取字符串
-			{
-				picname = picurl.substring(picurl.lastIndexOf("/") + 1, picurl.length);
-			} else {
-				picname = picurl;
-			}
+			var btnArray = ['否', '是'];
+			mui.confirm('是否保存该图片？', 'ONE', btnArray, function(e) {
+				if(e.index == 1) {
+					
+					if(picurl.indexOf("/") > 0) //如果包含有"/"号 从最后一个"/"号+1的位置开始截取字符串
+					{
+						picname = picurl.substring(picurl.lastIndexOf("/") + 1, picurl.length);
+					} else {
+						picname = picurl;
+					}
 
-			savePicture(picurl,picname) 
+					savePicture(picurl, picname)
+				} else {
+
+				}
+			})
+
 		})
 
 		//		长按保存图片结束
@@ -272,8 +284,12 @@ $(function() {
 			mui.openWindow({
 				url: "strategy_allComments.html",
 				id: "strategy_allComments.html",
+				createNew: true,
 				extras: {
-					commentId: commentId,
+					strategyId: strategyId,
+					commentId: $(this).attr('data-id'),
+					target_img: target_img,
+					target_title: target_title
 
 				}
 			})
@@ -309,8 +325,9 @@ $(function() {
 					id: "strategy_comment.html",
 					extras: {
 						strategyId: strategyId,
-						proId: proId
-
+						proId: proId,
+						target_img: target_img,
+						target_title: target_title
 					}
 				})
 			} else {
@@ -320,11 +337,16 @@ $(function() {
 		})
 
 		$('body').on('click', '.news_post_commentContent', function() {
+
 			mui.openWindow({
 				url: "strategy_allComments.html",
 				id: "strategy_allComments.html",
+				createNew: true,
 				extras: {
-					commentId: $(this).attr('data-id')
+					strategyId: strategyId,
+					commentId: $(this).attr('data-id'),
+					target_img: target_img,
+					target_title: target_title
 				}
 			})
 		})
@@ -578,12 +600,12 @@ function down() {
 }
 
 // 保存图片到相册中 
-function savePicture(picurl,picname) {
+function savePicture(picurl, picname) {
 	// 创建下载任务
 	var dtask = plus.downloader.createDownload(picurl, {}, function(d, status) {
 		// 下载完成
 		if(status == 200) {
-//			alert("Download success: " + d.filename);
+			//			alert("Download success: " + d.filename);
 			plus.gallery.save(d.filename, function() {
 				mui.toast('保存成功');
 			}, function() {

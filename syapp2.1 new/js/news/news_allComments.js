@@ -78,6 +78,7 @@ $(function() {
 			mui.openWindow({
 				url:"news_post.html",
 				id:"news_post.html",
+				createNew: true,  
 				extras:{
 					newsId:newsId,
 				}

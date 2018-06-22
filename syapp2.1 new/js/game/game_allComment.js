@@ -55,6 +55,7 @@ $(function() {
 			mui.openWindow({
 				url:"game_detail.html",
 				id:"game_detail.html",
+				createNew: true,  
 				extras:{
 					gameId:gameId,
 				}

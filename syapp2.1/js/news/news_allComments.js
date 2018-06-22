@@ -39,6 +39,7 @@ $(function() {
 		commentId = self.commentId;
 		targetUserId = self.targetUserId;
 //		获取一级评论
+     
 		$.ajax({
 			type:"get",
 			url:config.data + "news/getCommentById",

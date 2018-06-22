@@ -268,6 +268,7 @@
 }
 .comment_user{
 	margin-top: 1.8rem;
+	text-align: left;
 }
 
 .comment_content{
@@ -452,6 +453,10 @@
 	width: 100%;
 	border-top: 1px solid #E7EAEC;
 	margin-bottom: 0.4rem;
+	
+}
+.strategy_indent{
+	text-indent: 2em;
 }
 .news_post_commentContent_head{
 	width: 2.9375rem;

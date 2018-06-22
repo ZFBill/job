@@ -4,6 +4,8 @@ var page = 0;
 var userId = localStorage.getItem("userId") || 0;
 var sys;
 var type = 'hot';
+var firstImg;
+var title;
 $(function() {
 
 	mui.init({
@@ -55,15 +57,20 @@ $(function() {
 					if(browse > 99) {
 						browse = 99
 					}
-					$.ajax({
-						type: "get",
-						url: config.base64 + n.detail_addr,
-						async: true,
-						success: function(data) {
+					//					$.ajax({
+					//						type: "get",
+					//						url: config.base64 + n.detail_addr,
+					//						async: true,
+					//						success: function(data) {
+					//
+					//							$('.detail').html(data)
+					//						}
+					//					});
 
-							$('.detail').html(data)
-						}
-					});
+					firstImg = n.img
+					title = n.title
+
+					$('.detail').html(n.detail)
 
 					$('.news_post_content').attr("data-id", n.id)
 					$('.news_post_listImg').css("background-image", "url(" + config.img + encodeURI(n.icon) + ")")
@@ -92,20 +99,31 @@ $(function() {
 			}
 		});
 		$('body').on('click', '.more_secondComment,.comment_img', function() {
-			var commentId = $(this).attr("data-id")
-			mui.openWindow({
-				url: "news_allComments.html",
-				id: "news_allComments.html",
-				extras: {
-					newsId: newsId,
-					commentId: commentId,
-					targetUserId: $(this).attr('data-userId')
-				}
-			})
+			if(userId) {
+				var commentId = $(this).attr("data-id")
+				mui.openWindow({
+					url: "news_allComments.html",
+					id: "news_allComments.html",
+					extras: {
+						newsId: newsId,
+						commentId: commentId,
+						targetUserId: $(this).attr('data-userId'),
+						firstImg:firstImg,
+						title:title,
+						
+					}
+				})
+			} else {
+				mui.openWindow({
+					url: "../user/login.html",
+					id: "../user/login.html"
+				})
+			}
+
 		})
-		
-		$('body').on('click','.hot',function(){
-			
+
+		$('body').on('click', '.hot', function() {
+
 			$('.news_post_commentContents').children().remove();
 			mui('.new_post_contents').pullRefresh().refresh(true);
 			type = 'hot';
@@ -113,10 +131,10 @@ $(function() {
 			$('.time').removeClass('color_green')
 			page = 0;
 			up()
-			
+
 		})
-		$('body').on('click','.time',function(){
-			
+		$('body').on('click', '.time', function() {
+
 			$('.news_post_commentContents').children().remove();
 			mui('.new_post_contents').pullRefresh().refresh(true);
 			type = 'time';
@@ -124,9 +142,8 @@ $(function() {
 			$('.hot').removeClass('color_green')
 			page = 0;
 			up()
-			
+
 		})
-		
 
 		$('.news_post_list').click(function() {
 			mui.openWindow({
@@ -140,107 +157,123 @@ $(function() {
 
 		//			收藏部分	
 		$('.news_collect').click(function() {
-			var collect = $(this).attr('data-collect')
-			if(collect) {
-				$.ajax({
-					type: "get",
-					url: config.data + "news/unCollect",
-					async: true,
-					data: {
-						targetId: newsId,
-						userId: userId,
-						type: 1
-					},
-					success: function(data) {
-						if(data.state) {
-							$('.news_collect').css("background-image", "url(../../Public/image/shoucang.png)").attr('data-collect', '')
-							mui.toast("取消收藏成功")
-						} else {
+			if(userId) {
+				var collect = $(this).attr('data-collect')
+				if(collect) {
+					$.ajax({
+						type: "get",
+						url: config.data + "news/unCollect",
+						async: true,
+						data: {
+							targetId: newsId,
+							userId: userId,
+							type: 1
+						},
+						success: function(data) {
+							if(data.state) {
+								$('.news_collect').css("background-image", "url(../../Public/image/shoucang.png)").attr('data-collect', '')
+								mui.toast("取消收藏成功")
+							} else {
 
+							}
 						}
-					}
-				});
+					});
 
+				} else {
+					$.ajax({
+						type: "get",
+						url: config.data + "news/collect",
+						async: true,
+						data: {
+							targetId: newsId,
+							userId: userId,
+							type: 1,
+							sys: sys
+						},
+						success: function(data) {
+							if(data.state) {
+								$('.news_collect').css("background-image", "url(../../Public/image/yishoucang.png)").attr('data-collect', '1')
+								mui.toast("收藏成功")
+							} else {
+
+							}
+						}
+					});
+
+				}
 			} else {
-				$.ajax({
-					type: "get",
-					url: config.data + "news/collect",
-					async: true,
-					data: {
-						targetId: newsId,
-						userId: userId,
-						type: 1,
-						sys: sys
-					},
-					success: function(data) {
-						if(data.state) {
-							$('.news_collect').css("background-image", "url(../../Public/image/yishoucang.png)").attr('data-collect', '1')
-							mui.toast("收藏成功")
-						} else {
-
-						}
-					}
-				});
-
+				mui.openWindow({
+					url: "../user/login.html",
+					id: "../user/login.html"
+				})
 			}
+
 		})
 
 		//			收藏部分结束	
 
 		//			点赞部分
 		$('body').on('click', '.thumbs', function() {
-			var parentId = $(this).children('.thumb').attr("data-commentId")
-			var t = $(this).children('.thumb')
-			if(t.attr("data-state") == "1") {
+			if(userId) {
+				var parentId = $(this).children('.thumb').attr("data-commentId")
+				var t = $(this).children('.thumb')
+				if(t.attr("data-state") == "1") {
 
-				$.ajax({
-					type: "get",
-					url: config.data + "news/unlike",
-					async: true,
-					data: {
-						"parentId": parentId,
-						"userId": userId,
-						"type": 12,
-					},
-					success: function(data) {
+					$.ajax({
+						type: "get",
+						url: config.data + "news/unlike",
+						async: true,
+						data: {
+							"parentId": parentId,
+							"userId": userId,
+							"type": 12,
+						},
+						success: function(data) {
 
-						if(data.state) {
+							if(data.state) {
 
-							t.attr("data-state", "0")
-							t.css("background-image", "url(../../Public/image/good.png)")
-							t.siblings('.thumb_num').text(parseInt(t.siblings('.thumb_num').text()) - 1);
-							mui.toast("取消点赞")
+								t.attr("data-state", "0")
+								t.css("background-image", "url(../../Public/image/good.png)")
+								t.siblings('.thumb_num').text(parseInt(t.siblings('.thumb_num').text()) - 1);
+								mui.toast("取消点赞")
 
-						} else {
+							} else {
 
+							}
 						}
-					}
-				});
+					});
 
+				} else {
+
+					$.ajax({
+						type: "get",
+						url: config.data + "news/like",
+						async: true,
+						data: {
+							"parentId": parentId,
+							"userId": userId,
+							"type": 12,
+						},
+						success: function(data) {
+
+							if(data.state) {
+								t.attr("data-state", "1")
+								t.css("background-image", "url(../../Public/image/diangoodone.png)")
+								t.siblings('.thumb_num').text(parseInt(t.siblings('.thumb_num').text()) + 1);
+								mui.toast("点赞成功")
+							} else {
+
+							}
+						}
+					});
+				}
 			} else {
-
-				$.ajax({
-					type: "get",
-					url: config.data + "news/like",
-					async: true,
-					data: {
-						"parentId": parentId,
-						"userId": userId,
-						"type": 12,
-					},
-					success: function(data) {
-
-						if(data.state) {
-							t.attr("data-state", "1")
-							t.css("background-image", "url(../../Public/image/diangoodone.png)")
-							t.siblings('.thumb_num').text(parseInt(t.siblings('.thumb_num').text()) + 1);
-							mui.toast("点赞成功")
-						} else {
-
-						}
-					}
-				});
+				mui.openWindow({
+					url: "../user/login.html",
+					id: "../user/login.html"
+				})
 			}
+
 		})
 
 		//			点赞部分结束
@@ -285,36 +318,40 @@ $(function() {
 		})
 		$('body').on('click', '.publish', function(event) {
 			event.preventDefault();
-			var content = $(this).prev().val();
+			if(userId) {
+				var content = $(this).prev().val();
 
-			data = {
-				"targetCommentId": newsId,
-				"userId": userId,
-				"series": 1,
-				"content": content,
+				$.ajax({
+					type: "get",
+					url: config.data + "news/comment",
+					async: true,
+					data: {
+						"targetCommentId": newsId,
+						"userId": userId,
+						"series": 1,
+						"content": content,
+						"news_img": firstImg,
+						"newsid": newsId,
+						"news_title": title
+					},
+					success: function(data) {
+						if(data.state == "1") {
+							mui.toast("发送成功");
+							$('.news_secondComment_input').val("");
+							window.location.reload()
+
+						} else {
+							mui.toast("发送失败，请重试")
+						}
+					}
+				});
+			} else {
+				mui.openWindow({
+					url: "../user/login.html",
+					id: "../user/login.html"
+				})
 			}
 
-			$.ajax({
-				type: "get",
-				url: config.data + "news/comment",
-				async: true,
-				data: {
-					"targetCommentId": newsId,
-					"userId": userId,
-					"series": 1,
-					"content": content,
-				},
-				success: function(data) {
-					if(data.state == "1") {
-						mui.toast("发送成功");
-						$('.news_secondComment_input').val("");
-						window.location.reload()
-
-					} else {
-						mui.toast("发送失败，请重试")
-					}
-				}
-			});
 		})
 
 		$('.news_review').click(function() {

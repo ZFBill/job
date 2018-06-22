@@ -38,6 +38,8 @@ $(function() {
 		newsId = self.newsId;
 		commentId = self.commentId;
 		targetUserId = self.targetUserId;
+		firstImg = self.firstImg;
+		title = self.title;
 //		获取一级评论
 		$.ajax({
 			type:"get",
@@ -55,6 +57,13 @@ $(function() {
 					$('.comment_userOne').text(c.nick_name);
 					$('.comment_contentOne').text(c.content);
 					$('.timeOne').text(c.add_time);
+					$('.comment_summary').attr('data-id',c.newsid);
+					if (c.news_img) {
+						$('.comment_summary_img').css('background-image','url(' + config.img + encodeURI(c.news_img) + ')')
+					} else{
+						$('.comment_summary_img').css('background-image','url(../../Public/image/link.png)')
+					}
+					$('.comment_summary_art').text(c.news_title)
 					targetCommentId = $('.news_post_commentContent').attr("data-id");
 					targetUserId = $('.news_post_commentContent').attr("data-userId");
 					
@@ -63,6 +72,17 @@ $(function() {
 				}
 			}
 		});
+		
+		$('body').on('click','.comment_summary',function(){
+			var newsId = $(this).attr('data-id');
+			mui.openWindow({
+				url:"news_post.html",
+				id:"news_post.html",
+				extras:{
+					newsId:newsId,
+				}
+			})
+		})
 		
 //		获取一级评论结束	
 	
@@ -87,7 +107,10 @@ $(function() {
 						"userId":userId,
 						"series":2,
 						"content":content,
-						"targetUserId":targetUserId
+						"targetUserId":targetUserId,
+						"news_img":firstImg,
+						"newsid":newsId,
+						"news_title":title
 					},
 					success:function(data){
 						if (data.state == "1") {

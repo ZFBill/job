@@ -26,13 +26,13 @@ $(function() {
 	$.ajax({
 		url: config.data + 'game/carousel',
 		type: "GET",
-		data: { 
+		data: {
 			sys: 2
 		},
 		success: function(data) {
 
 			var c = data.carousel;
-			var divlast = "<div class='mui-slider-item mui-slider-item-duplicate' data-id='"+ c[(c.length - 1)].id +"' data-gameId='"+ c[(c.length - 1)].game_id +"'>" +
+			var divlast = "<div class='mui-slider-item mui-slider-item-duplicate' data-id='" + c[(c.length - 1)].id + "' data-gameId='" + c[(c.length - 1)].game_id + "'>" +
 				"<div class='slider_item  home" + (c.length - 1) + " '></div>" +
 				"</div>";
 
@@ -41,7 +41,7 @@ $(function() {
 			$('.main_slider .mui-slider-group').append(divlast);
 			$("." + bb).css("background-image", "url(" + config.img + encodeURI(c[(c.length - 1)].active_img) + ")");
 			for(var i = 0; i < c.length; i++) {
-				var div = "<div class='mui-slider-item ' data-id='"+ c[i].id +"' data-gameId='"+ c[i].game_id +"' >" +
+				var div = "<div class='mui-slider-item ' data-id='" + c[i].id + "' data-gameId='" + c[i].game_id + "' >" +
 					"<div class='slider_item home" + i + " '></div>" +
 					"</div>";
 				var aa = "home" + i;
@@ -56,11 +56,11 @@ $(function() {
 				//				});
 
 				$("." + aa).css("background-image", "url(" + config.img + encodeURI(c[i].active_img) + ")");
-//				$("." + aa).attr('data-id', c[i].game_id);
+				//				$("." + aa).attr('data-id', c[i].game_id);
 
 			}
 			$('.main_slider .mui-slider-indicator').children().eq(0).addClass("mui-active");
-			var div0 = "<div class='mui-slider-item mui-slider-item-duplicate' data-id='"+ c[0].id +"' data-gameId='"+ c[0].game_id +"'>" +
+			var div0 = "<div class='mui-slider-item mui-slider-item-duplicate' data-id='" + c[0].id + "' data-gameId='" + c[0].game_id + "'>" +
 				"<div class='slider_item home0'></div>" +
 				"</div>";
 			$('.main_slider .mui-slider-group').append(div0);
@@ -73,14 +73,14 @@ $(function() {
 		}
 
 	})
-	
-	$('body').on('click','.mui-slider-item',function(){
+
+	$('body').on('click', '.mui-slider-item', function() {
 		var gameId = $(this).attr("data-gameId")
 		mui.openWindow({
-			url:'game_detail.html',
-			id:'game_detail.html',
-			extras:{
-				gameId:gameId
+			url: 'game_detail.html',
+			id: 'game_detail.html',
+			extras: {
+				gameId: gameId
 			}
 		})
 	})
@@ -143,12 +143,12 @@ $(function() {
 				$('.game_topicBox').find('.game_recommend_topicImg').css('background-image', 'url(' + config.img + encodeURI(sub[0].img) + ')');
 
 				$('.game_topicBox').find('.game_recommend_topicArtstitle').text(sub[0].title);
-			
+
 				$('.game_topicBoxbot').attr('data-id', sub[1].id);
 				$('.game_topicBoxbot').find('.game_recommend_topicImg').css('background-image', 'url(' + config.img + encodeURI(sub[1].img) + ')');
 
 				$('.game_topicBoxbot').find('.game_recommend_topicArtstitle').text(sub[1].title);
-				
+
 			} else {
 
 			}
@@ -178,60 +178,60 @@ $(function() {
 			sys: 2
 		},
 		success: function(data) {
-		
+
 			if(data.state) {
-				
+
 				var act = data.activeTagGame;
 				var div = '';
-				
+
 				for(var i in act) {
-					
+
 					var content = '';
 					for(var j = 0; j < Math.floor(act[i].length / 2); j++) {
-						var aa = 2*j;
-						var bb = 2*j + 1;
+						var aa = 2 * j;
+						var bb = 2 * j + 1;
 						content +=
 
 							"<div style='padding-right: 1.0625rem;'>" +
-								"<div class='game_detail_content'>"+
-									"<div class='game_signTop' data-gameId='"+ act[i][aa].gameId +"'>"+
-										"<div class='game_signTopimg' style='background-image: url(" + config.img + encodeURI(act[i][aa].game_title_img) + ");'>"+
-	
-										"</div>"+
-										"<div class='game_signTopart'>"+
-											"<div class='fl font_14 overflow'>"+ act[i][aa].game_name +"</div>"+
-											"<div class='fr font_12 color_green'>"+
-												"<span class='game_name_star fl'></span>"+
-												"<span>"+ act[i][aa].grade +"</span>"+
-											"</div>"+
-										"</div>"+
-									"</div>"+
-									"<div class='game_signBottom' data-gameId='"+ act[i][bb].gameId +"'>"+
-										"<div class='game_signBottomimg' style='background-image: url(" + config.img + encodeURI(act[i][bb].game_title_img) + ");'>"+
-	
-										"</div>"+
-										"<div class='game_signBottomart '>"+
-											"<div class='fl font_14 overflow'>"+ act[i][bb].game_name +"</div>"+
-											"<div class='fr font_12 color_green'>"+
-												"<span class='game_name_star fl'></span>"+
-												"<span>"+ act[i][bb].grade +"</span>"+
-											"</div>"+
-										"</div>"+
-									"</div>"+
-								"</div>"+
-							"</div>" ;
+							"<div class='game_detail_content'>" +
+							"<div class='game_signTop' data-gameId='" + act[i][aa].gameId + "'>" +
+							"<div class='game_signTopimg' style='background-image: url(" + config.img + encodeURI(act[i][aa].game_title_img) + ");'>" +
+
+							"</div>" +
+							"<div class='game_signTopart'>" +
+							"<div class='fl font_14 overflow'>" + act[i][aa].game_name + "</div>" +
+							"<div class='fr font_12 color_green'>" +
+							"<span class='game_name_star fl'></span>" +
+							"<span>" + act[i][aa].grade + "</span>" +
+							"</div>" +
+							"</div>" +
+							"</div>" +
+							"<div class='game_signBottom' data-gameId='" + act[i][bb].gameId + "'>" +
+							"<div class='game_signBottomimg' style='background-image: url(" + config.img + encodeURI(act[i][bb].game_title_img) + ");'>" +
+
+							"</div>" +
+							"<div class='game_signBottomart '>" +
+							"<div class='fl font_14 overflow'>" + act[i][bb].game_name + "</div>" +
+							"<div class='fr font_12 color_green'>" +
+							"<span class='game_name_star fl'></span>" +
+							"<span>" + act[i][bb].grade + "</span>" +
+							"</div>" +
+							"</div>" +
+							"</div>" +
+							"</div>" +
+							"</div>";
 
 					}
 
 					div +=
 						"<div class='backgroundColor_white game_signsAll'>" +
-							"<div class='ofh' style='height: 2.5rem;line-height: 2.5rem;'>" +
-								"<div class='font_14 color_282828 fl'>" + i + "</div>" +
-								"<div class='font_12 color_green fr check_more' style='margin-right: 0.9375rem;' data-tagId='" + act[i][0].tagId + "'>查看更多</div>" +
-							"</div>" +
-							"<div class='game_detail_contents ui_flex_wrapper ui_flex_h'  data-tagId='" + act[i][0].tagId + "'>" +
-								content +
-							"</div>" +
+						"<div class='ofh' style='height: 2.5rem;line-height: 2.5rem;'>" +
+						"<div class='font_14 color_282828 fl'>" + i + "</div>" +
+						"<div class='font_12 color_green fr check_more' style='margin-right: 0.9375rem;' data-tagId='" + act[i][0].tagId + "'>查看更多</div>" +
+						"</div>" +
+						"<div class='game_detail_contents ui_flex_wrapper ui_flex_h'  data-tagId='" + act[i][0].tagId + "'>" +
+						content +
+						"</div>" +
 						"</div>"
 				}
 				$('.game_signsContent').append(div)
@@ -284,11 +284,18 @@ $(function() {
 					if(g[i].tagList && g[i].tagList !== "null") {
 						var result = g[i].tagList.split(",");
 						var tagId = g[i].tagIdList.split(",");
-
-						for(var j = 0; j < result.length; j++) {
-							signs +=
-								"<div class='fl tag font_12 border_green border_radius_twenty' data-id='" + tagId[j] + "'>" + result[j] + "</div>"
+						if(result.length > 2) {
+							for(var j = 0; j < 3; j++) {
+								signs +=
+									"<div class='fl tag font_12 border_green border_radius_twenty' data-id='" + tagId[j] + "'>" + result[j] + "</div>"
+							}
+						} else {
+							for(var j = 0; j < result.length; j++) {
+								signs +=
+									"<div class='fl tag font_12 border_green border_radius_twenty' data-id='" + tagId[j] + "'>" + result[j] + "</div>"
+							}
 						}
+
 					} else {
 
 					}
@@ -365,14 +372,14 @@ $(function() {
 		}
 
 	});
-	
-	$('.remommend_imgFirst,.remommend_imgSecond').click(function(){
+
+	$('.remommend_imgFirst,.remommend_imgSecond').click(function() {
 		var gameId = $(this).attr('data-id')
 		mui.openWindow({
-			url:"game_detail.html",
-			id:"game_detail.html",
-			extras:{
-				gameId:gameId
+			url: "game_detail.html",
+			id: "game_detail.html",
+			extras: {
+				gameId: gameId
 			}
 		})
 	})
@@ -521,17 +528,17 @@ $(function() {
 	})
 	$('.bell').click(function() {
 		$.ajax({
-			type:"get",
-			url:config.data + "news/cancelMessage",
-			async:true,
-			data:{
-				userId:userId
+			type: "get",
+			url: config.data + "news/cancelMessage",
+			async: true,
+			data: {
+				userId: userId
 			},
-			success:function(data){
-				if (data.state) {
-					
-				} else{
-					
+			success: function(data) {
+				if(data.state) {
+
+				} else {
+
 				}
 			}
 		});
@@ -562,12 +569,12 @@ $(function() {
 		})
 	})
 
-	$('.check_more').click(function() {
-		mui.openWindow({
-			url: "game_classify_sign.html",
-			id: "game_classify_sign.html"
-		})
-	})
+	//	$('.check_more').click(function() {
+	//		mui.openWindow({
+	//			url: "game_classify_sign.html",
+	//			id: "game_classify_sign.html"
+	//		})
+	//	})
 
 })
 
@@ -605,11 +612,18 @@ function getRank(sort) {
 						if(g[i].tagList && g[i].tagList !== "null") {
 							var result = g[i].tagList.split(",");
 							var tagId = g[i].tagId.split(",");
-
-							for(var j = 0; j < result.length; j++) {
-								signs +=
-									"<div class='fl tag font_12 border_green border_radius_twenty' data-id='" + tagId[j] + "'>" + result[j] + "</div>"
+							if(result.length > 2) {
+								for(var j = 0; j < 3; j++) {
+									signs +=
+										"<div class='fl tag font_12 border_green border_radius_twenty' data-id='" + tagId[j] + "'>" + result[j] + "</div>"
+								}
+							} else {
+								for(var j = 0; j < result.length; j++) {
+									signs +=
+										"<div class='fl tag font_12 border_green border_radius_twenty' data-id='" + tagId[j] + "'>" + result[j] + "</div>"
+								}
 							}
+
 						} else {
 
 						}
@@ -686,9 +700,16 @@ function getRankup(page, sort) {
 						var result = g[i].tagList.split(",");
 						var tagId = g[i].tagId.split(",");
 
-						for(var j = 0; j < result.length; j++) {
-							signs +=
-								"<div class='fl tag font_12 border_green border_radius_twenty' data-id='" + tagId[j] + "'>" + result[j] + "</div>"
+						if (result.length > 2) {
+							for(var j = 0; j < 3; j++) {
+								signs +=
+									"<div class='fl tag font_12 border_green border_radius_twenty' data-id='" + tagId[j] + "'>" + result[j] + "</div>"
+							}
+						} else{
+							for(var j = 0; j < result.length; j++) {
+								signs +=
+									"<div class='fl tag font_12 border_green border_radius_twenty' data-id='" + tagId[j] + "'>" + result[j] + "</div>"
+							}
 						}
 					} else {
 

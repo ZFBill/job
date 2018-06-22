@@ -88,7 +88,7 @@ $(function(){
 											"<div class='color_9e9e9e fl game_listScore'>"+ ((page-1)*20 + i+1) +"</div>"+
 											"<div class='game_listImg fl' style='background-image: url("+ config.img + encodeURI(g[i].game_title_img) +");'></div>"+
 											"<div class='fl' style='margin-top: 1rem;margin-left: 0.875rem;'>"+
-												"<div class='font_14'>"+ g[i].game_name +"</div>"+
+												"<div class='font_14' style='width: 6em;white-space:nowrap;text-overflow:ellipsis;-o-text-overflow:ellipsis;overflow: hidden;'>"+ g[i].game_name +"</div>"+
 												"<div class='font_12'>"+
 													"<div class='ofh game_recommend_stars'>"+
 														"<div class='game_recommend_star fl'></div>"+
@@ -190,7 +190,7 @@ function getGamebySign(tagId,tagName){
 									"<div class='color_9e9e9e fl game_listScore'>"+ (i+1) +"</div>"+
 									"<div class='game_listImg fl' style='background-image: url("+ config.img + encodeURI(g[i].game_title_img) +");'></div>"+
 									"<div class='fl' style='margin-top: 1rem;margin-left: 0.875rem;'>"+
-										"<div class='font_14'>"+ g[i].game_name +"</div>"+
+										"<div class='font_14' style='width: 6em;white-space:nowrap;text-overflow:ellipsis;-o-text-overflow:ellipsis;overflow: hidden;'>"+ g[i].game_name +"</div>"+
 										"<div class='font_12'>"+
 											"<div class='ofh game_recommend_stars'>"+
 												"<div class='game_recommend_star fl'></div>"+

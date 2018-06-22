@@ -17,10 +17,11 @@ $(function(){
 		var self = plus.webview.currentWebview();
 		var gameId = self.gameId;
 		var icon = self.icon;
-		var gameName = self.gameName
+		var gameName = self.gameName;
+		var game_icon = self.game_icon;
 		$('#textarea').css("top",total_height  + "px")
 		$('.score_game').css("top",total_height + "px")
-		$('.score_gameImg').css('background-image','url('+ config.img + encodeURI(icon) +')');
+		$('.score_gameImg').css('background-image','url('+ config.img + encodeURI(game_icon) +')');
 		$('.score_gameName').text(gameName)
 		
 		$('.publish').click(function(){
@@ -42,7 +43,8 @@ $(function(){
 							score:score,
 							content:content,
 							series:1,
-							
+							game_name:gameName,
+							game_icon:game_icon
 						},
 						success:function(data){
 							if (data.state) {

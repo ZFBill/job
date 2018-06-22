@@ -1,6 +1,6 @@
 $(function() {
 	if(!window.localStorage.getItem("rememberUser")) {
-		var img = "../../Public/image/userhead.png";
+		var img = "../../Public/image/morentouxiang.png";
 		$(".me_img").css("background-image", "url(" + img + ")");
 		$('.me_username').text("未登录");
 

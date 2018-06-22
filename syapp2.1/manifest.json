@@ -222,7 +222,8 @@
 				"resources": [],
 				"refer": [
 					"html/news/news_allComments.html",
-					"html/game/game_detail.html"
+					"html/game/game_detail.html",
+					"html/user/login.html"
 				],
 				"priority": 0
 			},
@@ -284,7 +285,8 @@
 			"html/play/play.html": {
 				"resources": [],
 				"refer": [
-					"html/play/h5game.html"
+					"html/play/h5game.html",
+					"html/play/h5search.html"
 				],
 				"priority": 0
 			},
@@ -392,7 +394,8 @@
 				"resources": [],
 				"refer": [
 					"html/news/news_allComments.html",
-					"html/strategy/strategy_allComments.html"
+					"html/strategy/strategy_allComments.html",
+					"html/game/game_allComments.html"
 				],
 				"priority": 0
 			},
@@ -404,6 +407,27 @@
 				"priority": 0
 			},
 			"html/game/game_classify_list.html": {
+				"resources": [],
+				"refer": [
+					"html/game/game_detail.html"
+				],
+				"priority": 0
+			},
+			"html/play/h5search.html": {
+				"resources": [],
+				"refer": [
+					"html/play/h5game.html"
+				],
+				"priority": 0
+			},
+			"html/news/news_allComments.html": {
+				"resources": [],
+				"refer": [
+					"html/news/news_post.html"
+				],
+				"priority": 0
+			},
+			"html/game/game_allComments.html": {
 				"resources": [],
 				"refer": [
 					"html/game/game_detail.html"

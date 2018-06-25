@@ -55,8 +55,8 @@ var config = {
 //	data:"http://192.168.2.117:8878/",
 //	data:"http://www.oneyouxi.com.cn:8877/",
 	base64: "http://base64.oneyouxi.com.cn/",
-//	url_upload:"http://182.61.26.179:8878/",
-   url_upload:"http://192.168.2.117:8878/",
+	url_upload:"http://182.61.26.179:8878/",
+  // url_upload:"http://192.168.2.117:8878/",
 }
 
 var userInfostr = window.localStorage.getItem("userInfo");

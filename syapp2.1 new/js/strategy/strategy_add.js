@@ -64,8 +64,10 @@ $(function() {
 	$('.publish').click(function() {
 		
 
-	var content=$("#strategy_textarea").html();
-
+	var content="<div>"+$("#strategy_textarea").html()+"</div>";
+  
+// 	alert(content);
+// 	return false;
   var indexSrc=$("#strategy_textarea img:first").attr("src");
  if(indexSrc!==undefined){
 	 var indexImg=indexSrc;

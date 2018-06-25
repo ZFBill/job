@@ -74,7 +74,8 @@ $(function() {
  }else{
 	  indexImg=""
  }
-
+//  alert(indexSrc);
+//  return false;
 		
 		var str = $('.strategy_title').val();
 	 	var title = str.replace(/[\ |\~|\`|\!|\@|\#|\$|\%|\^|\&|\*|\(|\)|\-|\_|\+|\=|\||\\|\[|\]|\{|\}|\;|\:|\"|\'|\,|\<|\.|\>|\/|\?]/g, "");
@@ -88,9 +89,9 @@ $(function() {
 				async: true,
 				data: {
 					userId: userId,
-					title: title,
+					title:title,
 					detail:content,
-					gameName: gameName,
+					gameName:gameName,
 					top_img_src:indexImg
 				},
 				success: function(data) {
@@ -118,7 +119,6 @@ $(function() {
 // 从相册中选择图片   
 function galleryImgs() {
 	// 从相册中选择图片 
-
 	plus.gallery.pick(function(e) {
     mui.toast("正在上传,请等待");
 		var uploader = plus.uploader.createUpload(config.url_upload+"adminStrategy/img?title=strategy&token=token&url="+config.url_upload,{
@@ -128,7 +128,7 @@ function galleryImgs() {
 					 // return false;
 					  if(res.errno==0){
 						  var src=res.data[0];
-							appendHtml(`<img style="width:95%;height:auto;" src="${src}"/>`);						
+							appendHtml(`<img style="width:98%;height:auto;" src="${src}"/>`);						
 					  }else{
 						  mui.toast("上传图片失败")
 					  }
@@ -158,8 +158,8 @@ function galleryImgs() {
 
 //插入图片
 function appendHtml(src){
- //alert(src);
  var sel, range;
+ 
  if(window.getSelection){
 	  var sel=window.getSelection();
 		if (sel.getRangeAt && sel.rangeCount) {

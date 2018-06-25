@@ -39,6 +39,7 @@ $(function() {
 		newsId = self.newsId;
 		gameId = self.gameId;
 		up();
+		//alert(1);
 		$.ajax({
 			type: "get",
 			url: config.data + "news/getNewsByID",

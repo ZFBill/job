@@ -41,6 +41,7 @@ $(function() {
 		firstImg = self.firstImg;
 		title = self.title;
 //		获取一级评论
+     
 		$.ajax({
 			type:"get",
 			url:config.data + "news/getCommentById",

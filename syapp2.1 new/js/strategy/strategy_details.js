@@ -84,7 +84,10 @@ $(function() {
 					$('.news_userInfo_img').css("background-image", "url(" + encodeURI(str.portrait) + ")");
 					$('.news_userInfo_name').text(str.nick_name);
 					$('.news_userInfo_date').text(str.add_time);
+					//var detail=$(str.detail+" img").css("width","100%");
+					
 					$('.news_post_content_detail').html(str.detail);
+					$('.news_post_content_detail img').css("max-width","100%");
 					target_img = str.top_img_src;
 					target_title = str.title;
 					if(str.imgList) {

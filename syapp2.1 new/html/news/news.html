@@ -195,14 +195,13 @@
 			function up() {
 
 				page++;
-
+                
 				$.ajax({
 					type: "GET",
 					url: config.data + 'news/getNewsByPage',
 					data: {
 						"page": page
 					},
-
 					success: function(data) {
 						if(data.state) {
 							var n = data.news;
@@ -258,13 +257,10 @@
 							}
 							$('.news_art_list').append(div)
 							if(n.length < 5) {
-
 								mui('#news_content').pullRefresh().endPullupToRefresh(true);
 
 							} else {
-
 								mui('#news_content').pullRefresh().endPullupToRefresh(false);
-
 							}
 						} else {
 

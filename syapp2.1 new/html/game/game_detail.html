@@ -598,7 +598,7 @@
 			</div>
 
 		</div>
-		<script src="../../js/game/game_detail.js" type="text/javascript" charset="utf-8"></script>
+		
 		<script type="text/javascript">
 			var page = 1,pageIndex="detail";
 		</script>
@@ -690,13 +690,15 @@
         //window.onload=()=>{
 			function down() {
 				//window.location.reload();
-					case "detail":
+				switch (pageIndex){
+	                case "detail":
 					//window.location.reload();
 					break;
 					case "assess":
 					detail_assess();
 					break;
 					case "strategy":
+					
 					detail_strategy();
 					break;
 				}				
@@ -707,7 +709,7 @@
 		//}
 			
 		</script>
-		
+		<script src="../../js/game/game_detail.js" type="text/javascript" charset="utf-8"></script>
 		<script src="../../js/mui.zoom.js"></script>
 		<script src="../../js/mui.previewimage.js"></script>
 		<script>

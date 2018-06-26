@@ -9,7 +9,7 @@ $(function() {
 	$('.choose_game').css({'border-radius':'20px','background-color':'#e6ebec'})
 	var h = $(window).height()
 	$(window).resize(function() {
-		var changeHeight = $(window).height()
+		var changeHeight = $(window).height();
 		if(changeHeight < h) {
 			$('.show_imgs,.img_num').addClass('hidden')
 			$('.choose_img').css('bottom', '0')
@@ -159,7 +159,6 @@ function galleryImgs() {
 //插入图片
 function appendHtml(src){
  var sel, range;
- 
  if(window.getSelection){
 	  var sel=window.getSelection();
 		if (sel.getRangeAt && sel.rangeCount) {

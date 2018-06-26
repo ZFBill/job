@@ -598,13 +598,12 @@
 			</div>
 
 		</div>
-		
+		<script src="../../js/game/game_detail.js" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript">
-			var page = 1;
+			var page = 1,pageIndex="detail";
 		</script>
 		<script type="text/javascript">
-			mui.init({
-				
+			mui.init({			
 				pullRefresh: {
 					container: "#game_detailContent", //下拉刷新容器标识，querySelector能定位的css选择器均可，比如：id、.class等
 					up: {
@@ -623,15 +622,13 @@
 						auto: false, //可选,默认false.首次加载自动上拉刷新一次
 						callback: down //必选，刷新函数，根据具体业务来编写，比如通过ajax从服务器获取新数据；
 					}
-
 				}
 
-			})
+			});
 
-			function up() {
+			function up() {			
 				if(!commentModule) {
 					mui('#game_detailContent').pullRefresh().endPullupToRefresh(true);
-
 				} else {
 					page++;
 					$.ajax({
@@ -690,17 +687,27 @@
 				}
 
 			}
-
+        //window.onload=()=>{
 			function down() {
-				window.location.reload();
+				//window.location.reload();
+					case "detail":
+					//window.location.reload();
+					break;
+					case "assess":
+					detail_assess();
+					break;
+					case "strategy":
+					detail_strategy();
+					break;
+				}				
 				setTimeout(function() {
 					mui('#game_detailContent').pullRefresh().endPulldown(true);
 				}, 1000);
-
-				//				 mui('#news_content').pullRefresh().endPulldown(true);
 			}
+		//}
+			
 		</script>
-		<script src="../../js/game/game_detail.js" type="text/javascript" charset="utf-8"></script>
+		
 		<script src="../../js/mui.zoom.js"></script>
 		<script src="../../js/mui.previewimage.js"></script>
 		<script>

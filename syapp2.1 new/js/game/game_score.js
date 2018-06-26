@@ -44,12 +44,14 @@ $(function(){
 							content:content,
 							series:1,
 							game_name:gameName,
-							game_icon:game_icon
+							game_title_img:game_icon
 						},
-						success:function(data){
+						success:function(data){							
 							if (data.state) {
-								mui.toast('评论成功')
-								mui.back()
+								mui.toast('评论成功');
+								mui.back();
+								mainPage = plus.webview.currentWebview().opener();
+								mui.fire(mainPage,"assess",{});
 							} else{
 								
 							}

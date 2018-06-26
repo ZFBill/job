@@ -48,9 +48,9 @@
                 mui.back = function() {  
                 var wobj = plus.webview.getWebviewById("game_detail.html");//注意 HBuilder 是   1.html 的 ID  你如果1.html 有ID   要替换掉HBuilder，  
                  mainPage = plus.webview.currentWebview().opener();
-                 mui.fire(mainPage,"assess",{});
+                mui.fire(mainPage,"assess",{});
 			
-		     old_back();  
+		         old_back();  
 			 
                 }     
             });  

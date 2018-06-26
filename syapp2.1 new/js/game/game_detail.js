@@ -52,12 +52,8 @@ $(function() {
 								plus.io.resolveLocalFileSystemURL('_downloads/' + game.game_name + '.apk', function(entry) {
 									$("#game_detail_download").find(".download_btn_text").text("安装");
 									//	可通过entry对象操作文件 
-									//							entry.file(function(file) {
-									//								
-									//								console.log(file.name)
-									//							});
 								}, function(e) {
-									//								console.log("文件不存在 " + e.message);
+									//console.log("文件不存在 " + e.message);
 								});
 							}
 						});
@@ -569,7 +565,6 @@ function createDownload(name, src) {
 				//				添加到我的游戏结束
 
 				plus.runtime.install(dtask.filename, {}, function(widgetInfo) {
-					//				console.log(widgetInfo)
 					$(".download_btn_text").text("打开");
 				}, function(error) {
 					console.log(error)
@@ -766,8 +761,7 @@ function detail_strategy(){
 		
 
 	
-		function detail_assess(){				
-			
+		function detail_assess(){	
 			commentModule = true;
 			pageIndex="assess";
 			$(".game_detail_assess").addClass('game_detail_assess_active').removeClass('color_c9c9').siblings('div').addClass('color_c9c9').removeClass('game_detail_detail_active').removeClass('game_detail_strategy_active');

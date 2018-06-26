@@ -692,11 +692,11 @@
 	                case "detail":
 					break;
 					case "assess":
-					detail_assess();
+					 detail_assess();
 					break;
 					case "strategy":
 					
-					detail_strategy();
+					 detail_strategy();
 					break;
 				}				
 				setTimeout(function() {
@@ -704,11 +704,8 @@
 				}, 1000);
 			}
 
-          window.addEventListener('assess',function(event){          
-//              var value = event.detail.value;
+          window.addEventListener('assess',function(event){        
              detail_assess();
-// 			 alert(value);
-           // document.getElementById("info").innerText = value;
           });
 		</script>
 		<script src="../../js/game/game_detail.js" type="text/javascript" charset="utf-8"></script>

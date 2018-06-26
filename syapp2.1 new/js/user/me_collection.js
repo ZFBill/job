@@ -16,8 +16,7 @@ $(function(){
 		mui('.me_collections').pullRefresh().refresh(true);
 		up()
 	})
-	$('.me_collectionNav').children('span').eq(1).click(function(){
-		
+	$('.me_collectionNav').children('span').eq(1).click(function(){		
 		$('.strategy_contents').removeClass('hidden')
 		$('.news_art_list').addClass('hidden').children().remove();
 		page = 0;

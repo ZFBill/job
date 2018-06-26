@@ -687,27 +687,26 @@
 				}
 
 			}
-        //window.onload=()=>{
 			function down() {
-				//window.location.reload();
 				switch (pageIndex){
 	                case "detail":
-					//window.location.reload();
 					break;
 					case "assess":
-					detail_assess();
+					 detail_assess();
 					break;
 					case "strategy":
 					
-					detail_strategy();
+					 detail_strategy();
 					break;
 				}				
 				setTimeout(function() {
 					mui('#game_detailContent').pullRefresh().endPulldown(true);
 				}, 1000);
 			}
-		//}
-			
+
+          window.addEventListener('assess',function(event){        
+             detail_assess();
+          });
 		</script>
 		<script src="../../js/game/game_detail.js" type="text/javascript" charset="utf-8"></script>
 		<script src="../../js/mui.zoom.js"></script>

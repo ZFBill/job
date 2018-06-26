@@ -212,8 +212,6 @@
 			}
 			
 			function down() {
-// 				alert(location.href)
-// 				window.location.reload();
 				if(pageHash=="news"){
 					getNews();
 				}else{
@@ -222,8 +220,6 @@
 				setTimeout(function() {
 					mui('.me_collections').pullRefresh().endPulldown(true);
 				}, 1000);
-
-				//				 mui('#news_content').pullRefresh().endPulldown(true);
 			}
 			
 			function getNews(){
@@ -238,10 +234,11 @@
 						type:1
 					},
 					success:function(data){
-						if (data.state) {
+						if (data.state) {						
 							var str = data.newsList;
 							var div = "";
 							for (var i = 0; i < str.length; i++) {
+								
 								div +=
 									"<div class='news_art ofh' style='margin-top: 0.75rem;margin-bottom: 0.2rem;' data-id='"+ str[i].id +"' data-gameId='"+ str[i].game_id +"'>"+
 										"<div class='news_img' style='background-image: url("+ config.img + encodeURI(str[i].img) +");'>"+
@@ -264,8 +261,7 @@
 					
 										"<div class='news_art_time font_12'>"+
 											str[i].add_time +
-										"</div>"+
-					
+										"</div>"+					
 									"</div>"
 							}
 							$('.news_art_list').append(div);
@@ -304,8 +300,7 @@
 								}
 								
 								if(str[i].admin){
-									name=str[i].nike_name;
-									//如果是后台
+									name=str[i].nike_name;//如果是后台
 								}else{
 									name=str[i].nick_name;
 								}

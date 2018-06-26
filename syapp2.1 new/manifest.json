@@ -223,7 +223,8 @@
 				"refer": [
 					"html/news/news_allComments.html",
 					"html/game/game_detail.html",
-					"html/user/login.html"
+					"html/user/login.html",
+					"html/play/h5game.html"
 				],
 				"priority": 0
 			},

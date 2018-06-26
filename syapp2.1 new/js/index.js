@@ -1,29 +1,113 @@
 var subpages = ['html/news/news.html', 'html/game/game_recommend.html', 'html/strategy/strategy.html', 'html/play/play.html', 'html/user/me.html'];
 
 var Index = 0;
-
+var newVer;
 //把子页的路径写在数组里面
 var activeTab = subpages[Index];
 //选项卡点击事件
 var self;
 mui.plusReady(function() {
-//	var h1 = plus.webview.getLaunchWebview()
-//
-//	var height = document.documentElement.clientHeight || document.body.clientHeight;
-//	window.onresize = function() {
-//		var heightView = document.documentElement.clientHeight || document.body.clientHeight;
-//		if(heightView < height) {
-//			plus.webview.currentWebview().setStyle({
-//				height: height
-//			});
-//			//			//修改父页面高度的时候，也要修改子页面的高度  因为子页面距离父页面底部始终是51px  所以这里只需要用父页面的高度减去51px,就是子页面的高度
-//			//			plus.webview.getWebviewById('html/store/store.html').setStyle({
-//			//				height: (height * 1 - 51)
-//			//			});
-//		} else {
-//
-//		}
-//	}
+	var wgtVer = null;
+
+	function plusReady() {
+		// ......
+		// 获取本地应用资源版本号
+		plus.runtime.getProperty(plus.runtime.appid, function(inf) {
+			wgtVer = inf.version;
+			
+			console.log("当前应用版本：" + wgtVer);
+			//	检测更新
+
+			$.ajax({
+				type: "get",
+				url: "http://www.oneyouxi.com.cn:8877/H5/update",
+				async: true,
+				success: function(data) {
+					if(data.state) {
+						newVer = data.mark;
+						console.log(newVer);
+						if(wgtVer && newVer && (wgtVer != newVer)) {
+							downWgt(); // 下载升级包
+						} else {
+							plus.nativeUI.alert("无新版本可更新！");
+						}
+					} else {
+						console.log("检测更新失败！");
+						plus.nativeUI.alert("检测更新失败！");
+					}
+				}
+			});
+		});
+	}
+	if(window.plus) {
+		plusReady();
+	} else {
+		document.addEventListener('plusready', plusReady, false);
+	}
+
+	// 检测更新
+
+	//	checkUpdate();
+	//
+	//	function checkUpdate() {
+	//		plus.nativeUI.showWaiting("检测更新...");
+	//		var xhr = new XMLHttpRequest();
+	//		xhr.onreadystatechange = function() {
+	//			switch(xhr.readyState) {
+	//				case 4:
+	//					plus.nativeUI.closeWaiting();
+	//					alert(xhr.status)
+	//					if(xhr.status == 200) {
+	//						console.log("检测更新成功");
+	//						var newVer = JSON.parse(xhr.responseText);
+	//
+	//					} else {
+	//						
+	//					}
+	//					break;
+	//				default:
+	//					break;
+	//			}
+	//		}
+	//
+	//	}
+
+	// 下载wgt文件
+	var wgtUrl = "http://182.61.26.179:8878/www/APK/H5C62934A.wgt";
+
+	function downWgt() {
+		plus.nativeUI.showWaiting("下载wgt文件...");
+		plus.downloader.createDownload(wgtUrl, {
+			filename: "_doc/update/"
+		}, function(d, status) {
+			if(status == 200) {
+				console.log("下载wgt成功：" + d.filename);
+				installWgt(d.filename); // 安装wgt包
+			} else {
+				console.log("下载wgt失败！");
+				plus.nativeUI.alert("下载wgt失败！");
+			}
+			plus.nativeUI.closeWaiting();
+		}).start();
+	}
+
+	//	var h1 = plus.webview.getLaunchWebview()
+	//
+	//	var height = document.documentElement.clientHeight || document.body.clientHeight;
+	//	window.onresize = function() {
+	//		var heightView = document.documentElement.clientHeight || document.body.clientHeight;
+	//		if(heightView < height) {
+	//			plus.webview.currentWebview().setStyle({
+	//				height: height
+	//			});
+	//			//			//修改父页面高度的时候，也要修改子页面的高度  因为子页面距离父页面底部始终是51px  所以这里只需要用父页面的高度减去51px,就是子页面的高度
+	//			//			plus.webview.getWebviewById('html/store/store.html').setStyle({
+	//			//				height: (height * 1 - 51)
+	//			//			});
+	//		} else {
+	//
+	//		}
+	//	}
 	var h1 = plus.webview.getLaunchWebview()
 
 	var height = document.documentElement.clientHeight || document.body.clientHeight;
@@ -49,12 +133,6 @@ mui.plusReady(function() {
 			}
 		}
 	}
-
-
-
-
-
-
 
 	//	window.addEventListener('toIndex', function(event) {
 	//		// mui.fire()传过来的额外的参数，在event.detail中；
@@ -153,3 +231,19 @@ mui.plusReady(function() {
 		return false;
 	}
 });
+
+// 更新应用资源
+function installWgt(path) {
+	plus.nativeUI.showWaiting("安装wgt文件...");
+	plus.runtime.install(path, {}, function() {
+		plus.nativeUI.closeWaiting();
+		console.log("安装wgt文件成功！");
+		plus.nativeUI.alert("应用资源更新完成！", function() {
+			plus.runtime.restart();
+		});
+	}, function(e) {
+		plus.nativeUI.closeWaiting();
+		console.log("安装wgt文件失败[" + e.code + "]：" + e.message);
+		plus.nativeUI.alert("安装wgt文件失败[" + e.code + "]：" + e.message);
+	});
+}

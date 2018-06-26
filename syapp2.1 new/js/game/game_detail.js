@@ -26,7 +26,6 @@ $(function() {
 				if(data.state) {
 					game = data.gameDetail;
 					var g = data.gameDetail;
-
 					var icon_img = g.game_title_img;
 					icon = icon_img;
 					var game_name = g.game_name;

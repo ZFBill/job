@@ -50,12 +50,10 @@ var config = {
 	img: "http://img.oneyouxi.com.cn/",
 	apk: "http://apk.oneyouxi.com.cn/",
 //	data: "http://192.168.2.156:8877/",
-	//data:"http://192.168.2.108:8877/",
-<<<<<<< HEAD
+//	data:"http://192.168.2.108:8877/",
+
 //	data:"http://192.168.2.117:8877/",
-=======
-	 data:"http://192.168.2.117:8877/",
->>>>>>> 0e3e1acc8581bd99531aa4344fe2885c6cb807eb
+
 	// data:"http://182.61.26.179:8877/",
 	data:"http://www.oneyouxi.com.cn:8877/",
 	base64: "http://base64.oneyouxi.com.cn/",

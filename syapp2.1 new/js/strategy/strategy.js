@@ -75,7 +75,7 @@ $(function(){
 	$('body').on('click','.strategy_content',function(){
 		var strategyId = $(this).attr('data-id');
 		var browseNum = $(this).find('.browseNum').eq(0).text();
-		add(strategyId,"browse_num");
+//		add(strategyId,"browse_num");
 		$(this).find('.browseNum').eq(0).text(parseInt(browseNum)+1) 
 		mui.openWindow({
 			url:"strategy_details.html",
@@ -154,25 +154,25 @@ $(function(){
 })
 
 //添加浏览,点赞,评论数
-function add(strategyId,numType){
-	$.ajax({
-		type:"get",
-		url:config.data+ "strategy/addNum",
-		async:true,
-		data:{
-			strategyId:strategyId,
-			numType:numType,
-			num:0
-		},
-		success:function(data){
-			if (data.state) {
-				
-
-			} else{
-				
-			}
-		}
-	});
-}
+//function add(strategyId,numType){
+//	$.ajax({
+//		type:"get",
+//		url:config.data+ "strategy/addNum",
+//		async:true,
+//		data:{
+//			strategyId:strategyId,
+//			numType:numType,
+//			num:0
+//		},
+//		success:function(data){
+//			if (data.state) {
+//				
+//
+//			} else{
+//				
+//			}
+//		}
+//	});
+//}
 
 //添加浏览,点赞,评论数结束

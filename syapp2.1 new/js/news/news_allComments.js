@@ -52,7 +52,12 @@ $(function() {
 			success:function(data){
 				if (data.state) {
 					var c= data.comment;
-					$('.news_post_commentContent_head').css('background-image', "url(" + encodeURI(c.portrait) + ")")
+					if(c.portrait==0||c.portrait==null){
+						portrait="../../Public/image/morentouxiang.png";
+					}else{
+						portrait=str[i].portrait;
+					}
+					$('.news_post_commentContent_head').css('background-image', "url(" + encodeURI(portrait) + ")")
 					$('.news_post_commentContent').attr("data-id",c.id);
 					$('.news_post_commentContent').attr("data-userId",c.user_id);
 					$('.comment_userOne').text(c.nick_name);
@@ -95,9 +100,7 @@ $(function() {
 		})
 		
 //		点击发布
-		$('.publish').click(function(){
-			
-			
+		$('.publish').click(function(){	
 			var content = $(this).prev().val();
 			if(content){
 				$.ajax({

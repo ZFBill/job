@@ -76,7 +76,7 @@ mui.plusReady(function() {
 	var wgtUrl = "http://182.61.26.179:8878/www/APK/H5C62934A.wgt";
 
 	function downWgt() {
-		plus.nativeUI.showWaiting("下载wgt文件...");
+		plus.nativeUI.showWaiting("正在更新中，请勿关闭");
 		plus.downloader.createDownload(wgtUrl, {
 			filename: "_doc/update/"
 		}, function(d, status) {

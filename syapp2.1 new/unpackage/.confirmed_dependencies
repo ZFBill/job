@@ -6,7 +6,12 @@
 			"Public/image/tuijian2.png",
 			"Public/image/youxi1.png",
 			"Public/image/gonglue1.png",
-			"html/play/play.html"
+			"html/play/play.html",
+			"Public/css/public.css",
+			"css/index.css",
+			"js/mui.js",
+			"css/mui.css",
+			"js/index.js"
 		],
 		"refer": [
 			"html/news/news.html",

@@ -201,7 +201,12 @@
 					"Public/image/youxi1.png",
 					"Public/image/gonglue1.png",
 					"html/play/play.html",
-					"html/user/me.html"
+					"html/user/me.html",
+					"Public/css/public.css",
+					"css/index.css",
+					"js/mui.js",
+					"css/mui.css",
+					"js/index.js"
 				],
 				"refer": [
 					"html/strategy/strategy.html"
@@ -438,27 +443,22 @@
 		},
 		"idle": {
 			"resources": [
-				"Public/css/public.css",
 				"Public/image/haowan1.png",
 				"Public/image/wode2.png",
-				"css/index.css",
 				"Public/image/xing1.png",
 				"Public/image/tuijian1.png",
-				"js/mui.js",
 				"Public/image/haowan2.png",
 				"Public/css/vssver2.scc",
 				"Public/image/lingdang2.png",
 				"Public/image/wode1.png",
 				"fonts/mui.ttf",
-				"css/mui.css",
 				"Public/image/youxi2.png",
 				"js/news/news.js",
 				"Public/image/shou.png",
 				"Public/image/lingdang.png",
 				"css/mui.min.css",
 				"Public/image/starActive.png",
-				"css/news/news.css",
-				"js/index.js"
+				"css/news/news.css"
 			]
 		}
 	}

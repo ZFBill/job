@@ -126,7 +126,7 @@
 			<!--小游戏模块 结束-->
 		</div>
 		<script>
-			var page = 0;
+			var page = 0,indexPage="getGame";
 			
 		</script>
 		<script type="text/javascript">
@@ -167,15 +167,21 @@
 			
 
 			function down() {
-				window.location.reload();
+
+				if(indexPage=="getGame"){
+					 getGame();
+				}else{
+					getH5();
+				}
 				setTimeout(function() {
 					mui('.me_gameContents').pullRefresh().endPulldown(true);
 				}, 1000);
 
-				//				 mui('#news_content').pullRefresh().endPulldown(true);
+
 			}
 			
 			function getGame(){
+				indexPage="getGame";
 				$.ajax({
 					type:"get",
 					url:config.data + "users/getGameByUserId",
@@ -226,7 +232,7 @@
 										"</li>"
 								
 							}
-							$('.game_lists').append(list)
+							$('.game_lists').empty().append(list)
 							$('.game_recommend_stars').each(function(){
 				
 								var score =  $(this).find('.game_recommend_starScore').eq(0).text()
@@ -262,6 +268,7 @@
 			}
 		
 			function getH5(){
+				indexPage="getH5";
 				$.ajax({
 					type: "get",
 					url: config.data + "users/getGameByUserId",
@@ -289,7 +296,7 @@
 									"</li>"
 									
 							}
-							$('.now_game').append(div)
+							$('.now_game').empty().append(div)
 							
 							if(h.length < 10) {
 

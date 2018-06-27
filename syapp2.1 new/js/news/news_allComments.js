@@ -55,7 +55,7 @@ $(function() {
 					if(c.portrait==0||c.portrait==null){
 						portrait="../../Public/image/morentouxiang.png";
 					}else{
-						portrait=str[i].portrait;
+						portrait=c.portrait;
 					}
 					$('.news_post_commentContent_head').css('background-image', "url(" + encodeURI(portrait) + ")")
 					$('.news_post_commentContent').attr("data-id",c.id);

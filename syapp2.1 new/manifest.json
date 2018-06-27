@@ -1,7 +1,7 @@
 {
 	"@platforms": ["android", "iPhone", "iPad"],
 	"id": "H5C62934A",/*应用的标识，创建应用时自动生成，勿手动修改*/
-	"name": "syapp2.1",/*应用名称，程序桌面图标名称*/
+	"name": "ONE游戏",/*应用名称，程序桌面图标名称*/
 	"version": {
 		"name": "2.0.0",/*应用版本名称*/
 		"code": "83"
@@ -84,9 +84,7 @@
         "Barcode": {
             "description": "管理二维码扫描插件"
         },
-        "Maps": {
-            "description": "管理地图插件"
-        },
+        
         "Speech": {
             "description": "管理语音识别插件"
         },
@@ -189,7 +187,7 @@
 					"xxhdpi": "Public/image/1080-1882.png"
 				}
 			}
-		},"ads":{"rp":false,"splash":false,"push":false},"adid":""
+		},"ads":{"rp":false,"splash":false,"push":false},"adid":"127732250606"
 	},
 	"dependencies": {
 		"pages": {

@@ -18,25 +18,25 @@ mui.plusReady(function() {
 			console.log("当前应用版本：" + wgtVer);
 			//	检测更新
 
-//			$.ajax({
-//				type: "get",
-//				url: "http://www.oneyouxi.com.cn:8877/H5/update",
-//				async: true,
-//				success: function(data) {
-//					if(data.state) {
-//						newVer = data.mark;
-//						console.log(newVer);
-//						if(wgtVer && newVer && (wgtVer != newVer)) {
-//							downWgt(); // 下载升级包
-//						} else {
-//							plus.nativeUI.alert("无新版本可更新！");
-//						}
-//					} else {
-//						console.log("检测更新失败！");
-//						plus.nativeUI.alert("检测更新失败！");
-//					}
-//				}
-//			});
+			$.ajax({
+				type: "get",
+				url: "http://www.oneyouxi.com.cn:8877/H5/update",
+				async: true,
+				success: function(data) {
+					if(data.state) {
+						newVer = data.mark;
+						console.log(newVer);
+						if(wgtVer && newVer && (wgtVer != newVer)) {
+							downWgt(); // 下载升级包
+						} else {
+							plus.nativeUI.alert("无新版本可更新！");
+						}
+					} else {
+						console.log("检测更新失败！");
+						plus.nativeUI.alert("检测更新失败！");
+					}
+				}
+			});
 		});
 	}
 	if(window.plus) {
@@ -46,37 +46,35 @@ mui.plusReady(function() {
 	}
 
 	// 检测更新
-
-	//	checkUpdate();
-	//
-	//	function checkUpdate() {
-	//		plus.nativeUI.showWaiting("检测更新...");
-	//		var xhr = new XMLHttpRequest();
-	//		xhr.onreadystatechange = function() {
-	//			switch(xhr.readyState) {
-	//				case 4:
-	//					plus.nativeUI.closeWaiting();
-	//					alert(xhr.status)
-	//					if(xhr.status == 200) {
-	//						console.log("检测更新成功");
-	//						var newVer = JSON.parse(xhr.responseText);
-	//
-	//					} else {
-	//						
-	//					}
-	//					break;
-	//				default:
-	//					break;
-	//			}
-	//		}
-	//
-	//	}
+//		checkUpdate();
+//		function checkUpdate() {
+//			plus.nativeUI.showWaiting("检测更新...");
+//			var xhr = new XMLHttpRequest();
+//			xhr.onreadystatechange = function() {
+//				switch(xhr.readyState) {
+//					case 4:
+//						plus.nativeUI.closeWaiting();
+//						alert(xhr.status)
+//						if(xhr.status == 200) {
+//							console.log("检测更新成功");
+//							var newVer = JSON.parse(xhr.responseText);
+//	
+//						} else {
+//							
+//						}
+//						break;
+//					default:
+//						break;
+//				}
+//			}
+//	
+//		}
 
 	// 下载wgt文件
 	var wgtUrl = "http://182.61.26.179:8878/www/APK/H5C62934A.wgt";
 
 	function downWgt() {
-		plus.nativeUI.showWaiting("下载wgt文件...");
+		plus.nativeUI.showWaiting("正在更新中");
 		plus.downloader.createDownload(wgtUrl, {
 			filename: "_doc/update/"
 		}, function(d, status) {

@@ -169,6 +169,11 @@ body{
 	position: relative;
 	border-radius: 5px 5px 0 0;
 }
+.str_img{
+
+	height: 45vw;
+	border-radius: 5px;
+}
 .news_img_content{
 	position: absolute;
 	bottom: 0.375rem;

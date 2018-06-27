@@ -6,7 +6,6 @@ var sort = "add_time";
 var target_img;
 var target_title;
 $(function() {
-
 	$('.news_review').click(function() {
 
 		$('html, body').animate({
@@ -362,9 +361,17 @@ $(function() {
 									var ifLike = "liked"
 								}
 
+								
+								if(com[i].portrait==0||com[i].portrait==null){
+									portrait="../../Public/image/morentouxiang.png";
+								}else{
+								    portrait=com[i].portrait;
+								}
+								
+								alert(1);
 								div +=
 									"<div class='news_post_commentContent ofh' data-id='" + com[i].id + "'>" +
-									"<div class='news_post_commentContent_head fl' style='background-image: url(" + encodeURI(com[i].portrait) + ");'></div>" +
+									"<div class='news_post_commentContent_head fl' style='background-image: url(" + encodeURI(portrait) + ");'></div>" +
 									"<div class='news_post_commentContent_content fl'>" +
 									"<div class='comment_user font_12'>" + com[i].nick_name + "</div>" +
 									"<div class='comment_content font_14'>" + com[i].content + "</div>" +
@@ -399,7 +406,6 @@ $(function() {
 					}
 				});
 			} else {
-
 				$.ajax({
 					type: "get",
 					url: config.data + "strategy/getStrategyCommentByPage",
@@ -422,8 +428,11 @@ $(function() {
 								} else {
 									var img = "hidden"
 								}
-								var sec = "";
-
+								var sec = "",portrait;
+                                
+								
+								
+									
 								if(com[i].towCommentList.length > 0) {
 									for(var j = 0; j < com[i].towCommentList.length; j++) {
 										if(com[i].towCommentList[j].targetUserNickName) {
@@ -451,10 +460,17 @@ $(function() {
 									var ifLike = "liked"
 
 								}
+								
+								if(com[i].portrait==0||com[i].portrait==null){
+									portrait="../../Public/image/morentouxiang.png";
+								}else{
+									portrait=com[i].portrait;
+								}
+								
 
 								div +=
 									"<div class='news_post_commentContent ofh' data-id='" + com[i].id + "'>" +
-									"<div class='news_post_commentContent_head fl' style='background-image: url(" + encodeURI(com[i].portrait) + ");'></div>" +
+									"<div class='news_post_commentContent_head fl' style='background-image: url(" + encodeURI(portrait) + ");'></div>" +
 									"<div class='news_post_commentContent_content fl'>" +
 									"<div class='comment_user font_12'>" + com[i].nick_name + "</div>" +
 									"<div class='comment_content font_14'>" + com[i].content + "</div>" +

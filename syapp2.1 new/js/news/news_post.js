@@ -432,7 +432,7 @@ function getComment(){
 				 if(com[i].portrait==0||com[i].portrait==null){
 					 portrait="../../Public/image/morentouxiang.png";
 				 }else{
-				 	portrait=str[i].portrait;
+				 	portrait=com[i].portrait;
 				 }
 				 	if(tow.length >= 2) {
 				 			var secondComs =
@@ -504,7 +504,7 @@ function up(){
 						if(com[i].portrait==0||com[i].portrait==null){
 							portrait="../../Public/image/morentouxiang.png";
 						}else{
-							portrait=str[i].portrait;
+							portrait=com[i].portrait;
 						}
 						
 						

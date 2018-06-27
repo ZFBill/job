@@ -5,10 +5,8 @@ var target_title;
 var strategyId;
 $(function() {
 	mui.plusReady(function() {
-
 		var self = plus.webview.currentWebview();
 		commentId = self.commentId;
-		
 		target_img = self.target_img;
 		target_title = self.target_title;
 		strategyId = self.strategyId;
@@ -47,10 +45,20 @@ $(function() {
 			success: function(data) {
 				if(data.state) {
 
-					var com = data.comment;
+					var com = data.comment,portrait;
 					firstUserid = com.user_id;
 					
-					//					$('.news_post_commentContent  .news_post_commentContent_head').CSS('background-image',)
+					//alert(JSON.stringify(com));
+					
+					if(com.strategy==0||com.strategy==null){
+						portrait="../../Public/image/morentouxiang.png";
+					}else{
+					   portrait=com.strategy;
+					}
+					
+					
+					//$('.news_post_commentContent  .news_post_commentContent_head').CSS('background-image',)
+					
 					$('.comment_user').text(com.nick_name)
 					$('.comment_content').text(com.content)
 					if(com.img) {
@@ -60,13 +68,13 @@ $(function() {
 					}
 					$('.comment_summary').attr('data-id',com.strategyid)
 					if (com.strategy_img) {
-						$('.comment_summary_img').css('background-image','url(' + config.img + encodeURI(com.strategy_img) + ')')
+						$('.comment_summary_img').css('background-image','url(' + config.img + encodeURI(strategy) + ')')
 					} else{
 						$('.comment_summary_img').css('background-image','url(../../Public/image/link.png)')
 					}
 					$('.comment_summary_art').text(com.target_title)
 					$('.date').text(com.add_time)
-					$('.news_post_commentContent_head').css("background-image", "url(" + encodeURI(com.portrait) + ")")
+					$('.news_post_commentContent_head').css("background-image", "url(" + encodeURI(portrait) + ")")
 				} else {
 
 				}
@@ -84,11 +92,10 @@ $(function() {
 				}
 			})
 		})
-
+         //发表评论
 		$('.publish').click(function() {
 			var content = $(this).siblings('.news_secondComment_input').val();
-			if(content) {
-				
+			if(content) {			
 				$.ajax({
 					type: "get",
 					url: config.data + "strategy/strategyComment",
@@ -102,12 +109,11 @@ $(function() {
 						target_img: target_img,
 						targetid: strategyId,
 						target_title: target_title
-
 					},
 					success: function(data) {
 						if(data.state) {
-							mui.toast("发送成功")
-							window.location.reload()
+							mui.toast("发送成功");
+							//window.location.reload()
 
 						} else {
 							mui.toast("发送失败，请重试")
@@ -135,20 +141,28 @@ function up() {
 			page: page
 		},
 		success: function(data) {
+			
 			if(data.state) {
-
-				var c = data.comment;
-
+                
+				var c = data.comment;    
 				var div = '';
+				//alert(c.length);
 				for(var i = 0; i < c.length; i++) {
+					
 					if(c[i].targetUserNickName) {
 						var ifHide = "ifHide"
 					} else {
 						var ifHide = "hidden"
 					}
+					if(c[i].portrait==0||c[i].portrait==null){
+						portrait="../../Public/image/morentouxiang.png";
+					}else{
+					portrait=c[i].portrait;
+					}
+					
 					div +=
 						"<div class='news_post_commentContentsec ofh' style='border-top: 1px solid #e6ebec;margin-top: 0;border-bottom: 0;' data-id='" + c[i].id + "'>" +
-						"<div class='news_post_commentContent_head fl' style='background-image: url(" + encodeURI(c[i].portrait) + ");'></div>" +
+						"<div class='news_post_commentContent_head fl' style='background-image: url(" + encodeURI(portrait) + ");'></div>" +
 						"<div class='news_post_commentContent_content fl'>" +
 						"<div class='comment_user font_12'>" +
 						"<span>" + c[i].selfNickName + "</span>" +

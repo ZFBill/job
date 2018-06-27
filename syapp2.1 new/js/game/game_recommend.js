@@ -632,7 +632,7 @@ function getRank(sort) {
 							"<div class='color_9e9e9e fl game_listScore'>" + (i + 1) + "</div>" +
 							"<div class='game_listImg fl' style='background-image: url(" + config.img + encodeURI(g[i].icon) + ");'></div>" +
 							"<div class='fl' style='margin-top: 1.25rem;margin-left: 0.875rem;'>" +
-							"<div class='font_14'>" + g[i].game_name + "</div>" +
+							"<div class='font_14 overflow'>" + g[i].game_name + "</div>" +
 							"<div class='font_12'>" +
 							"<div class='ofh game_recommend_stars'>" +
 							"<div class='game_recommend_star fl'></div>" +
@@ -718,7 +718,7 @@ function getRankup(page, sort) {
 						"<div class='color_9e9e9e fl game_listScore'>" + (i + 1 + (page - 1) * 20) + "</div>" +
 						"<div class='game_listImg fl' style='background-image: url(" + config.img + encodeURI(g[i].icon) + ");'></div>" +
 						"<div class='fl' style='margin-top: 1.25rem;margin-left: 0.875rem;'>" +
-						"<div class='font_14'>" + g[i].game_name + "</div>" +
+						"<div class='font_14 overflow'>" + g[i].game_name + "</div>" +
 						"<div class='font_12'>" +
 						"<div class='ofh game_recommend_stars'>" +
 						"<div class='game_recommend_star fl'></div>" +

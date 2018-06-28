@@ -295,7 +295,10 @@
 				"priority": 0
 			},
 			"html/user/me.html": {
-				"resources": [],
+				"resources": [
+					"Public/js/public.js",
+					"Public/js/jquery-3.2.1.min.js"
+				],
 				"refer": [
 					"html/user/me_game.html",
 					"html/user/me_works.html",

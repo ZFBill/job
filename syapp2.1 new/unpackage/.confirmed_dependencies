@@ -7,7 +7,12 @@
 			"Public/image/youxi1.png",
 			"Public/image/gonglue1.png",
 			"html/play/play.html",
-			"html/strategy/strategy.html"
+			"Public/css/public.css",
+			"css/index.css",
+			"js/mui.js",
+			"css/mui.css",
+			"js/index.js",
+			"html/user/me.html"
 		],
 		"refer": [
 			"html/news/news.html",
@@ -108,7 +113,10 @@
 			"html/news/news_center.html",
 			"html/user/share.html"
 		],
-		"resources": []
+		"resources": [
+			"Public/js/public.js",
+			"Public/js/jquery-3.2.1.min.js"
+		]
 	},
 	"html/user/set_list.html": {
 		"refer": [
@@ -216,9 +224,9 @@
 			"html/game/game_detail.html"
 		]
 	},
-	"html/game/game_classify_sign.html": {
+	"html/strategy/strategy_search_result.html": {
 		"refer": [
-			"html/game/game_detail.html"
+			"html/strategy/strategy_details.html"
 		]
 	}
 }

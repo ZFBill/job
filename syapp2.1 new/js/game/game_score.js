@@ -27,6 +27,9 @@ $(function(){
 		$('.publish').click(function(){
 			var score = $('.staract').length * 2;
 			var content = $('#textarea').val();
+//			
+//			alert(score);
+//			return false;
 			if(content == ''){
 				mui.toast('请输入内容')
 			}else{

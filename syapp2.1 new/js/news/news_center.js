@@ -26,7 +26,7 @@ $(function(){
 			sort = selfSort;
 			up();
 			
-		})
+		});
 		$('body').on('click','.notice_list',function(){
 			var type = $(this).attr("data-type");
 			var commentId = $(this).attr("data-id");

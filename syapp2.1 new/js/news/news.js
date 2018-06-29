@@ -19,7 +19,7 @@ $(function() {
 		success: function(data) {
 			if(data.state) {
 				var n = data.news;
-				//console.log(n[0].game_id)
+			
 				if(n[0].game_id) {
 					$('.news_artAlone > .news_art').attr(
 						"data-gameId", n[0].game_id
@@ -35,7 +35,7 @@ $(function() {
 				$('.news_artAlone > .news_art  .new_art_name').text(n[0].game_name)
 				$('.news_artAlone > .news_art  .news_art_art').text(n[0].title)
 				$('.news_artAlone > .news_art  .news_art_time').text(n[0].add_time)
-
+               //console.log(n[0].game_id)
 				if(n[1].game_id) {
 					$('.news_art2').attr({
 						"data-gameId": n[1].game_id
@@ -54,6 +54,7 @@ $(function() {
 
 				var div = "";
 				for(var i = 2; i < n.length; i++) {
+						//alert(n[i].add_time);
 					if(n[i].game_id) {
 						div +=
 							"<div class='news_art ofh' style='margin-top: 0.75rem;margin-bottom: 0.2rem;' data-id = '" + n[i].id + "' data-gameId = '" + n[i].game_id + "'>" +
@@ -82,32 +83,57 @@ $(function() {
 							"</div>"
 					} else {
 						div +=
-							"<div class='news_art ofh' style='margin-top: 0.75rem;margin-bottom: 0.2rem;' data-id = '" + n[i].id + "' >" +
-							"<div class='news_img' style='background-image:url(" + config.img + encodeURI(n[i].img) + ")'>" +
-							"</div>" +
-							//icon图和浏览器
-							"<div class='news_img_content color_white'>"+
-							"<div class='fr font_12' style='margin-top: 1.75rem;'>" +
-							"<div class='fr news_art_viewNum' style='width: 1.8rem;'>" + n[i].browse + "</div>" +
-							"<div class='fr news_art_view'></div>" +
-							"</div>" +
-							"</div>" +
-							"</div>" +
-							//icon图和浏览器结束
-							"<div class='news_art_content'>" +
-							"<div class='news_art_art font_14 font_bold fl ofh'>" +
-							n[i].title +
-
-							"</div>" +
-
-							"</div>" +
-
-							"<div class='news_art_time font_12'>" +
-							n[i].add_time +
-							"</div>" +
-
-							"</div>"
-							"</div>"
+										"<div class='news_art ofh' style='margin-top: 0.75rem;margin-bottom: 0.2rem;' data-id = '"+ n[i].id +"' data-gameId = '"+ n[i].game_id +"'>"+
+											"<div class='news_img' style='background-image:url("+config.img + encodeURI(n[i].img)+")'>"+
+												"<div class='news_img_content color_white'>"+
+													"<div class='news_img_header fl' style='background-image:url("+config.img + encodeURI(n[i].icon)+")'></div>"+
+													"<div class='fr font_12' style='margin-top: 1.75rem;'>"+
+														
+														"<div class='fr news_art_viewNum' style='width: 1.8rem;'>"+ n[i].browse +"</div>"+
+														"<div class='fr news_art_view'></div>"+
+													"</div>"+
+												"</div>"+
+											"</div>"+
+											"<div class='news_art_content'>"+
+												"<div class='news_art_art font_14 font_bold fl ofh'>"+
+													n[i].title +
+													
+												"</div>"+
+						
+											"</div>"+
+						
+											"<div class='news_art_time font_12'>"+
+												n[i].add_time +
+											"</div>"+
+						
+										"</div>"
+							
+//							
+//							div +=
+//							"<div class='news_art ofh' style='margin-top: 0.75rem;margin-bottom: 0.2rem;' data-id = '" + n[i].id + "' data-gameId = '" + n[i].game_id + "'>" +
+//							"<div class='news_img' style='background-image:url(" + config.img + encodeURI(n[i].img) + ")'>" +
+//							"<div class='news_img_content color_white'>" +
+//
+//							"<div class='fr font_12' style='margin-top: 1.75rem;'>" +
+//							"<div class='fr news_art_viewNum' style='width: 1.8rem;'>" + n[i].browse + "</div>" +
+//							"<div class='fr news_art_view'></div>" +
+//							"</div>" +
+//							"</div>" +
+//							"</div>" +
+//							"<div class='news_art_content'>" +
+//							"<div class='news_art_art font_14 font_bold fl ofh'>" +
+//							n[i].title +
+//
+//							"</div>" +
+//
+//							"</div>" +
+//
+//							"<div class='news_art_time font_12'>" +
+//							n[i].add_time +
+//							"</div>" +
+//
+//							"</div>"
+							
 					}
 
 				}

@@ -1,7 +1,7 @@
 {
 	"@platforms": ["android", "iPhone", "iPad"],
 	"id": "H5C62934A",/*应用的标识，创建应用时自动生成，勿手动修改*/
-	"name": "syapp2.1",/*应用名称，程序桌面图标名称*/
+	"name": "ONE游戏",/*应用名称，程序桌面图标名称*/
 	"version": {
 		"name": "2.0.0",/*应用版本名称*/
 		"code": "83"
@@ -84,9 +84,7 @@
         "Barcode": {
             "description": "管理二维码扫描插件"
         },
-        "Maps": {
-            "description": "管理地图插件"
-        },
+        
         "Speech": {
             "description": "管理语音识别插件"
         },
@@ -189,7 +187,7 @@
 					"xxhdpi": "Public/image/1080-1882.png"
 				}
 			}
-		},"ads":{"rp":false,"splash":false,"push":false},"adid":""
+		},"ads":{"rp":false,"splash":false,"push":false},"adid":"127732250606"
 	},
 	"dependencies": {
 		"pages": {
@@ -202,9 +200,15 @@
 					"Public/image/gonglue1.png",
 					"html/play/play.html",
 					"html/user/me.html",
+					"Public/css/public.css",
+					"css/index.css",
+					"js/mui.js",
+					"css/mui.css",
+					"js/index.js"
+				],
+				"refer": [
 					"html/strategy/strategy.html"
 				],
-				"refer": [],
 				"priority": 0
 			},
 			"html/news/news.html": {
@@ -291,7 +295,10 @@
 				"priority": 0
 			},
 			"html/user/me.html": {
-				"resources": [],
+				"resources": [
+					"Public/js/public.js",
+					"Public/js/jquery-3.2.1.min.js"
+				],
 				"refer": [
 					"html/user/me_game.html",
 					"html/user/me_works.html",
@@ -433,38 +440,26 @@
 					"html/game/game_detail.html"
 				],
 				"priority": 0
-			},
-			"html/game/game_classify_sign.html": {
-				"resources": [],
-				"refer": [
-					"html/game/game_detail.html"
-				],
-				"priority": 0
 			}
 		},
 		"idle": {
 			"resources": [
-				"Public/css/public.css",
 				"Public/image/haowan1.png",
 				"Public/image/wode2.png",
-				"css/index.css",
 				"Public/image/xing1.png",
 				"Public/image/tuijian1.png",
-				"js/mui.js",
 				"Public/image/haowan2.png",
 				"Public/css/vssver2.scc",
 				"Public/image/lingdang2.png",
 				"Public/image/wode1.png",
 				"fonts/mui.ttf",
-				"css/mui.css",
 				"Public/image/youxi2.png",
 				"js/news/news.js",
 				"Public/image/shou.png",
 				"Public/image/lingdang.png",
 				"css/mui.min.css",
 				"Public/image/starActive.png",
-				"css/news/news.css",
-				"js/index.js"
+				"css/news/news.css"
 			]
 		}
 	}

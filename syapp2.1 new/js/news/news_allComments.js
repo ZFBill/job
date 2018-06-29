@@ -40,6 +40,7 @@ $(function() {
 		targetUserId = self.targetUserId;
 		firstImg = self.firstImg;
 		title = self.title;
+		//alert(commentId);
 //		获取一级评论
      
 		$.ajax({
@@ -52,13 +53,19 @@ $(function() {
 			success:function(data){
 				if (data.state) {
 					var c= data.comment;
-					$('.news_post_commentContent_head').css('background-image', "url(" + encodeURI(c.portrait) + ")")
+					if(c.portrait==0||c.portrait==null){
+						portrait="../../Public/image/morentouxiang.png";
+					}else{
+						portrait=c.portrait;
+					}
+					$('.news_post_commentContent_head').css('background-image', "url(" + encodeURI(portrait) + ")")
 					$('.news_post_commentContent').attr("data-id",c.id);
 					$('.news_post_commentContent').attr("data-userId",c.user_id);
 					$('.comment_userOne').text(c.nick_name);
 					$('.comment_contentOne').text(c.content);
 					$('.timeOne').text(c.add_time);
 					$('.comment_summary').attr('data-id',c.newsid);
+					
 					if (c.news_img) {
 						$('.comment_summary_img').css('background-image','url(' + config.img + encodeURI(c.news_img) + ')')
 					} else{
@@ -67,7 +74,7 @@ $(function() {
 					$('.comment_summary_art').text(c.news_title)
 					targetCommentId = $('.news_post_commentContent').attr("data-id");
 					targetUserId = $('.news_post_commentContent').attr("data-userId");
-					
+					up();
 				} else{
 					
 				}
@@ -86,7 +93,12 @@ $(function() {
 			})
 		})
 		
+
+	
+		
 //		获取一级评论结束	
+
+
 	
 		$('body').on('click','.news_post_commentContent',function(){
 			$('.news_secondComment_input').focus();
@@ -95,9 +107,7 @@ $(function() {
 		})
 		
 //		点击发布
-		$('.publish').click(function(){
-			
-			
+		$('.publish').click(function(){	
 			var content = $(this).prev().val();
 			if(content){
 				$.ajax({
@@ -136,6 +146,10 @@ $(function() {
 
 })
 
+
+
+
+
 function up(){
 	//		获取二级评论
 		page++;
@@ -148,11 +162,74 @@ function up(){
 				"page": page
 			},
 			success:function(data){
-				if (data.state) {
+				if (data.state) {					
+					var com = data.comment;				
+					var div ="";
+					var portrait;
+					for (var i = 0; i < com.length; i++) {
+						var ifHidden = com[i].targetUserNickName || "hidden";	
+						if(com[i].portrait==0||com[i].portrait==null){
+							portrait="../../Public/image/morentouxiang.png";
+					    }else{
+							portrait=com[i].portrait;
+						}
+						div +=
+							"<div class='news_post_commentContent ofh' style='border-top: 1px solid #e6ebec;margin-top: 0;border-bottom: 0;' data-id='"+ com[i].id +"' data-userId='"+ com[i].selfUserId +"' >"+
+								"<div class='news_post_commentContent_head fl' style='background-image: url(" + encodeURI(portrait) +");'></div>"+
+								"<div class='news_post_commentContent_content fl'>"+
+									"<div class='comment_user font_12'>"+
+										"<span>"+ com[i].selfNickName +"</span>"+
+										"<span style='color: #7A7A7A;' class='"+ ifHidden +"'>回复</span>"+
+										"<span class='"+ ifHidden +"'>"+ ifHidden + "</span>"+
+									"</div>"+
+									"<div class='comment_content font_14'>"+ com[i].content +"</div>"+
+									"<div class='comment_info ofh'>"+
+										"<div class='font_12 color_9e9e9e fl'>"+ com[i].add_time +"</div>"+
+									"</div>"+
+		
+								"</div>"+
+							"</div>"
+					}
 					
-					var com = data.comment;
+					$('.news_post_secondcommentContents').append(div);
 					
+					if(com.length < 10) {
+							
+						mui('.news_allComments').pullRefresh().endPullupToRefresh(true);
+						
+
+					} else {
+							
+						mui('.news_allComments').pullRefresh().endPullupToRefresh(false);
 					
+					}
+				} else{
+					
+				}
+			}
+		});
+		
+//		获取二级评论结束
+}
+
+
+
+o();
+function o(){
+	return false
+//	alert(commentId)
+	$.ajax({
+			type:"get",
+			url:config.data + "news/getNewsCommentTowByPage",
+			async:true,
+			data:{
+				"parentId": commentId,
+				"page": page
+			},
+			success:function(data){
+				alert(1);
+				if (data.state) {					
+					var com = data.comment;				
 					var div ="";
 					for (var i = 0; i < com.length; i++) {
 						var ifHidden = com[i].targetUserNickName || "hidden";
@@ -191,8 +268,10 @@ function up(){
 			}
 		});
 		
-//		获取二级评论结束
 }
+
+
+
 
 function down() {
 	window.location.reload();

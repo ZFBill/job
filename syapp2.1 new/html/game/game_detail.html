@@ -258,7 +258,7 @@
 
 					<div class="game_introduce backgroundColor_white">
 						<span class="game_simpleIntro  simHei color_282828">游戏简介</span>
-						<div class="game_simpleIntro_content font_14 simHei color_7a7a7a"></div>
+						<div class="game_simpleIntro_content font_14 simHei color_7a7a7a overflow_two"></div>
 						<div class="color_green font_12 tac simHei show_all" style="margin-bottom: 0.625rem;">显示全部</div>
 					</div>
 
@@ -428,14 +428,14 @@
 									<span>5</span>
 									<span class="game_score_star"></span>
 									<span class="game_score_progressBars ">
-									<span class="game_score_progressBar backgroundColor_green bar0"></span>
+									<span class="game_score_progressBar backgroundColor_green bar4"></span>
 									</span>
 								</div>
 								<div class="game_score">
 									<span>4</span>
 									<span class="game_score_star"></span>
 									<span class="game_score_progressBars ">
-									<span class="game_score_progressBar backgroundColor_green bar1"></span>
+									<span class="game_score_progressBar backgroundColor_green bar3"></span>
 									</span>
 								</div>
 								<div class="game_score">
@@ -449,14 +449,14 @@
 									<span>2</span>
 									<span class="game_score_star"></span>
 									<span class="game_score_progressBars ">
-									<span class="game_score_progressBar backgroundColor_green bar3"></span>
+									<span class="game_score_progressBar backgroundColor_green bar1"></span>
 									</span>
 								</div>
 								<div class="game_score">
 									<span>1</span>
 									<span class="game_score_star"></span>
 									<span class="game_score_progressBars ">
-									<span class="game_score_progressBar backgroundColor_green bar4"></span>
+									<span class="game_score_progressBar backgroundColor_green bar0"></span>
 									</span>
 								</div>
 							</div>
@@ -666,7 +666,6 @@
 										"</div>" +
 										"</div>" +
 										"</div>" +
-
 										"</div>"
 								}
 								$('.news_post_commentContents').append(div)
@@ -689,13 +688,12 @@
 			}
 			function down() {
 				switch (pageIndex){
-	                case "detail":
+	        case "detail":
 					break;
 					case "assess":
 					 detail_assess();
 					break;
 					case "strategy":
-					
 					 detail_strategy();
 					break;
 				}				

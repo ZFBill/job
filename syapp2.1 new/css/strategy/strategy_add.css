@@ -49,12 +49,7 @@ content:none;
 }
 
 
-.choose_img{
-	height: 2.60rem;
-	width: 100%;
-	border-top: 1px solid #E7EAEC;
-	border-bottom: 1px solid #E7EAEC;
-}
+
 .choose{
 	width: 80%;
 	height: 1.5625rem;
@@ -120,16 +115,15 @@ img {
 	object-fit: cover; 
 	border: 1px solid black;
 } 
-.choose_game{
-	display: block;
-	margin: 0 auto;
-	width:90% !important;
-	border-radius:10px;
-	border:0 !important;
-	left: 5%;
-	background:#E6EBEC;
-	font-size:13px;
+
+.choose_img{
+	/*height:2.60rem;*/
+	/*width: 100%;*/
+	/*border-top: 1px solid #E7EAEC;
+	border-bottom: 1px solid #E7EAEC;*/
+	width:18%;
 }
+
 
 .imgBox{
   position:fixed;
@@ -138,6 +132,19 @@ img {
   z-index:999;
   background:#fff;
   padding-top:8px;
+  display: flex;
+  justify-content: flex-start;
+  border-top: 1px solid #E7EAEC;
+  
+}
+
+.choose_game{
+	display: block;
+	width:80% !important;
+	border-radius:10px;
+	border:0 !important;
+	background:#E6EBEC;
+	font-size:13px;
 }
 
 /*input[type=text]{

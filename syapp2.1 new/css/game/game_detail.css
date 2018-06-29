@@ -267,16 +267,21 @@
 	background-size: contain;
 }
 .comment_user{
-	margin-top: 1.8rem;
-	text-align: left;
+	margin-top: 1.3rem;
+	text-align:left;
 }
-
+.timeName{
+	display:flex;
+	 flex-direction:column;
+}
 .comment_content{
 	padding-left: 3.6rem;
 }
 .comment_info{
 /*	margin-top: 0.6rem;
 	padding-left: 3.6rem;*/
+	/*width:100%;
+    background:red;*/
 }
 .thumb{
 	width: 1.0625rem;
@@ -286,7 +291,7 @@
 	background-repeat:no-repeat;
 	background-size: contain;
 	vertical-align: middle;
-	margin-top: -0.2rem;
+/*	margin-top: -0.2rem;*/
 }
 .no_strategy{
 	position: absolute;
@@ -304,11 +309,7 @@
 	
 	
 }
-.comment_imgs{
-	    
-	   height: 2rem;
-	  
-}
+
 .comment_img{
 	width: 1.0625rem;
 	height: 1.0625rem;
@@ -317,37 +318,46 @@
 	background-repeat:no-repeat;
 	background-size: contain;
 	vertical-align: middle;
-	margin-top: -0.2rem;
+	/*margin-top: -0.2rem;*/
 }
 
 
 .thumb_num,.comment_num{
-/*	width: 1.8rem;*/
-/*color:red;*/
-  /*width:1rem;*/
-	/*text-align:left;*/
-/*  background:grey;*/
-	margin-right:0.1rem;
+	margin-left:0.4rem;
 }
+
+.thumb_num{
+	padding-right:1rem;
+	width:1.5rem;
+}
+
 
 .strategy_content{
-	margin-top:0.5rem;
+	margin-top:0.3rem;
+	padding-left:0.5rem;
 	overflow: hidden;  /** 隐藏超出的内容 **/
 	text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
+   display: -webkit-box;
+   -webkit-line-clamp: 2;
+   -webkit-box-orient: vertical;
 }
 
 
-
-
-.comment_imgs > span{
-	display: inline-block;
-	margin-left: 0.1rem;
+.comment_imgs{	    
+	display: flex;
+	align-content: center;  
 }
+
+.comment_imgs > div{
+/*	float:left;*/
+	/*display: inline-block;
+	margin-left: 0.1rem;*/
+}
+
+
 .game_comment_content{
 	padding: 0 0.625rem;
+	margin-top:0.5rem;
 }
 .game_similarContents{
 	overflow: scroll;
@@ -466,7 +476,7 @@
 	
 }
 .strategy_indent{
-	text-indent: 2em;
+/*	text-indent: 2em;*/
 }
 .news_post_commentContent_head{
 	width: 2.9375rem;

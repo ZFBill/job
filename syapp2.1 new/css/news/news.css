@@ -285,7 +285,7 @@ position: absolute;
 
 .news_newGame_contents {
 	overflow: scroll;
-	margin-left: 0.625rem;
+	padding-left: 0.625rem;
 }
 
 .h_name {

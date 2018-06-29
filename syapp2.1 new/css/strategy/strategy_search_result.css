@@ -84,6 +84,7 @@ body{
 .strategy_content_titles{
 	margin:0.5rem 0;
 	font-size:14px;
+	font-weight: bold;
 }
 .strategy_content_sign{
 	display: inline-block;

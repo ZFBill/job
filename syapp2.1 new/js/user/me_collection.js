@@ -22,8 +22,7 @@ $(function(){
 		page = 0;
 		news = 0;
 		mui('.me_collections').pullRefresh().refresh(true);
-		up();
-		
+		up();		
 	})
 	
 	$('body').on('click','.news_art',function(){

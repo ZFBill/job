@@ -219,12 +219,10 @@ $(function() {
 							"</div>" +
 							"</div>" +
 							"</div>";
-
 					}
-
 					div +=
 						"<div class='backgroundColor_white game_signsAll'>" +
-						"<div class='ofh' style='height: 2.5rem;line-height: 2.5rem;'>" +
+						"<div class='ofh' style='height: 2.5rem;line-height:2.5rem;padding-left:1rem;'>" +
 						"<div class='font_14 color_282828 fl'>" + i + "</div>" +
 						"<div class='font_12 color_green fr check_more' style='margin-right: 0.9375rem;' data-tagId='" + act[i][0].tagId + "'>查看更多</div>" +
 						"</div>" +

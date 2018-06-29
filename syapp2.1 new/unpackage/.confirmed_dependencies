@@ -81,7 +81,8 @@
 		],
 		"resources": [
 			"Public/js/public.js",
-			"Public/js/jquery-3.2.1.min.js"
+			"Public/js/jquery-3.2.1.min.js",
+			"Public/image/morentouxiang.png"
 		]
 	},
 	"html/strategy/strategy_details.html": {
@@ -227,6 +228,11 @@
 	"html/strategy/strategy_search_result.html": {
 		"refer": [
 			"html/strategy/strategy_details.html"
+		]
+	},
+	"html/game/game_classify_sign.html": {
+		"refer": [
+			"html/game/game_detail.html"
 		]
 	}
 }

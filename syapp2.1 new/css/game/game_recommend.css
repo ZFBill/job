@@ -125,15 +125,18 @@ body{
 }
 .game_signsAll,.game_signsAllsec{
 	
-	padding-left: 0.9375rem;
-	
+	/*padding-left: 0.9375rem;
+	*/
 }
+/*.game_signsContent{
+	padding-left: 0.9375rem;
+}*/
 
 .game_detail_contents{
 	/*height: 16.8125rem;*/
 	
 	overflow: scroll;
-	
+	padding-left: 0.9375rem;
 	/*margin-left: 0.9375rem;*/
 }
 .game_detail_content{

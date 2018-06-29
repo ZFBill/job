@@ -32,6 +32,7 @@ body{
 #strategy_textarea{
 	width:100%;
 	overflow-y:scroll;
+	height:25rem;
 	padding:0.9375rem 0.9375rem 2rem 0.9375rem;
 	position:absolute;
 	background-color:#fff;
@@ -140,11 +141,13 @@ img {
 
 .choose_game{
 	display: block;
-	width:80% !important;
+	width:78% !important;
 	border-radius:10px;
 	border:0 !important;
 	background:#E6EBEC;
 	font-size:13px;
+	margin:0 !important;
+	margin-bottom:0.8rem !important;
 }
 
 /*input[type=text]{

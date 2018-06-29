@@ -66,17 +66,14 @@ $(function() {
 
 	var content="<div>"+$("#strategy_textarea").html()+"</div>";
   
-// 	alert(content);
-// 	return false;
+
   var indexSrc=$("#strategy_textarea img:first").attr("src");
  if(indexSrc!==undefined){
 	 var indexImg=indexSrc;
  }else{
 	  indexImg=""
  }
-//  alert(indexSrc);
-//  return false;
-		
+
 		var str = $('.strategy_title').val();
 	 	var title = str.replace(/[\ |\~|\`|\!|\@|\#|\$|\%|\^|\&|\*|\(|\)|\-|\_|\+|\=|\||\\|\[|\]|\{|\}|\;|\:|\"|\'|\,|\<|\.|\>|\/|\?]/g, "");
 		var gameName = $('.choose_game').val().replace(/[\ |\~|\`|\!|\@|\#|\$|\%|\^|\&|\*|\(|\)|\-|\_|\+|\=|\||\\|\[|\]|\{|\}|\;|\:|\"|\'|\,|\<|\.|\>|\/|\?]/g, "");
@@ -119,13 +116,13 @@ $(function() {
 // 从相册中选择图片   
 function galleryImgs() {
 	// 从相册中选择图片 
+	$("#strategy_textarea").focus();
 	plus.gallery.pick(function(e) {
     mui.toast("正在上传,请等待");
 		var uploader = plus.uploader.createUpload(config.url_upload+"adminStrategy/img?title=strategy&token=token&url="+config.url_upload,{
 					method: "post"
 				}, function(t, status) {
-					 var res =JSON.parse(t.responseText)
-					 // return false;
+					 var res =JSON.parse(t.responseText);
 					  if(res.errno==0){
 						  var src=res.data[0];
 							appendHtml(`<img style="width:98%;height:auto;" src="${src}"/>`);						

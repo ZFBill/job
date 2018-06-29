@@ -403,10 +403,11 @@
 	margin-right: 0.2rem;
 }
 .game_detail_score{
-	height: 11.25rem;
+    /*	height: 11.25rem;*/
 	border-top: 0.125rem solid #E7EAEC;
 	padding-top: 1.5625rem;
 	border-bottom: 0.3125rem solid #E7EAEC;
+	padding-bottom:1.2rem;
 }
 .game_scores{
 	margin: 0 2rem;
@@ -437,15 +438,12 @@
 	
 }
 .goToscore{
-	
 	width: 19.6875rem;
 	height: 2rem;
 	line-height: 2rem;
 	border-radius: 5px;
 	margin: 0 auto;
 	margin-top: 1.25rem;
-	
-	
 }
 
 .game_detail_type{

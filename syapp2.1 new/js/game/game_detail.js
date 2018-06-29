@@ -165,9 +165,11 @@ $(function() {
 				gameId: gameId
 			},
 			success: function(data) {
+				
+//				var portrait;
 				if(data.state) {
 
-					var com = data.comment;
+					var com = data.comment,portrait;
 					var div = '';
 
 					for(var i = 0; i < com.length; i++) {
@@ -176,11 +178,21 @@ $(function() {
 						} else {
 							var ifGood = "noGood";
 						}
+						
+						
+				        if(com[i].portrait==0||com[i].portrait==null){
+						    portrait="../../Public/image/morentouxiang.png";
+					    }else{
+						    portrait=com[i].portrait;
+						}
+								
+						
+						
 						div +=
 							"<div class='news_post_commentContent ofh'>" +
 
 							"<div class='ofh'>" +
-							"<div class='news_post_commentContent_head fl' style='background-image: url(" + encodeURI(com[i].portrait) + ");' ></div>" +
+							"<div class='news_post_commentContent_head fl' style='background-image: url(" + encodeURI(portrait) + ");' ></div>" +
 							"<div class='comment_user font_12 font_bold fl'>" + com[i].nick_name + "</div>" +
 
 							"</div>" +
@@ -754,9 +766,29 @@ function detail_strategy(){
 			})
 	   }
 		
-
+    
+        function check_assess(){      	
+        	$.ajax({
+				type: "get",
+				url: config.data + "game/getCommentUserById",
+				async: true,
+				data: {
+					game_id:gameId,
+					user_id:userId
+				},
+				success: function(data) {
+					if(data.state!=1){
+						$(".goToscore").css("display","none");
+					}
+			   }
+		    });
+		    
+        }
+    
+    
 	
 		function detail_assess(){	
+			check_assess();
 			commentModule=true;
 			pageIndex="assess";
 			$(".game_detail_assess").addClass('game_detail_assess_active').removeClass('color_c9c9').siblings('div').addClass('color_c9c9').removeClass('game_detail_detail_active').removeClass('game_detail_strategy_active');

@@ -37,4 +37,47 @@ $(function(){
 			}
 		})
 	})
+	
+
+	$('body').on('longtap','.me_li',function() {
+//		alert(this);
+//		return false;
+		var id  = $(this).attr('coll-id');
+		
+//		alert(gameId);
+//		return false;
+		var btnarr = ["确定", "取消"];
+//		alert(gameId);
+//		
+//		return false;
+		mui.confirm("你确定删除即玩小游戏吗？", "操作提示", btnarr, function(e) {
+			//alert(config.data)
+			if(e.index == 0) {
+				//alert(1);
+				$.ajax({
+					type:"get",
+					url:config.data+"users/getDelCollect",
+					async:true,
+					data:{
+						id:id
+					},
+					success:function(data){
+						if (data.state) {
+							mui.alert("删除成功！", "操作提示", "确定");
+							getH5();
+						} else{
+							mui.alert("删除失败！", "操作提示", "确定");
+						}
+					}
+				});
+				
+			} else {
+				
+			}
+		});
+	})
+
+	
+	
+	
 })

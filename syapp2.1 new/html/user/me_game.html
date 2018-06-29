@@ -132,6 +132,15 @@
 		<script type="text/javascript">
 			mui.init({
 				swipeBack: true,
+			    gestureConfig: {
+					tap: true, //默认为true
+					doubletap: true, //默认为false
+					longtap: true, //默认为false
+					swipe: true, //默认为true
+					drag: true, //默认为true
+					hold: false, //默认为false，不监听
+					release: false //默认为false，不监听
+				},
 				pullRefresh: {
 					container: ".me_gameContents", //下拉刷新容器标识，querySelector能定位的css选择器均可，比如：id、.class等
 					up: {
@@ -149,7 +158,8 @@
 						offset: '0px', //可选 默认0px,下拉刷新控件的起始位置
 						auto: false, //可选,默认false.首次加载自动上拉刷新一次
 						callback: down //必选，刷新函数，根据具体业务来编写，比如通过ajax从服务器获取新数据；
-					}
+					},
+					
 
 				}
 
@@ -282,11 +292,11 @@
 						if(data.state) {
 
 							var h = data.h5List;
-
+                            
 							var div = "";
 							for(var i = 0; i < h.length; i++) {
 								div +=
-									"<li class='me_li ofh' data-id='"+ h[i].id +"' data-url='" + h[i].url + "'>"+
+									"<li class='me_li ofh' coll-id='"+h[i].coll_id+"'   data-id='"+ h[i].id +"' data-url='" + h[i].url + "'>"+
 										"<div class='fl me_liImg' style='background-image: url("+ config.img + encodeURI(h[i].icon) +");'></div>"+
 										"<div class='fl'>"+
 											"<div class='font_14 color_282828 overflow' style='margin-top:1.1875rem ;width: 10rem;'>"+ h[i].name +"</div>"+
@@ -304,9 +314,11 @@
 								} else {
 									mui('.me_gameContents').pullRefresh().endPullupToRefresh(false);
 								}
+								
+						
+								
 							$('.me_gameContents').on('tap','.me_li',function() {
-								//					console.log($(this).attr('data-url'))
-								//					alert("11")
+
 								var url = $(this).attr('data-url');
 
 								mui.openWindow({

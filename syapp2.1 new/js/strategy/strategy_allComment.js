@@ -48,16 +48,12 @@ $(function() {
 					var com = data.comment,portrait;
 					firstUserid = com.user_id;
 					
-					//alert(JSON.stringify(com));
-					
+
 					if(com.strategy==0||com.strategy==null){
 						portrait="../../Public/image/morentouxiang.png";
 					}else{
 					   portrait=com.strategy;
 					}
-					
-					
-					//$('.news_post_commentContent  .news_post_commentContent_head').CSS('background-image',)
 					
 					$('.comment_user').text(com.nick_name)
 					$('.comment_content').text(com.content)
@@ -113,8 +109,7 @@ $(function() {
 					success: function(data) {
 						if(data.state) {
 							mui.toast("发送成功");
-							//window.location.reload()
-
+							window.location.reload();
 						} else {
 							mui.toast("发送失败，请重试")
 						}

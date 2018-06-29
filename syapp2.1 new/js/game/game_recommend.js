@@ -266,18 +266,32 @@ $(function() {
 	//		底下新加部分
 
 	//		列表部分
-
-	$.ajax({
+	mui.plusReady(function(){
+		$.ajax({
 		type: "get",
 		url: config.data + "game/getActiveLenOfTen",
 		async: true,
 		success: function(data) {
 			if(data.state) {
 				var g = data.game;
-
 				var list = '';
+				//alert(JSON.stringify(g))
+				//plus.runtime.isApplicationExist({pname:game.game_packagename,action: ''})
+				
 				for(var i = 0; i < g.length; i++) {
+					
+					
+					//alert(g[i].game_packagename);
+					var downloadToggle=plus.runtime.isApplicationExist({pname:g[i].game_packagename,action: ''});
+					if(downloadToggle){
+						var buttonDown="打开";
+					}else{
+						var buttonDown="下载";
+					}
+					
 					var signs = '';
+					
+					
 					if(g[i].tagList && g[i].tagList !== "null") {
 						var result = g[i].tagList.split(",");
 						var tagId = g[i].tagIdList.split(",");
@@ -316,7 +330,7 @@ $(function() {
 
 						"</div>" +
 						"</div>" +
-						"<div class='fr game_listDownload font_14 color_white backgroundColor_green tac'>下载</div>" +
+						"<div class='fr game_listDownload font_14 color_white backgroundColor_green tac'>"+buttonDown+"</div>" +
 						"</li>";
 					if(i < 3) {
 						$('.remommend_listFirst').append(list)
@@ -350,6 +364,9 @@ $(function() {
 			}
 		}
 	});
+	})
+
+	
 
 	//		图片部分
 

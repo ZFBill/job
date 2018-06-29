@@ -6,7 +6,8 @@
 			"Public/image/tuijian2.png",
 			"Public/image/youxi1.png",
 			"Public/image/gonglue1.png",
-			"html/play/play.html"
+			"html/play/play.html",
+			"html/strategy/strategy.html"
 		],
 		"refer": [
 			"html/news/news.html",
@@ -29,7 +30,8 @@
 		"refer": [
 			"html/news/news_allComments.html",
 			"html/game/game_detail.html",
-			"html/user/login.html"
+			"html/user/login.html",
+			"html/play/h5game.html"
 		],
 		"resources": []
 	},
@@ -210,6 +212,11 @@
 		]
 	},
 	"html/game/game_allComments.html": {
+		"refer": [
+			"html/game/game_detail.html"
+		]
+	},
+	"html/game/game_classify_sign.html": {
 		"refer": [
 			"html/game/game_detail.html"
 		]

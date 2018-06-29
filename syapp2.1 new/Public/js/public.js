@@ -50,7 +50,7 @@ var config = {
 	img: "http://img.oneyouxi.com.cn/",
 	apk: "http://apk.oneyouxi.com.cn/",
 //	data: "http://192.168.2.156:8877/",
-	//data:"http://192.168.2.108:8877/",
+//	data:"http://192.168.2.108:8877/",
 	data:"http://192.168.2.117:8877/",
 	// data:"http://182.61.26.179:8877/",
 //	data:"http://www.oneyouxi.com.cn:8877/",

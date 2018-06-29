@@ -6,31 +6,6 @@ $(function() {
 		$('.search').css("top", total_height - 40 + "px");
 		$('.one').css("top", total_height - 34 + "px");
 
-		//		var w = plus.nativeUI.showWaiting("", {
-		//
-		//			loading: {
-		//
-		//				icon: "../../Public/image/maotiao.png", //加载动画地址
-		//
-		//				interval: '1000ms',
-		//
-		//				height: '50px'
-		//
-		//			},
-		//			height: "80%",
-		//			width: "100%",
-		//			size: "200px",
-		//			modal: false,
-		//			textalign: "left",
-		//			padding:"0",
-		//			background: "rgba(235,235,235,1)"
-		//
-		//		});
-		//		setTimeout(function(){
-		//			w.close();
-		//			
-		//		},3000)
-
 	})
 
 	getHeaderimg();
@@ -131,6 +106,7 @@ $(function() {
 							n[i].add_time +
 							"</div>" +
 
+							"</div>"
 							"</div>"
 					}
 

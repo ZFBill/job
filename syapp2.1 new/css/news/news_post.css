@@ -1,3 +1,7 @@
+a{
+	text-decoration: underline;
+	color: deepskyblue !important;
+}
 .new_post_contents img{
 	width: 100%;
 }

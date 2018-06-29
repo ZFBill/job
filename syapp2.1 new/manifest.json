@@ -201,11 +201,10 @@
 					"Public/image/youxi1.png",
 					"Public/image/gonglue1.png",
 					"html/play/play.html",
-					"html/user/me.html"
-				],
-				"refer": [
+					"html/user/me.html",
 					"html/strategy/strategy.html"
 				],
+				"refer": [],
 				"priority": 0
 			},
 			"html/news/news.html": {
@@ -223,7 +222,8 @@
 				"refer": [
 					"html/news/news_allComments.html",
 					"html/game/game_detail.html",
-					"html/user/login.html"
+					"html/user/login.html",
+					"html/play/h5game.html"
 				],
 				"priority": 0
 			},
@@ -428,6 +428,13 @@
 				"priority": 0
 			},
 			"html/game/game_allComments.html": {
+				"resources": [],
+				"refer": [
+					"html/game/game_detail.html"
+				],
+				"priority": 0
+			},
+			"html/game/game_classify_sign.html": {
 				"resources": [],
 				"refer": [
 					"html/game/game_detail.html"

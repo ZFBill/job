@@ -808,60 +808,57 @@ function detail_strategy(){
 					gameId: gameId
 				},
 				success: function(data) {
+					
 					 mui('#game_detailContent').pullRefresh().endPulldown(true);
 					if(data.state) {
 						var s = data.scoreList;
 						var total_10=0,total_8=0,total_6=0,total_4=0,total_2=0
-						//var num_10=0,num_8=0,num_6=0,num_4=0,num_2=0;
 						var num_total=0;
 						var arr = [];
-		
-						//alert(JSON.stringify(s));
-//						for(var i = 0; i < s.length; i++) {
-//							arr.push(parseInt(s[i].num))
-//							total += s[i].num;
-//						}
-			            //$('.gameScore').text(g.grade);
-						for(var j = 0; j < s.length; j++) {								
+						for(var i = 0; i < s.length; i++) {
+							num_total += s[i].num;
+						}
+                        //alert(num_total)
+						for(var j = 0; j < s.length; j++) {	
 							if(s[j].score==10){
-                                var lan=10/s[j].num;                               
+                                var lan=10/num_total;         
 							    $(".bar4").css('width', lan + "rem");
 							    
 							    total_10 += 10*s[j].num;
 							    
 							}else if(s[j].score==8){
 								
-								 var lan=10/s[j].num;
+								 var lan=10/num_total;
 								$(".bar3").css('width', lan + "rem");
 								 total_8 += 8*s[j].num;
 								
 								
-							}else if(s[j].score==6){
-								
-								 var lan=10/s[j].num;
+							}else if(s[j].score==6){								
+								var lan=10/num_total;
 								$(".bar2").css('width', lan + "rem");
 								total_6 += 6*s[j].num;
 								
 							}else if(s[j].score==4){
 								
-								var lan=10/s[j].num;
+								var lan=10/num_total;
 								$(".bar1").css('width', lan + "rem");
 								total_4 += 4*s[j].num;
 								
 							}else if(s[j].score==2){
 								
-								var lan=10/s[j].num;
+								var lan=10/num_total;
 								$(".bar0").css('width', lan + "rem");
 								total_2 += 2*s[j].num;
 								
 							}	
-							
-							num_total+=s[j].num;		
+											
 						}
-                       
+
                         var total=(total_10+total_8+total_6+total_4+total_2)/num_total;                    
-                        
-						$(".gameScore").text(total.toFixed(1));
+                        if(!Object.is(total,NaN)){
+                        	$(".gameScore").text(total.toFixed(1));
+                        }
+						
 							
                         
 

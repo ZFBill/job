@@ -281,7 +281,6 @@ $(function() {
 				for(var i = 0; i < g.length; i++) {
 					
 					
-					//alert(g[i].game_packagename);
 					var downloadToggle=plus.runtime.isApplicationExist({pname:g[i].game_packagename,action: ''});
 					if(downloadToggle){
 						var buttonDown="打开";
@@ -593,6 +592,7 @@ $(function() {
 })
 
 function getRank(sort) {
+  mui.plusReady(function(){
 	$.ajax({
 		type: "get",
 		url: config.data + "game/getGameByMsg",
@@ -629,7 +629,7 @@ function getRank(sort) {
 							if(result.length > 2) {
 								for(var j = 0; j < 3; j++) {
 									signs +=
-										"<div class='fl tag font_12 border_green border_radius_twenty' data-id='" + tagId[j] + "'>" + result[j] + "</div>"
+										"<div  class='fl tag font_12 border_green border_radius_twenty' data-id='" + tagId[j] + "'>" + result[j] + "</div>"
 								}
 							} else {
 								for(var j = 0; j < result.length; j++) {
@@ -641,7 +641,16 @@ function getRank(sort) {
 						} else {
 
 						}
-
+                        
+                         var downloadToggle=plus.runtime.isApplicationExist({pname:g[i].game_packagename,action: ''});
+					    if(downloadToggle){
+						    var buttonDown="打开";
+					   }else{
+						   var buttonDown="下载";
+					   }
+					
+                        
+                        
 						list +=
 							"<li class='game_list ofh' data-id='" + g[i].id + "'>" +
 							"<div class='color_9e9e9e fl game_listScore'>" + (i + 1) + "</div>" +
@@ -655,15 +664,14 @@ function getRank(sort) {
 							"<div class='game_recommend_star fl'></div>" +
 							"<div class='game_recommend_star fl'></div>" +
 							"<div class='game_recommend_star fl'></div>" +
-							"<div class='game_recommend_starScore fl color_green'>" + g[i].grade + "</div>" +
+							"<div class='game_recommend_starScore fl color_green' >" + g[i].grade + "</div>" +
 							"</div>" +
 							"</div>" +
 							"<div class='font_12 color_green all_signs'>" +
-							signs +
-
+							   signs +
 							"</div>" +
 							"</div>" +
-							"<div class='fr game_listDownload font_14 color_white backgroundColor_green tac'>下载</div>" +
+							"<div class='fr game_listDownload font_14 color_white backgroundColor_green tac'>"+buttonDown+"</div>" +
 							"</li>"
 					}
 				}
@@ -689,7 +697,7 @@ function getRank(sort) {
 			}
 		}
 	});
-
+  });
 }
 
 function getRankup(page, sort) {
@@ -744,9 +752,8 @@ function getRankup(page, sort) {
 						"<div class='game_recommend_starScore fl color_green'>" + g[i].grade + "</div>" +
 						"</div>" +
 						"</div>" +
-						"<div class='font_12 color_green'>" +
+						"<div class='font_12 color_green' >" +
 						signs +
-
 						"</div>" +
 						"</div>" +
 						"<div class='fr game_listDownload font_14 color_white backgroundColor_green tac'>下载</div>" +

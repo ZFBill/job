@@ -333,16 +333,16 @@ body{
 	width: 2.8125rem;
 	height: 1.5rem;
 	line-height: 1.5rem;
-	margin-top: 2.28125rem;
+	margin-top: 1.8rem;
 	border-radius: 20px;
-	margin-right: 1.4rem;
+	position:absolute;
+	right:1rem;
 }
 .tag{
 	height: 1.125rem;
 	line-height: 1.125rem;
 	padding: 0 0.6rem;
 	margin-right: 0.2rem;
-	
 }
 .game_classify{
 	padding-bottom: 1rem;

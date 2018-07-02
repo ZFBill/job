@@ -23,6 +23,10 @@ body{
     margin:0 !important;
 	border:none !important;
 	border-bottom:1px solid #E9E9E9 !important;
+	/*position:fixed;
+	background:yellow;
+	z-index: 9999;
+	top:5rem;*/
 	}
 	.strategy_title::-webkit-input-placeholder {
         /*placeholder颜色  */
@@ -32,11 +36,15 @@ body{
 
 #strategy_textarea{
 	width:100%;
-	overflow-y:scroll;
-	padding:0.9375rem 0.9375rem 2rem 0.9375rem;
+	/*overflow-y:scroll;*/
+	overflow-y:auto;
+	height:30rem;
+	padding:0.9375rem 0.9375rem 0rem 0.9375rem;
 	position:absolute;
 	background-color:#fff;
-	margin-bottom:5rem;
+	/*background:red;*/
+	top:7rem;
+	height:30rem;
 }
 
 

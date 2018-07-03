@@ -197,7 +197,10 @@
 								}else{
 									portrait=str[i].portrait;
 								}
-                        
+//                      		alert(config.img + encodeURI(str[i].top_img_src))
+if(str[i].id == 245){
+	alert(config.img + encodeURI(str[i].top_img_src))
+}
 								div +=
 										"<div class='strategy_content' data-id='"+ str[i].id +"' data-userId='"+ str[i].user_id +"'>"+
 											"<div class='strategy_content_head'>"+							
@@ -211,7 +214,7 @@
 													"<span class='font_12 browseNum' style='font-size:12px;color:#7a7a7a;'>"+ str[i].browse_num +"</span>"+
 												"</div>"+
 											"</div>"+										
-											"<div class='strategy_content_img "+ src +"' style='background-image: url(" + config.img + encodeURI(str[i].src) + ");'></div>"+												
+											"<div class='strategy_content_img "+ src +"' style='background-image: url(" + config.img + encodeURI(str[i].top_img_src) + ");'></div>"+												
 											"<div class='strategy_content_art font_14 color_7a7a7a'>"+
 											    "<img style='width:100%;display:"+imgToggle+"' src="+imgSrc+">"+
 											    "<div class='strategy_content_titles'>"+

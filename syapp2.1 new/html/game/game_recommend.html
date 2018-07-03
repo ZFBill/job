@@ -426,6 +426,9 @@
 							type: "get",
 							url: config.data + "game/getGameCls",
 							async: true,
+							data: {
+								sys: 2
+							},
 							success: function(data) {
 								if(data.state) {
 									var cls = data.cls;
@@ -452,6 +455,9 @@
 							type: "get",
 							url: config.data + "game/getAppCls",
 							async: true,
+							data: {
+								sys: 2
+							},
 							success: function(data) {
 								if(data.state) {
 									var cls = data.cls;

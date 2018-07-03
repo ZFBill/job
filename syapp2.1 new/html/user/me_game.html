@@ -192,6 +192,7 @@
 			
 			function getGame(){
 				indexPage="getGame";
+			   mui.plusReady(function(){
 				$.ajax({
 					type:"get",
 					url:config.data + "users/getGameByUserId",
@@ -209,14 +210,30 @@
 									if(g[i].tagList){
 										var result=g[i].tagList.split(",");
 										var tagId = g[i].tagId.split(",");
-										var signs = '';
-										for (var j = 0; j < result.length; j++) {
-											signs +=
-												"<div class='fl tag font_12 border_green border_radius_twenty' data-id='"+ tagId[j] +"'>"+ result[j] +"</div>"
-										}
+										var signs = '';				   												
 									}else{
 										var signs = '';
 									}
+									
+							   if(result.length > 2) {
+							          for(var j = 0; j < 3; j++) {
+								   signs +=
+									   "<div class='fl tag font_12 border_green border_radius_twenty' data-id='" + tagId[j] + "'>" + result[j] + "</div>"
+							      }
+						        } else{
+							       for(var j = 0; j < result.length; j++) {
+								     signs +=
+									  "<div class='fl tag font_12 border_green border_radius_twenty' data-id='" + tagId[j] + "'>" + result[j] + "</div>"
+							     }
+						        }
+									    var downloadToggle=plus.runtime.isApplicationExist({pname:g[i].game_packagename,action: ''});
+					                     if(downloadToggle){
+						                      var buttonDown="打开";
+					                     }else{
+						                    var buttonDown="下载";
+					                    }
+					                 
+									
 									list +=
 										"<li class='game_list ofh' data-id='"+ g[i].id +"'>"+
 											"<div class='color_9e9e9e fl game_listScore'>"+ (i+1+(page-1)*20) +"</div>"+
@@ -238,7 +255,7 @@
 													
 												"</div>"+
 											"</div>"+
-											"<div class='fr game_listDownload font_14 color_white backgroundColor_green tac'>下载</div>"+
+											"<div class='fr game_listDownload font_14 color_white backgroundColor_green tac'>"+buttonDown+"</div>"+
 										"</li>"
 								
 							}
@@ -274,7 +291,8 @@
 							
 						}
 					}
-				});
+				});		
+			  });
 			}
 		
 			function getH5(){

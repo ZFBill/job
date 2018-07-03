@@ -210,8 +210,10 @@ body{
 	margin: 0.6rem 0;
 	margin-left: 0.5rem;
 	color: #282828;
-	width: 92%;
+	width:92%;
 	max-height: 2.6rem;
+	font-weight:bold;
+	font-size:14px;
 	/*white-space:nowrap;*/
 	 word-break: break-all;
     text-overflow: ellipsis;

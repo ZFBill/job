@@ -7,7 +7,6 @@ var target_img;
 var target_title;
 $(function() {
 	$('.news_review').click(function() {
-
 		$('html, body').animate({
 			scrollTop: $('#recommend').offset().top - parseInt(total_height + 36) + "px"
 		}, 1000)
@@ -525,7 +524,7 @@ function detail() {
 		success: function(data) {
 			if(data.state) {
 				var str = data.strategy,
-					portrait;
+					portrait,nickName;
 
 				if(str.comment_num > 99) {
 					var comment_num = 99
@@ -538,13 +537,19 @@ function detail() {
 					portrait = str.portrait;
 				}
 
+                if(str.admin){
+                	nickName=str.nike_name;
+                }else{
+                	nickName=str.nick_name;
+                }              
+                
 				$('.news_reviewNum').text(comment_num);
 				$('h4').text(str.title);
 				$('.news_userInfo_img').css("background-image", "url(" + encodeURI(portrait) + ")");
-				$('.news_userInfo_name').text(str.nick_name);
+				$('.news_userInfo_name').text(nickName);
 				$('.news_userInfo_date').text(str.add_time);
-
 				$('.news_post_content_detail').html(str.detail);
+				
 				$('.news_post_content_detail img').css("max-width", "100%");
 				target_img = str.top_img_src;
 				target_title = str.title;
@@ -628,8 +633,7 @@ function down() {
 	setTimeout(function() {
 		mui('.strategy_details').pullRefresh().endPulldown(true);
 	}, 1000);
-
-	//				 mui('#news_content').pullRefresh().endPulldown(true);
+	//mui('#news_content').pullRefresh().endPulldown(true);
 }
 
 // 保存图片到相册中 

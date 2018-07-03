@@ -120,16 +120,19 @@ body{
 }
 .strategy_content_art{
 	padding:0 0.9375rem;
-	margin-bottom: 1.9375rem;
-
 }
-.strategy_content{
+.strategy_content_classifys{
 	margin-top:0.5rem;
-	 overflow: hidden;  /** 隐藏超出的内容 **/
+}
+
+.strategy_content_z{
+	margin-top:0.5rem;
+/*	margin-bottom:0.5rem;*/
+	overflow: hidden;  /** 隐藏超出的内容 **/
 	text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
 }
 .strategy_content_classify{
 	/*width: 4rem;*/

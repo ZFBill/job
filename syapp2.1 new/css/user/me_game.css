@@ -68,20 +68,18 @@ body{
 	margin-left: 0.4rem;
 }
 .game_listDownload{
-	width: 2.8125rem;
+     width: 2.8125rem;
 	height: 1.5rem;
 	line-height: 1.5rem;
-	margin-top: 2.28125rem;
+	margin-top: 1.8rem;
 	border-radius: 20px;
-	margin-right: 1.4rem;
+	position:absolute;
+	right:1rem;
 }
-.game_recommend_star{
-	
+.game_recommend_star{	
 	width: 0.8125rem;
-	height: 0.8125rem;
-	
+	height: 0.8125rem;	
 	background-image: url(../../Public/image/xing1.png);
-	
 	background-position: center;
 	background-repeat:no-repeat;
 	background-size: cover;

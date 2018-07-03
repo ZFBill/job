@@ -18,25 +18,25 @@ mui.plusReady(function() {
 			console.log("当前应用版本：" + wgtVer);
 			//	检测更新
 
-//			$.ajax({
-//				type: "get",
-//				url: "http://www.oneyouxi.com.cn:8877/H5/update",
-//				async: true,
-//				success: function(data) {
-//					if(data.state) {
-//						newVer = data.mark;
-//						console.log(newVer);
-//						if(wgtVer && newVer && (wgtVer != newVer)) {
-//							downWgt(); // 下载升级包
-//						} else {
-//							//plus.nativeUI.alert("无新版本可更新！");
-//						}
-//					} else {
-//						console.log("检测更新失败！");
-//						plus.nativeUI.alert("检测更新失败！");
-//					}
-//				}
-//			});
+			$.ajax({
+				type: "get",
+				url: "http://www.oneyouxi.com.cn:8877/H5/update",
+				async: true,
+				success: function(data) {
+					if(data.state) {
+						newVer = data.mark;
+						console.log(newVer);
+						if(wgtVer && newVer && (wgtVer != newVer)) {
+							downWgt(); // 下载升级包
+						} else {
+							//plus.nativeUI.alert("无新版本可更新！");
+						}
+					} else {
+						console.log("检测更新失败！");
+						plus.nativeUI.alert("检测更新失败！");
+					}
+				}
+			});
 		});
 	}
 	if(window.plus) {

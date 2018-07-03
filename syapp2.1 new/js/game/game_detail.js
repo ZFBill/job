@@ -30,15 +30,15 @@ $(function() {
 					var game_name = g.game_name;
 					gameName = game_name;
 					$("#game_detail_download").attr("src", g.game_download_andriod);
-					var fileName = '_downloads/' + game.game_name + '.apk'
+					var fileName = '_downloads/' + game.game_name + '.apk';
 					if(plus.runtime.isApplicationExist({
 							pname: game.game_packagename,
 							action: ''
-						})) {
+					})) {
+
 						$("#game_detail_download").find(".download_btn_text").text("打开");
 					} else {
 						plus.downloader.enumerate(function(tasks) {
-							//		var state;
 							var state = false;
 							for(var i = 0; i < tasks.length; i++) {
 								if(tasks[i].filename == fileName) {
@@ -65,6 +65,7 @@ $(function() {
 					$('.game_company').text(g.game_company);
 					$('.game_infoScore').text(g.grade + "分");
 					$('.gameScore').text(g.grade)
+					//alert(g.grade)
 					if(g.tagList) {
 						var t = g.tagList.split(',');
 						for(var i = 0; i < t.length - 1; i++) {
@@ -76,14 +77,13 @@ $(function() {
 						$('.game_signs').append(spLast)
 
 					}
-
 					$('.game_simpleIntro_content').html(g.game_detail)
 					$('.game_particular_value').children().eq(0).text(g.game_download_num + "次下载")
 					$('.game_particular_value').children().eq(1).text(g.game_version)
 					$('.game_particular_value').children().eq(2).text(g.game_size + "MB")
 					$('.game_particular_value').children().eq(3).text(g.game_update_date)
 					$('.game_particular_value').children().eq(4).text(g.game_company)
-					$('.game_particular_value').children().eq(5).text(g.game_company)
+					//$('.game_particular_value').children().eq(5).text(g.game_company)
 					$.ajax({
 						type: "get",
 						url: config.data + "game/getGameImgListById",
@@ -418,11 +418,18 @@ $(function() {
 			})
 		}
 	})
-
+    var tog=1;
 	$('.show_all').click(function() {
-		$('.game_simpleIntro_content').removeClass('overflow_two');
-		$(this).remove();
-	})
+		if(tog==1){
+		   $('.game_simpleIntro_content').removeClass('overflow_two');
+		   $(this).text("收回");	
+		   tog=2;
+		}else{
+		   $('.game_simpleIntro_content').addClass('overflow_two');
+		   $(this).text("显示全部");	
+		   tog=1;
+		}	
+	});
 
 	$('body').on('click', '.comment_content', function() {
 		if(userId) {
@@ -801,20 +808,59 @@ function detail_strategy(){
 					gameId: gameId
 				},
 				success: function(data) {
+					
 					 mui('#game_detailContent').pullRefresh().endPulldown(true);
 					if(data.state) {
 						var s = data.scoreList;
-						var total = 0;
+						var total_10=0,total_8=0,total_6=0,total_4=0,total_2=0
+						var num_total=0;
 						var arr = [];
-						
 						for(var i = 0; i < s.length; i++) {
-							arr.push(parseInt(s[i].num))
-							total += s[i].num;
+							num_total += s[i].num;
 						}
-						//alert(arr)
-						for(var j = 0; j < arr.length; j++) {								
-							$(".bar" + j).css('width', arr[j] / total * 10 + "rem")
+                        //alert(num_total)
+						for(var j = 0; j < s.length; j++) {	
+							if(s[j].score==10){
+                                var lan=10/num_total;         
+							    $(".bar4").css('width', lan + "rem");
+							    
+							    total_10 += 10*s[j].num;
+							    
+							}else if(s[j].score==8){
+								
+								 var lan=10/num_total;
+								$(".bar3").css('width', lan + "rem");
+								 total_8 += 8*s[j].num;
+								
+								
+							}else if(s[j].score==6){								
+								var lan=10/num_total;
+								$(".bar2").css('width', lan + "rem");
+								total_6 += 6*s[j].num;
+								
+							}else if(s[j].score==4){
+								
+								var lan=10/num_total;
+								$(".bar1").css('width', lan + "rem");
+								total_4 += 4*s[j].num;
+								
+							}else if(s[j].score==2){
+								
+								var lan=10/num_total;
+								$(".bar0").css('width', lan + "rem");
+								total_2 += 2*s[j].num;
+								
+							}	
+											
 						}
+
+                        var total=(total_10+total_8+total_6+total_4+total_2)/num_total;                    
+                        if(!Object.is(total,NaN)){
+                        	$(".gameScore").text(total.toFixed(1));
+                        }
+						
+							
+                        
 
 					} else {
 

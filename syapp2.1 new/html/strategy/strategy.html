@@ -197,10 +197,7 @@
 								}else{
 									portrait=str[i].portrait;
 								}
-//                      		alert(config.img + encodeURI(str[i].top_img_src))
-if(str[i].id == 245){
-	alert(config.img + encodeURI(str[i].top_img_src))
-}
+
 								div +=
 										"<div class='strategy_content' data-id='"+ str[i].id +"' data-userId='"+ str[i].user_id +"'>"+
 											"<div class='strategy_content_head'>"+							
@@ -214,13 +211,13 @@ if(str[i].id == 245){
 													"<span class='font_12 browseNum' style='font-size:12px;color:#7a7a7a;'>"+ str[i].browse_num +"</span>"+
 												"</div>"+
 											"</div>"+										
-											"<div class='strategy_content_img "+ src +"' style='background-image: url(" + config.img + encodeURI(str[i].top_img_src) + ");'></div>"+												
+											"<div class='strategy_content_img "+ src +"' style='background-image: url(" + config.img + encodeURI(str[i].src) + ");'></div>"+												
 											"<div class='strategy_content_art font_14 color_7a7a7a'>"+
 											    "<img style='width:100%;display:"+imgToggle+"' src="+imgSrc+">"+
 											    "<div class='strategy_content_titles'>"+
 												  "<div class='strategy_content_title font_bold color_282828'>" + str[i].title + "</div>"+											
 											    "</div>"+
-												"<div class='strategy_content'>"+detail+"</div>"+							
+												"<div class='strategy_content_z'>"+detail+"</div>"+							
 											"</div>"+
 											"<div class='strategy_content_classifys ofh'>"+
 												"<div class='backgroundColor_gray border_radius_twenty strategy_content_classify tac font_14 color_7a7a7a fl overflow'>"+ str[i].game_name +"</div>"+

@@ -20,13 +20,14 @@ $(function() {
 				} else {
 					sex_art = "女"
 				}
-
 				$('.personal_id').val(u.id);
 				$('.personal_name').val(u.nick_name);
 				$('.sexArt').text(sex_art);
 				$('.personal_bir').val(u.birthday);
-				if(u.portrait){
+				if(u.portrait!=0){
 					$('.profile_header').css('background-image', 'url('+ u.portrait + ')')
+				}else{
+					$('.profile_header').css('background-image', 'url(../../Public/image/morentouxiang.png)')
 				}
 			} else {
 

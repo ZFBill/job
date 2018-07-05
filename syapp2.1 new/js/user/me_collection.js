@@ -22,8 +22,7 @@ $(function(){
 		page = 0;
 		news = 0;
 		mui('.me_collections').pullRefresh().refresh(true);
-		up();
-		
+		up();		
 	})
 	
 	$('body').on('click','.news_art',function(){
@@ -47,5 +46,67 @@ $(function(){
 			}
 		})
 	})
+	
+	
+	
+	$('body').on('longtap','.news_art',function() {		
+		var  id=$(this).attr("data-coll_id");
+		var btnarr = ["确定", "取消"];
+		mui.confirm("你确定删除吗？", "操作提示", btnarr, function(e) {
+			if(e.index == 0) {
+				//alert(1);
+				$.ajax({
+					type:"get",
+					url:config.data+"users/getDelCollect",
+					async:true,
+					data:{
+						id:id
+					},
+					success:function(data){
+						if (data.state) {
+							getNews();
+							mui.alert("删除成功！", "操作提示", "确定");						
+     					} else{
+							mui.alert("删除失败！", "操作提示", "确定");
+						}
+					}
+				});
+				
+			} else {
+				
+			}
+		});
+	})
+	
+	$('body').on('longtap','.strategy_content',function() {		
+		var  id=$(this).attr("data-coll_id");
+		var btnarr = ["确定", "取消"];
+		mui.confirm("你确定删除吗？", "操作提示", btnarr, function(e) {
+			if(e.index == 0) {
+				$.ajax({
+					type:"get",
+					url:config.data+"users/getDelCollect",
+					async:true,
+					data:{
+						id:id
+					},
+					success:function(data){
+						if (data.state) {
+							getStr();
+							mui.alert("删除成功！", "操作提示", "确定");						
+     					} else{
+							mui.alert("删除失败！", "操作提示", "确定");
+						}
+					}
+				});
+				
+			} else {
+				
+			}
+		});
+	})
+	
+	
+	
 	
 })

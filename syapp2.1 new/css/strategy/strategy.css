@@ -75,10 +75,9 @@ body{
 }
 .icon_read{
 	display: inline-block;
-	width: 0.75rem;
-	height: 0.75rem;
+	width: 0.9rem;
+	height: 0.9rem;
 	margin-right: 0.4rem;
-	/*background-color: green;*/
 	background-image: url(../../Public/image/39D9371F-FB20-48E6-8801-EEBF4765BF46.png);
 	background-position: center;
 	background-repeat:no-repeat;
@@ -98,8 +97,8 @@ body{
 	background-size: cover;
 }
 .strategy_content_titles{
-	margin: 0.6rem auto;
-	padding: 0 0.9375rem;
+	margin:0.5rem 0;
+	font-size:14px;
 }
 .strategy_content_title{
 	word-break: break-all;
@@ -107,8 +106,7 @@ body{
     display: -webkit-box; /** 对象作为伸缩盒子模型显示 **/
     -webkit-box-orient: vertical; /** 设置或检索伸缩盒对象的子元素的排列方式 **/
     -webkit-line-clamp: 4; /** 显示的行数 **/
-    overflow: hidden;  /** 隐藏超出的内容 **/
-	 
+    overflow: hidden;  /** 隐藏超出的内容 **/ 
 }
 @-webkit-keyframes fadeIn{0%{opacity:0}100%{opacity:1}}
 @keyframes fadeIn{0%{opacity:0}100%{opacity:1}}
@@ -122,16 +120,19 @@ body{
 }
 .strategy_content_art{
 	padding:0 0.9375rem;
-	margin-bottom: 1.9375rem;
-
 }
-.strategy_content{
+.strategy_content_classifys{
 	margin-top:0.5rem;
-	 overflow: hidden;  /** 隐藏超出的内容 **/
+}
+
+.strategy_content_z{
+	margin-top:0.5rem;
+/*	margin-bottom:0.5rem;*/
+	overflow: hidden;  /** 隐藏超出的内容 **/
 	text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
 }
 .strategy_content_classify{
 	/*width: 4rem;*/

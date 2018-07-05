@@ -29,7 +29,7 @@ mui.plusReady(function() {
 						if(wgtVer && newVer && (wgtVer != newVer)) {
 							downWgt(); // 下载升级包
 						} else {
-							plus.nativeUI.alert("无新版本可更新！");
+							//plus.nativeUI.alert("无新版本可更新！");
 						}
 					} else {
 						console.log("检测更新失败！");
@@ -46,9 +46,7 @@ mui.plusReady(function() {
 	}
 
 	// 检测更新
-
 //		checkUpdate();
-	
 //		function checkUpdate() {
 //			plus.nativeUI.showWaiting("检测更新...");
 //			var xhr = new XMLHttpRequest();
@@ -76,7 +74,7 @@ mui.plusReady(function() {
 	var wgtUrl = "http://182.61.26.179:8878/www/APK/H5C62934A.wgt";
 
 	function downWgt() {
-		plus.nativeUI.showWaiting("正在更新中，请勿关闭");
+		plus.nativeUI.showWaiting("正在更新中");
 		plus.downloader.createDownload(wgtUrl, {
 			filename: "_doc/update/"
 		}, function(d, status) {

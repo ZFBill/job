@@ -1,9 +1,9 @@
 {
 	"@platforms": ["android", "iPhone", "iPad"],
 	"id": "H5C62934A",/*应用的标识，创建应用时自动生成，勿手动修改*/
-	"name": "syapp2.1",/*应用名称，程序桌面图标名称*/
+	"name": "ONE游戏",/*应用名称，程序桌面图标名称*/
 	"version": {
-		"name": "2.0.0",/*应用版本名称*/
+		"name": "4.0.8",/*应用版本名称*/
 		"code": "83"
 	},
 	"description": "",/*应用描述信息*/
@@ -84,9 +84,7 @@
         "Barcode": {
             "description": "管理二维码扫描插件"
         },
-        "Maps": {
-            "description": "管理地图插件"
-        },
+        
         "Speech": {
             "description": "管理语音识别插件"
         },
@@ -110,7 +108,7 @@
 		},
 		"runmode": "liberate",/*应用的首次启动运行模式，可取liberate或normal，liberate模式在第一次启动时将解压应用资源（Android平台File API才可正常访问_www目录）*/
 		"signature": "Sk9JTiBVUyBtYWlsdG86aHIyMDEzQGRjbG91ZC5pbw==",/*可选，保留给应用签名，暂不使用*/
-		"distribute": {"plugins":{"share":{"weixin":{"appid":"wx3c40d1c9660dfaf3","appsecret":"6bb4455d150f0b2cff16c9ea4ce42547","description":"可选，微信分享"},"qq":{"appid":"wx3c40d1c9660dfaf3","description":"QQ分享"}}},
+		"distribute": {"plugins":{"share":{"weixin":{"appid":"wx187553ce11cbff9f","appsecret":"7253efabedb15c22aefb91bf59fdf003","description":"可选，微信分享"},"qq":{"appid":"wx187553ce11cbff9f","description":"QQ分享"}}},
 			"apple": {
 				"appid": "",/*iOS应用标识，苹果开发网站申请的appid，如io.dcloud.HelloH5*/
 				"mobileprovision": "",/*iOS应用打包配置文件*/
@@ -189,7 +187,7 @@
 					"xxhdpi": "Public/image/1080-1882.png"
 				}
 			}
-		},"ads":{"rp":false,"splash":false,"push":false},"adid":""
+		},"ads":{"rp":false,"splash":false,"push":false},"adid":"127732250606"
 	},
 	"dependencies": {
 		"pages": {
@@ -201,7 +199,12 @@
 					"Public/image/youxi1.png",
 					"Public/image/gonglue1.png",
 					"html/play/play.html",
-					"html/user/me.html"
+					"html/user/me.html",
+					"Public/css/public.css",
+					"css/index.css",
+					"js/mui.js",
+					"css/mui.css",
+					"js/index.js"
 				],
 				"refer": [
 					"html/strategy/strategy.html"
@@ -261,7 +264,10 @@
 			"html/strategy/strategy.html": {
 				"resources": [
 					"Public/js/public.js",
-					"Public/js/jquery-3.2.1.min.js"
+					"Public/js/jquery-3.2.1.min.js",
+					"Public/image/morentouxiang.png",
+					"Public/image/liuyan.png",
+					"Public/image/39D9371F-FB20-48E6-8801-EEBF4765BF46.png"
 				],
 				"refer": [
 					"html/strategy/strategy_details.html",
@@ -293,7 +299,10 @@
 				"priority": 0
 			},
 			"html/user/me.html": {
-				"resources": [],
+				"resources": [
+					"Public/js/public.js",
+					"Public/js/jquery-3.2.1.min.js"
+				],
 				"refer": [
 					"html/user/me_game.html",
 					"html/user/me_works.html",
@@ -435,31 +444,40 @@
 					"html/game/game_detail.html"
 				],
 				"priority": 0
+			},
+			"html/game/game_classify_sign.html": {
+				"resources": [],
+				"refer": [
+					"html/game/game_detail.html"
+				],
+				"priority": 0
+			},
+			"html/strategy/strategy_search_result.html": {
+				"resources": [],
+				"refer": [
+					"html/strategy/strategy_details.html"
+				],
+				"priority": 0
 			}
 		},
 		"idle": {
 			"resources": [
-				"Public/css/public.css",
 				"Public/image/haowan1.png",
 				"Public/image/wode2.png",
-				"css/index.css",
 				"Public/image/xing1.png",
 				"Public/image/tuijian1.png",
-				"js/mui.js",
 				"Public/image/haowan2.png",
 				"Public/css/vssver2.scc",
 				"Public/image/lingdang2.png",
 				"Public/image/wode1.png",
 				"fonts/mui.ttf",
-				"css/mui.css",
 				"Public/image/youxi2.png",
 				"js/news/news.js",
 				"Public/image/shou.png",
 				"Public/image/lingdang.png",
 				"css/mui.min.css",
 				"Public/image/starActive.png",
-				"css/news/news.css",
-				"js/index.js"
+				"css/news/news.css"
 			]
 		}
 	}

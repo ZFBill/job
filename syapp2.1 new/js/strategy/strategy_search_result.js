@@ -10,7 +10,6 @@ $(function(){
 		msg = self.msg; 
 		$('.header_title').text(msg)
 	})
-
 //	d导航栏点击
 	$('.strategy_nav').children().eq(0).click(function(){
 		sort = "comment_num "

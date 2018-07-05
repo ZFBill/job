@@ -25,13 +25,17 @@ $(function() {
 				"id": userInfojson.id
 			},
 			success: function(data) {
+				
 				if(data.state) {
+					
 					$('.onlyId').text("ID:" + data.user.only_id);
-					if(data.user.portrait) {
+					if(data.user.portrait!=0) {
 						img = data.user.portrait;
+						alert
 					} else {
-						img = "../../Public/image/morentouxiang.png"
+						img = "../../Public/image/morentouxiang.png";
 					}
+					
 					$(".me_img").css("background-image", "url(" + img + ")")
 					$('.me_username').text(data.user.nick_name);
 				} else {

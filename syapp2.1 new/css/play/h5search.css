@@ -1,3 +1,12 @@
+input[type=search]{
+	background-color: white;
+	width: 17.1875rem;
+	height: 1.5625rem;
+	border-radius: 10px;
+	color: #9E9E9E;
+	font-family: simhei;
+	font-size: 12px;
+}
 .before_search{
 	background-color: #7fcadf;
 }
@@ -74,15 +83,15 @@
 
 
 .search_img{
-	margin-top: 0.5rem;
-	width: 3.75rem;
-	height: 3.75rem;
-	background-image: url(../../Public/image/10.png);
+	width: 1.25rem;
+	height: 1.25rem;
+	background-image: url(../../Public/image/shou.png);
 	background-position: center;
-	background-repeat: no-repeat;
-	background-size: cover;
-	margin-right: 1.125rem;
-	border-radius: 8px;
+	background-repeat:no-repeat;
+	background-size: contain;
+	position: absolute;
+	right: 0.625rem;
+	top: 0.78125rem;
 }
 .search_score{
 	color: #9C9C9C;
@@ -128,3 +137,4 @@
 	background: url(../../Public/image/starHalf.png) center no-repeat;
 	background-size: contain;
 }
+

@@ -3,21 +3,16 @@ body{
 }
 .header_title{
 	color: white;
-	
-	
 	margin: 0 auto;
-	
 }
 .bell,.search{
 	position: absolute;
 	top: 5px;
 	width: 35px;
 	height: 35px;
-	
 	background-position: center;
 	background-repeat:no-repeat;
-	background-size: contain;
-	
+	background-size: contain;	
 }
 .bell{
 	right: 67px;
@@ -29,13 +24,14 @@ body{
 	
 }
 .strategy_head{
+	position: relative;
 	height: 5.1875rem;
 	margin-top: 45px;
 	padding-top: 0.4375rem;
 	margin-left: 0.625rem;
+   
 }
 .strategy_head > ul > li{
-	
 	margin-right: 1.5rem;
 }
 .strategy_headImg{
@@ -68,16 +64,14 @@ body{
 	margin-top: 0.4375rem;
 }
 .icon_read{
-	display: inline-block;
-	width: 0.75rem;
-	height: 0.75rem;
-	/*background-color: green;*/
+	width: 0.9rem;
+	height: 0.9rem;
 	background-image: url(../../Public/image/39D9371F-FB20-48E6-8801-EEBF4765BF46.png);
 	background-position: center;
 	background-repeat:no-repeat;
-	background-size: contain;
-	
+	background-size:cover;
 }
+
 .strategy_content_img{
 	height: 11rem;
 	width: 22rem;
@@ -88,8 +82,9 @@ body{
 	background-size: contain;
 }
 .strategy_content_titles{
-	margin: 1.0625rem auto;
-	padding: 0 0.9375rem;
+	margin:0.5rem 0;
+	font-size:14px;
+	font-weight: bold;
 }
 .strategy_content_sign{
 	display: inline-block;
@@ -103,25 +98,20 @@ body{
 	margin-bottom: 0.9375rem;
 }
 .strategy_content_classify{
-	/*width: 4rem;*/
 	max-width: 8rem;
 	padding: 0 0.4rem;
 	height: 1.25rem;
 	line-height: 1.25rem;
 	margin-left: 0.9375rem;
 }
-.comment_imgs{
-	    
+.comment_imgs{ 
 	   height: 2rem;
-	   margin-right: 0.9375rem;
-	  
+	   margin-right: 0.9375rem;  
 }
 .comment_img{
-	
 	width: 1.0625rem;
 	height: 1.0625rem;
 	background-image: url("../../Public/image/liuyan.png");
-	
 	background-position: center;
 	background-repeat:no-repeat;
 	background-size: contain;
@@ -140,11 +130,9 @@ body{
 	margin-left: 0.1rem;
 }
 .thumb{
-	
 	width: 1.0625rem;
 	height: 1.0625rem;
 	background-image: url("../../Public/image/good.png");
-	
 	background-position: center;
 	background-repeat:no-repeat;
 	background-size: contain;
@@ -191,9 +179,20 @@ body{
 	margin-top: -4rem;
 	left: 50%;
 	margin-left: -4rem;
-	
 	background-image: url(../../Public/image/wuneirong.png);
 	background-position: center;
 	background-repeat:no-repeat;
 	background-size: contain;
+}
+
+.strategy_content{
+	/*margin-top:0.5rem;*/
+	overflow: hidden;  /** 隐藏超出的内容 **/
+	text-overflow: ellipsis;
+    display: -webkit-box;
+   -webkit-line-clamp: 2;
+   -webkit-box-orient: vertical;
+}
+.strategy_content_classifys{
+	margin-top:1.025em;
 }

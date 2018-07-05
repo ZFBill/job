@@ -38,8 +38,10 @@ $(function(){
 		}
 	});
 	
+	//头部游戏导航条点击
 	$('body').on('click','.tacI',function(){
 		var msg = $(this).find('.strategy_headImgart').text();
+	
 		mui.openWindow({
 			url:"strategy_search_result.html",
 			id:"strategy_search_result.html",
@@ -48,6 +50,9 @@ $(function(){
 			}
 		})
 	})
+	
+	
+	
 	
 //	获取顶部搜索结束
 

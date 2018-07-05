@@ -373,7 +373,7 @@ $(function() {
 							$('.news_secondComment_input').val("");
 			       //不刷新										
 						 getComment();
-											
+						 mui.toast("发送成功");					
 						} else {
 							mui.toast("发送失败，请重试")
 						}
@@ -399,76 +399,102 @@ $(function() {
 
 function getComment(){
 	$.ajax({
-		type: "get",
-		url: config.data + "news/getHotNewsCommentByPage",
-		async: true,
-		data: {
-			"commentParentId": newsId,
-			"page":1,
-			"userId": userId
-		},
-		success:function(data){
-			mui.toast("发送成功");
-			var com = data.comment,newComment="",secondCom="",towLen,portrait;		 
-			 page=1;
-			 for(var i = 0; i < com.length; i++) {
-				 if(com[i].state) {
-				 var ifGood = "good";
-				 } else {
-				 var ifGood = "noGood";
-				 }
-				 var tow = com[i].towCommentList;
-				 	for(var j = 0; j < tow.length; j++) {
-				 
-				 	var ifHide = tow[j].targetUserNickName || "hidden";
-				 		secondCom +=
-				 				"<div class='comment_secondComment '>" +
-				 			  "<span class='color_green'>" + tow[j].selfNickName + "</span>" +
-				 				"<span class='" + ifHide + "' style='margin:0 0.4rem;'>回复</span>" +
-				 								"<span class='color_green " + ifHide + "'>" + ifHide + "</span>" +
-				 								"<span class='color_282828'>：" + tow[j].content + "</span>" +
-				 								"</div>";
-				 }
-				 if(com[i].portrait==0||com[i].portrait==null){
-					 portrait="../../Public/image/morentouxiang.png";
-				 }else{
-				 	portrait=com[i].portrait;
-				 }
-				 	if(tow.length >= 2) {
-				 			var secondComs =
-				 				"<div class='comment_secondComments font_14 ofh'>" + secondCom +
-				 				"<div class='more_secondComment color_green fr " + towLen + "' data-id='" + com[i].id + "' data-userId='" + com[i].user_id + "'>" +
-				 				"全部回复" +
-				 				"</div>" +
-				        "</div>";
-				 					} else {
-				 				var secondComs = "<div class='comment_secondComments font_14 ofh'>" + secondCom + "</div>";
-				 }				 		 
-			  newComment +=
-			 	"<div class='news_post_commentContent ofh' data-id='" + com[i].id + "'>" +
-			 	"<div class='news_post_commentContent_head fl' style='background-image: url(" + encodeURI(portrait) + ");'></div>" +
-			 	"<div class='news_post_commentContent_content fl'>" +
-			 	"<div class='comment_user font_12'>" + com[i].nick_name + "</div>" +
-			 	"<div class='comment_content font_14'>" + com[i].content + "</div>" +
-			 	"<div class='comment_info ofh'>" +
-			 	"<div class='font_12 color_9e9e9e fl'>" + com[i].add_time + "</div>" +
-			 	"<div class='fr color_9e9e9e comment_imgs'>" +
-			 	"<div class='thumbs fl'>" +
-			 	"<span class='thumb " + ifGood + "' data-state='" + com[i].state + "' data-commentId='" + com[i].id + "'></span>" +
-			 	"<span class='thumb_num font_14'>" + com[i].agree + "</span>" +
-			 	"</div>" +
-			 	"<div class='comment_nums fl'>" +
-			 	"<span class='comment_img' data-id='" + com[i].id + "' data-userId='" + com[i].user_id + "'></span>" +
-			 	"<span class='comment_num font_14'>" + com[i].comment + "</span>" +
-			 	"</div>" +
-			 	"</div>" +
-			 	"</div>" +
-			 	secondComs +
-			 	"</div>" +
-			 	"</div>";			
-			 }
-				$('.news_post_commentContents').empty().append(newComment);	 
-		}
+			type: "get",
+			url: config.data + "news/getHotNewsCommentByPage",
+			async: true,
+			data: {
+				"commentParentId": newsId,
+				"page": 0,
+				"userId": userId
+			},
+			success: function(data) {
+				if(data.state) {
+					page=0;
+					var com = data.comment;
+					var comment = "";
+					var towLen,portrait;
+					for(var i = 0; i < com.length; i++) {
+						var tow = com[i].towCommentList;
+						var secondCom = "";
+						if(com[i].state) {
+							var ifGood = "good";
+						} else {
+							var ifGood = "noGood";
+						}
+						
+						if(com[i].portrait==0||com[i].portrait==null){
+							portrait="../../Public/image/morentouxiang.png";
+						}else{
+							portrait=com[i].portrait;
+						}
+						
+						
+						for(var j = 0; j < tow.length; j++) {
+							var ifHide = tow[j].targetUserNickName || "hidden";
+							secondCom +=
+								"<div class='comment_secondComment '>" +
+								"<span class='color_green'>" + tow[j].selfNickName + "</span>" +
+								"<span class='" + ifHide + "' style='margin:0 0.4rem;'>回复</span>" +
+								"<span class='color_green " + ifHide + "'>" + ifHide + "</span>" +
+								"<span class='color_282828'>：" + tow[j].content + "</span>" +
+								"</div>";
+						}
+
+						if(tow.length >= 2) {
+							var secondComs =
+								"<div class='comment_secondComments font_14 ofh'>" + secondCom +
+								"<div class='more_secondComment color_green fr " + towLen + "' data-id='" + com[i].id + "' data-userId='" + com[i].user_id + "'>" +
+								"全部回复" +
+								"</div>" +
+
+								"</div>";
+						} else {
+							var secondComs = "<div class='comment_secondComments font_14 ofh'>" + secondCom + "</div>";
+						}
+
+						comment +=
+							"<div class='news_post_commentContent ofh' data-id='" + com[i].id + "'>" +
+							"<div class='news_post_commentContent_head fl' style='background-image: url(" + encodeURI(portrait) + ");'></div>" +
+							"<div class='news_post_commentContent_content fl'>" +
+							"<div class='comment_user font_12'>" + com[i].nick_name + "</div>" +
+							"<div class='comment_content font_14'>" + com[i].content + "</div>" +
+							"<div class='comment_info ofh'>" +
+							"<div class='font_12 color_9e9e9e fl'>" + com[i].add_time + "</div>" +
+							"<div class='fr color_9e9e9e comment_imgs'>" +
+							"<div class='thumbs fl'>" +
+							"<span class='thumb " + ifGood + "' data-state='" + com[i].state + "' data-commentId='" + com[i].id + "'></span>" +
+							"<span  class='thumb_num font_14'>" + com[i].agree + "</span>" +
+							"</div>" +
+							"<div class='comment_nums fl'>" +
+							"<span class='comment_img' data-id='" + com[i].id + "' data-userId='" + com[i].user_id + "'></span>" +
+							"<span class='comment_num font_14'>" + com[i].comment + "</span>" +
+							"</div>" +
+							"</div>" +
+							"</div>" +
+							secondComs +
+							"</div>" +
+							"</div>"
+					};
+
+					$('.news_post_commentContents').empty().append(comment)
+
+					if($('.thumb').attr('data-state')) {
+						$(this).css("background-image", "url(../../Public/image/diangoodone.png)")
+					}
+					if(com.length < 5) {
+
+						mui('.new_post_contents').pullRefresh().endPullupToRefresh(true);
+
+					} else {
+
+						mui('.new_post_contents').pullRefresh().endPullupToRefresh(false);
+
+					}
+
+				} else {
+
+				}
+			}
 		});
 		
 }
@@ -576,6 +602,7 @@ function up(){
 			}
 		});
 	} else {
+		
 		$.ajax({
 			type: "get",
 			url: config.data + "news/getCommentByPage",

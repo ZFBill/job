@@ -57,6 +57,7 @@ header{
 	width: 3rem;
 	font-size: 20px;
 	color: white;
+	position:absolute;
 }
 .mui-icon{
 	font-size: 30px;

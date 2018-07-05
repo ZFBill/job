@@ -81,7 +81,8 @@
 	"html/strategy/strategy_details.html": {
 		"refer": [
 			"html/strategy/strategy_comment.html",
-			"html/strategy/strategy_allComments.html"
+			"html/strategy/strategy_allComments.html",
+			"html/play/h5game.html"
 		],
 		"resources": []
 	},

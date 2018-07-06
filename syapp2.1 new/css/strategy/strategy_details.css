@@ -1,3 +1,7 @@
+a{
+	text-decoration: underline;
+	color: deepskyblue !important;
+}
 .notice{
 	position: absolute;
 	left: 50%;

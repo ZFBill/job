@@ -478,20 +478,24 @@ $(function() {
 	//		游戏分类
 	$.ajax({
 		type: "get",
-		url: config.data + "game/getGameCls",
+		url: config.data+"game/getGameCls",
 		async: true,
+		data: {
+	        sys: 2
+	    },
 		success: function(data) {
 			if(data.state) {
 				var cls = data.cls;
 				var div = '';
-				for(var i = 0; i < cls.length; i++) {
+				for(var i = 0; i < cls.length; i++){
 					div +=
 						"<div class='game_classify_name ofh fl' data-id='" + cls[i].id + "' data-type='" + cls[i].type + "'>" +
 						"<div class='game_classify_nameImg fl' style='background-image: url(" + config.img + encodeURI(cls[i].icon) + ");'></div>" +
 						"<div class='game_classify_nameArt fl font_14 color_282828'>" + cls[i].cls_name + "</div>" +
 						"</div>"
 				}
-				$('.game_classify_names').append(div)
+				
+				$('.game_classify_names').append(div);
 			} else {
 
 			}
@@ -506,8 +510,12 @@ $(function() {
 		type: "get",
 		url: config.data + "game/getAppCls",
 		async: true,
+		data: {
+	        sys: 2
+	    },
 		success: function(data) {
 			if(data.state) {
+				
 				var cls = data.cls;
 				var div = '';
 				for(var i = 0; i < cls.length; i++) {

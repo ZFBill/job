@@ -8,9 +8,7 @@ var targetUserId;
 var game_name;
 var game_icon;
 $(function() {
-	
-	mui.plusReady(function() {
-		
+	mui.plusReady(function() {	
 		var self = plus.webview.currentWebview();
 		commentId = self.commentId;
 		gameId = self.gameId;
@@ -18,7 +16,6 @@ $(function() {
 		game_name = self.game_name;
 		game_icon = self.game_icon;
 		//	获取一级评论单条
-
 		$.ajax({
 			type: "get",
 			url: config.data + "game/getOneCommentByCommentId",
@@ -26,8 +23,7 @@ $(function() {
 			data: {
 				commentId: commentId
 			},
-			success: function(data) {
-
+			success: function(data) {               
 				if(data.state) {
 					var com = data.comment;
 					$('.news_post_commentContent_head').css("background-image", "url(" + com.portrait + ")")
@@ -35,14 +31,14 @@ $(function() {
 					$('.comment_content').text(com.content)
 					$('.comment_summary').attr('data-id',com.game_id);
 					if (com.game_icon) {
-						$('.comment_summary_img').css('background-image','url(' + config.img + encodeURI(com.game_icon) + ')')
+						$('.comment_summary_img').css('background-image','url(' + config.img + encodeURI(com.game_icon) + ')');
 					} else{
-						$('.comment_summary_img').css('background-image','url(../../Public/image/link.png)')
+						$('.comment_summary_img').css('background-image','url(../../Public/image/link.png)');
 					}
-					$('.comment_summary_art').text(com.game_name)
-					$('.game_commentDay').text(com.add_time)
+					$('.comment_summary_art').text(com.game_name);
+					$('.game_commentDay').text(com.add_time);
 					defaultName = com.nick_name
-					$('.news_secondComment_input').attr('placeholder',"@" + defaultName)
+					$('.news_secondComment_input').attr('placeholder',"@" + defaultName);
 					
 				} else {
 
@@ -50,7 +46,7 @@ $(function() {
 			}
 		});
 		
-		$('body').on('click','.comment_summary',function(){
+		$('body').on('tap','.comment_summary',function(){
 			var gameId = $(this).attr('data-id');
 			mui.openWindow({
 				url:"game_detail.html",
@@ -65,7 +61,7 @@ $(function() {
 	})
 
 	//	获取一级评论单条结束
-	$('body').on('click','.news_post_commentContent',function(){
+	$('body').on('tap','.news_post_commentContent',function(){
 		defaultName = $(this).find('.nickName').text()
 		$('.news_secondComment_input').attr('placeholder',"@" + defaultName)
 		targetUserId = $(this).attr('data-userId')
@@ -132,8 +128,10 @@ function up() {
 				var com = data.comment;
 				
 				var div = "";
+				
 				for(var i = 0; i < com.length; i++) {
 					var ifHidden = com[i].targetNickName || "hidden";
+					//alert(com[i].portrait);
 					div +=
 						"<div class='news_post_commentContent ofh' style='border-top: 1px solid #e6ebec;margin-top: 0;border-bottom: 0;' data-id='" + com[i].id + "' data-userId='" + com[i].uid + "' >" +
 						"<div class='news_post_commentContent_head fl' style='background-image: url("+ com[i].portrait +");'></div>" +

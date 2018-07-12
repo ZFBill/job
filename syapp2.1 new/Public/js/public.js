@@ -55,7 +55,7 @@ var config = {
 	// data:"http://182.61.26.179:8877/",
 //	data:"http://www.oneyouxi.com.cn:8877/",
 //	data:"http://192.168.0.18:8877/",
-//	data:"http://182.61.26.179:8877/",
+	//data:"http://192.168.0.203:8877/",
     data:"http://www.oneyouxi.com.cn:8877/",
 	base64: "http://base64.oneyouxi.com.cn/",
 	url_upload:"http://182.61.26.179:8878/",

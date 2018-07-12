@@ -210,7 +210,7 @@ $(function() {
 			}
 		})
 
-		$('body').on('click', '.thumb_num', function(event) {
+		$('body').on('tap', '.thumb_num', function(event) {
 			event.stopPropagation();
 			var ts = $(this).siblings('.thumb');
 			var commentId = ts.parents(".news_post_commentContent").attr('data-id');
@@ -264,8 +264,14 @@ $(function() {
 		//		点赞与取消点赞结束
 
 		$('body').on('click', '.more_secondComment,.comment_img', function(event) {
+
 			event.stopPropagation();
-			var commentId = $(this).attr('data-id')
+			if(userId == 0){
+				mui.toast("请先登录");
+				return false;
+			}
+			
+			var commentId = $(this).attr('data-id');	
 			mui.openWindow({
 				url: "strategy_allComments.html",
 				id: "strategy_allComments.html",
@@ -316,13 +322,19 @@ $(function() {
 					}
 				})
 			} else {
-				mui.toast("请先登录")
+				mui.openWindow({
+					url: "../user/login.html",
+					id: "../user/login.html",
+				});
 			}
 
 		})
 
 		$('body').on('click', '.news_post_commentContent', function() {
-
+            if(userId == 0){
+				mui.toast("请先登录");
+				return false;
+			}
 			mui.openWindow({
 				url: "strategy_allComments.html",
 				id: "strategy_allComments.html",
@@ -339,7 +351,6 @@ $(function() {
 		//取消收藏结束
 		function up() {
 			page++;
-			//alert(sort);
 			if(sort == "comment_num") {
 				$.ajax({
 					type: "get",

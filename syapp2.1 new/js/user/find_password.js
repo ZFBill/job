@@ -1,6 +1,7 @@
 var username;
 var password;
 var code;
+var reCode = "";
 $(function() {
 	
 	$('.get_code').click(function() {
@@ -27,7 +28,7 @@ $(function() {
 					success: function(data) {
 						if(data.state == "1") {
 							mui.toast("短信验证码已发到您的手机,请查收");
-
+							reCode = data.code
 						} else if(data.state == "0") {
 							mui.toast("短信验证码发送失败，请重新发送");
 
@@ -60,6 +61,11 @@ $(function() {
 		if ($('.phone_num').val() && $('.set_code').val()) {
 			username = $.trim($('.phone_num').val());
 			code = $('.set_code').val()
+			var re_code = reCode;
+			if(re_code != code){
+				mui.toast("验证码不正确")
+				return false;
+			}
 			$('.find_password').addClass("hidden")
 			$('.new_passwords').removeClass("hidden")
 		} else{

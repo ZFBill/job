@@ -73,7 +73,7 @@ $(function(){
 					},
 					success:function(data){
 						if (data.state) {
-							var g = data.game;
+							var g = data.gameList;
 							var li = '';
 							for (var i = 0; i < g.length; i++) {
 								var signs = '';

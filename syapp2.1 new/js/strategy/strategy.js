@@ -23,6 +23,7 @@ $(function(){
 				var li = "";
 				var gl = data.gameList;
 				for (var i = 0; i < gl.length; i++) {
+					alert(gl[i].icon)
 					li+=
 						"<li class='tacI'>"+
 							"<div  style='width: 3rem;'>"+

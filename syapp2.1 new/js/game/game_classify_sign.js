@@ -9,7 +9,7 @@ $(function(){
 		$('.game_nameHeader').text(name)
 	})
 	
-	$('body').on('click','.game_list',function(){
+	$('body').on('tap','.game_list',function(){
 		mui.openWindow({
 			url:"game_detail.html",
 			id:"game_detail.html",

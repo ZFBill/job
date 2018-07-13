@@ -73,7 +73,7 @@ $(function() {
 
 	})
 
-	$('body').on('click', '.mui-slider-item', function() {
+	$('body').on('tap', '.mui-slider-item', function() {
 		var gameId = $(this).attr("data-gameId")
 		mui.openWindow({
 			url: 'game_detail.html',
@@ -110,7 +110,7 @@ $(function() {
 		}
 	});
 
-	$('body').on('click', '.game_show', function() {
+	$('body').on('tap', '.game_show', function() {
 		var id = $(this).attr('data-gameId')
 
 		mui.openWindow({
@@ -231,14 +231,14 @@ $(function() {
 						"</div>" +
 						"</div>"
 				}
-				$('.game_signsContent').append(div)
+				$('.game_signsContent').append(div);
 			} else {
 
 			}
 		}
 	});
 
-	$('body').on('click', '.game_detail_content > div', function() {
+	$('body').on('tap', '.game_detail_content > div', function() {
 		mui.openWindow({
 			url: 'game_detail.html',
 			id: 'game_detail.html',
@@ -248,7 +248,7 @@ $(function() {
 		})
 	})
 
-	$('body').on('click', '.check_more', function() {
+	$('body').on('tap', '.check_more', function() {
 		var tagId = $(this).attr("data-tagid");
 		var tagName = $(this).prev().text();
 		mui.openWindow({
@@ -278,19 +278,15 @@ $(function() {
 			if(data.state) {
 				var g = data.game;
 				var list = '';
-				//alert(JSON.stringify(g))
-				//plus.runtime.isApplicationExist({pname:game.game_packagename,action: ''})
-				
+
 				for(var i = 0; i < g.length; i++) {
-					
-					
+							
 					var downloadToggle=plus.runtime.isApplicationExist({pname:g[i].game_packagename,action: ''});
 					if(downloadToggle){
 						var buttonDown="打开";
 					}else{
 						var buttonDown="下载";
-					}
-					
+					}			
 					var signs = '';
 					
 					
@@ -437,7 +433,7 @@ $(function() {
 
 	})
 
-	$('body').on('click', '.tag', function(event) {
+	$('body').on('tap', '.tag', function(event) {
 		event.stopPropagation();
 		var tagId = $(this).attr("data-id");
 		var tagName = $(this).text();
@@ -461,7 +457,7 @@ $(function() {
 		})
 	})
 
-	$('body').on('click', '.game_list', function() {
+	$('body').on('tap', '.game_list', function() {
 		mui.openWindow({
 			url: "game_detail.html",
 			id: "game_detail.html",
@@ -473,9 +469,11 @@ $(function() {
 
 	//	排行部分结束
 
-	//	分类开始	
 
-	//		游戏分类
+
+	// 分类开始	
+	
+	// 游戏分类
 	$.ajax({
 		type: "get",
 		url: config.data+"game/getGameCls",
@@ -532,7 +530,7 @@ $(function() {
 		}
 	});
 
-	$('body').on('click', '.game_classify_name,.apply_classify_name', function() {
+	$('body').on('tap', '.game_classify_name,.apply_classify_name', function() {
 		mui.openWindow({
 			url: "game_classify_sign.html",
 			id: "game_classify_sign.html",
@@ -587,13 +585,6 @@ $(function() {
 		})
 	})
 
-	//	$('.check_more').click(function() {
-	//		mui.openWindow({
-	//			url: "game_classify_sign.html",
-	//			id: "game_classify_sign.html"
-	//		})
-	//	})
-
 })
 
 function getRank(sort) {
@@ -625,7 +616,11 @@ function getRank(sort) {
 						$('.third ').attr('data-id', g[2].id)
 						$('.third  .y_listImg').css('background-image', 'url(' + config.img + encodeURI(g[2].icon) + ')')
 						$('.third  .y_listName').text(g[2].game_name)
-						$('.third  .game_recommend_starScore').text(g[2].grade)
+						$('.third  .game_recommend_starScore').text(g[2].grade)	
+						var downloadToggle=plus.runtime.isApplicationExist({pname:g[i].game_packagename,action: ''});
+						if(downloadToggle){
+							$(`.y_listDownload:eq(${i})`).text("打开")
+						}
 					} else {
 						var signs = '';
 						if(g[i].tagList && g[i].tagList !== "null") {
@@ -647,7 +642,7 @@ function getRank(sort) {
 
 						}
                         
-                         var downloadToggle=plus.runtime.isApplicationExist({pname:g[i].game_packagename,action: ''});
+                        var downloadToggle=plus.runtime.isApplicationExist({pname:g[i].game_packagename,action: ''});
 					    if(downloadToggle){
 						    var buttonDown="打开";
 					   }else{
@@ -680,7 +675,7 @@ function getRank(sort) {
 							"</li>"
 					}
 				}
-				$('.game_lists').append(list)
+				$('.game_lists').append(list);
 				$('.game_recommend_stars').each(function() {
 
 					var score = $(this).find('.game_recommend_starScore').eq(0).text()
@@ -741,6 +736,18 @@ function getRankup(page, sort) {
 					} else {
 
 					}
+					
+					
+					var downloadToggle=plus.runtime.isApplicationExist({pname:g[i].game_packagename,action: ''});
+					    if(downloadToggle){
+						    var buttonDown="打开";
+					    }else{
+						   var buttonDown="下载";
+					   }
+					
+					
+					
+					
 					list +=
 						"<li class='game_list ofh' data-id='" + g[i].id + "'>" +
 						"<div class='color_9e9e9e fl game_listScore'>" + (i + 1 + (page - 1) * 20) + "</div>" +
@@ -761,7 +768,7 @@ function getRankup(page, sort) {
 						signs +
 						"</div>" +
 						"</div>" +
-						"<div class='fr game_listDownload font_14 color_white backgroundColor_green tac'>下载</div>" +
+						"<div class='fr game_listDownload font_14 color_white backgroundColor_green tac'>"+buttonDown+"</div>" +
 						"</li>"
 
 				}

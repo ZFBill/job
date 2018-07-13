@@ -9,10 +9,10 @@ $(function(){
 		tagId = self.tagId;
 		tagName = self.tagName;
 		
-		getGamebySign(tagId,tagName)
+		//getGamebySign(tagId,tagName)
 	})
 	
-	$('body').on('click','.tag',function(){
+	$('body').on('tap','.tag',function(){
 		$('.game_lists').children().remove();
 		tagId = $(this).attr('data-id');
 		tagName = $(this).text();
@@ -20,7 +20,7 @@ $(function(){
 	})
 	
 	
-	$('body').on('click','.game_list',function(){
+	$('body').on('tap','.game_list',function(){
 		mui.openWindow({
 			url:"game_detail.html",
 			id:"game_detail.html",
@@ -36,7 +36,7 @@ $(function(){
 					container: ".game_listSign", //下拉刷新容器标识，querySelector能定位的css选择器均可，比如：id、.class等
 					up: {
 						height: 50, //可选.默认50.触发上拉加载拖动距离
-						auto: false, //可选,默认false.自动上拉加载一次
+						auto:true, //可选,默认false.自动上拉加载一次
 						contentrefresh: "正在加载...", //可选，正在加载状态时，上拉加载控件上显示的标题内容
 						contentnomore: '没有更多数据了', //可选，请求完毕若没有更多数据时显示的提醒内容；
 						callback: up //必选，刷新函数，根据具体业务来编写，比如通过ajax从服务器获取新数据；
@@ -60,7 +60,7 @@ $(function(){
 })
 			function up(){
 				
-				page++;
+				
 				
 				$.ajax({
 					type:"get",
@@ -80,9 +80,17 @@ $(function(){
 								var result= g[i].tagList.split(",");
 								var resultId = g[i].tagId.split(",");
 								for (var j = 0; j < result.length; j++) {
-										signs +=
+									signs+=
 											"<div class='fl tag font_12 border_green border_radius_twenty' data-id='"+ resultId[j] +"'>"+ result[j] +"</div>"
 								}
+							     var downloadToggle=plus.runtime.isApplicationExist({pname:g[i].game_packagename,action: ''});
+					            if(downloadToggle){
+						            var buttonDown="打开";
+					            }else{
+						            var buttonDown="下载";
+					            }
+					
+                        
 								li +=
 								 		"<li class='game_list ofh' data-id="+ g[i].id +">"+
 											"<div class='color_9e9e9e fl game_listScore'>"+ ((page-1)*20 + i+1) +"</div>"+
@@ -104,12 +112,11 @@ $(function(){
 								
 												"</div>"+
 											"</div>"+
-											"<div class='fr game_listDownload font_14 color_white backgroundColor_green tac'>下载</div>"+
+											"<div class='fr game_listDownload font_14 color_white backgroundColor_green tac'>"+buttonDown+"</div>"+
 										"</li>"
-							}
-							
-							$('.game_lists').append(li)
-							
+							}				
+							$('.game_lists').append(li);
+							page++;
 							$('.game_recommend_stars').each(function(){
 				
 								var score =  $(this).find('.game_recommend_starScore').eq(0).text()
@@ -145,94 +152,94 @@ $(function(){
 			
 			function down() {
 				window.location.reload();
-				setTimeout(function() {
-					mui('.game_listSign').pullRefresh().endPulldown(true);
-				}, 1000);
+//				setTimeout(function() {
+//					mui('.game_listSign').pullRefresh().endPulldown(true);
+//				}, 1000);
 
-				//				 mui('#news_content').pullRefresh().endPulldown(true);
+				// mui('#news_content').pullRefresh().endPulldown(true);
 			}
 
 
 
-function getGamebySign(tagId,tagName){
-	$('.game_nameHeader').text(tagName)
-	$.ajax({
-			type:"get",
-			url:config.data + "game/getGameByTag",
-			async:true,
-			data:{
-				tagId:tagId,
-				sys:2,
-				page:1
-			},
-			success:function(data){
-				if (data.state) {
-					var g = data.gameList;
-					var li = '';
-					for (var i = 0; i < g.length; i++) {
-						var signs = '';
-						var result= g[i].tagList.split(",");
-						var resultId = g[i].tagId.split(",");
-						if (result.length <= 3) {
-							for (var j = 0; j < result.length; j++) {
-								signs +=
-									"<div class='fl tag font_12 border_green border_radius_twenty' data-id='"+ resultId[j] +"'>"+ result[j] +"</div>"
-							}
-						} else{
-							for (var j = 0; j < 3; j++) {
-								signs +=
-									"<div class='fl tag font_12 border_green border_radius_twenty' data-id='"+ resultId[j] +"'>"+ result[j] +"</div>"
-							}
-						}
-						
-						li +=
-						 		"<li class='game_list ofh' data-id="+ g[i].id +">"+
-									"<div class='color_9e9e9e fl game_listScore'>"+ (i+1) +"</div>"+
-									"<div class='game_listImg fl' style='background-image: url("+ config.img + encodeURI(g[i].game_title_img) +");'></div>"+
-									"<div class='fl' style='margin-top: 1rem;margin-left: 0.875rem;'>"+
-										"<div class='font_14' style='width: 6em;white-space:nowrap;text-overflow:ellipsis;-o-text-overflow:ellipsis;overflow: hidden;'>"+ g[i].game_name +"</div>"+
-										"<div class='font_12'>"+
-											"<div class='ofh game_recommend_stars'>"+
-												"<div class='game_recommend_star fl'></div>"+
-												"<div class='game_recommend_star fl'></div>"+
-												"<div class='game_recommend_star fl'></div>"+
-												"<div class='game_recommend_star fl'></div>"+
-												"<div class='game_recommend_star fl'></div>"+
-												"<div class='game_recommend_starScore fl color_green'>"+ g[i].grade +"</div>"+
-											"</div>"+
-										"</div>"+
-										"<div class='font_12 color_green'>"+
-										signs +
-						
-										"</div>"+
-									"</div>"+
-									"<div class='fr game_listDownload font_14 color_white backgroundColor_green tac'>下载</div>"+
-								"</li>"
-					}
-					
-					$('.game_lists').append(li)
-					$('.game_recommend_stars').each(function(){
-		
-						var score =  $(this).find('.game_recommend_starScore').eq(0).text()
-						var starNum = Math.round(score)
-						
-						
-						if (starNum % 2 == 0) {
-							
-							var starFinal = (starNum / 2 - 1 ); 
-							$(this).children('.game_recommend_star').eq(starFinal).addClass('game_list_star_active')
-							$(this).children('.game_recommend_star').eq(starFinal).prevAll('.game_recommend_star').addClass('game_list_star_active')
-						} else{
-							var starFinal = ((starNum - 1)/2)
-							$(this).children('.game_recommend_star').eq(starFinal).prevAll('.game_recommend_star').addClass('game_list_star_active')
-							$(this).children('.game_recommend_star').eq(starFinal).addClass('game_list_star_half')
-						}
-					})
-					
-				} else{
-					
-				}
-			}
-		});
-}
-		
+//function getGamebySign(tagId,tagName){
+//	$('.game_nameHeader').text(tagName)
+//	$.ajax({
+//			type:"get",
+//			url:config.data + "game/getGameByTag",
+//			async:true,
+//			data:{
+//				tagId:tagId,
+//				sys:2,
+//				page:1
+//			},
+//			success:function(data){
+//				if (data.state) {
+//					var g = data.gameList;
+//					var li = '';
+//					for (var i = 0; i < g.length; i++) {
+//						var signs = '';
+//						var result= g[i].tagList.split(",");
+//						var resultId = g[i].tagId.split(",");
+//						if (result.length <= 3) {
+//							for (var j = 0; j < result.length; j++) {
+//								signs +=
+//									"<div class='fl tag font_12 border_green border_radius_twenty' data-id='"+ resultId[j] +"'>"+ result[j] +"</div>"
+//							}
+//						} else{
+//							for (var j = 0; j < 3; j++) {
+//								signs +=
+//									"<div class='fl tag font_12 border_green border_radius_twenty' data-id='"+ resultId[j] +"'>"+ result[j] +"</div>"
+//							}
+//						}
+//						
+//						li +=
+//						 		"<li class='game_list ofh' data-id="+ g[i].id +">"+
+//									"<div class='color_9e9e9e fl game_listScore'>"+ (i+1) +"</div>"+
+//									"<div class='game_listImg fl' style='background-image: url("+ config.img + encodeURI(g[i].game_title_img) +");'></div>"+
+//									"<div class='fl' style='margin-top: 1rem;margin-left: 0.875rem;'>"+
+//										"<div class='font_14' style='width: 6em;white-space:nowrap;text-overflow:ellipsis;-o-text-overflow:ellipsis;overflow: hidden;'>"+ g[i].game_name +"</div>"+
+//										"<div class='font_12'>"+
+//											"<div class='ofh game_recommend_stars'>"+
+//												"<div class='game_recommend_star fl'></div>"+
+//												"<div class='game_recommend_star fl'></div>"+
+//												"<div class='game_recommend_star fl'></div>"+
+//												"<div class='game_recommend_star fl'></div>"+
+//												"<div class='game_recommend_star fl'></div>"+
+//												"<div class='game_recommend_starScore fl color_green'>"+ g[i].grade +"</div>"+
+//											"</div>"+
+//										"</div>"+
+//										"<div class='font_12 color_green'>"+
+//										signs +
+//						
+//										"</div>"+
+//									"</div>"+
+//									"<div class='fr game_listDownload font_14 color_white backgroundColor_green tac'>下载</div>"+
+//								"</li>"
+//					}
+//					
+//					$('.game_lists').append(li)
+//					$('.game_recommend_stars').each(function(){
+//		
+//						var score =  $(this).find('.game_recommend_starScore').eq(0).text()
+//						var starNum = Math.round(score)
+//						
+//						
+//						if (starNum % 2 == 0) {
+//							
+//							var starFinal = (starNum / 2 - 1 ); 
+//							$(this).children('.game_recommend_star').eq(starFinal).addClass('game_list_star_active')
+//							$(this).children('.game_recommend_star').eq(starFinal).prevAll('.game_recommend_star').addClass('game_list_star_active')
+//						} else{
+//							var starFinal = ((starNum - 1)/2)
+//							$(this).children('.game_recommend_star').eq(starFinal).prevAll('.game_recommend_star').addClass('game_list_star_active')
+//							$(this).children('.game_recommend_star').eq(starFinal).addClass('game_list_star_half')
+//						}
+//					})
+//					
+//				} else{
+//					
+//				}
+//			}
+//		});
+//}
+//		

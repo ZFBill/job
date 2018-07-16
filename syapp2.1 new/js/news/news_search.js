@@ -1,7 +1,7 @@
 var val;
 $(function(){
 	
-	$('.search_img').click(function(){
+	$('body').on('input', 'input[type=text],.search_bar', function() {
 		val = $('.search_bar').val().replace(/[&\|\\\*^%$#@\-]/g,"");
 		$('.search_lists').children().remove();
 		
@@ -19,7 +19,7 @@ $(function(){
 				},
 				success:function(data){
 					
-					if (data.state) {
+					if (data.state > 0) {
 						
 						var  div = '';
 						var g = data.newsList;
@@ -33,6 +33,7 @@ $(function(){
 								"</div>"
 							}
 							$('.search_lists').append(div)
+							
 						} else{
 							
 							var no_content = "<div class='no_content tac'>没有搜到任何内容</div>"
@@ -40,7 +41,9 @@ $(function(){
 						}
 						
 					} else{
-						mui.toast("搜索失败")
+						var no_content = "<div class='no_content tac'>没有搜到任何内容</div>"
+							$('.search_lists').append(no_content)
+//						mui.toast("搜索失败")
 					}
 				}
 			});

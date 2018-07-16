@@ -16,8 +16,10 @@ $(function(){
 			}
 		});
 		
-		$('.nav').css('top',total_height)
-		$('.nav > div').click(function(){
+		$('.nav').css('top',total_height);
+		
+		
+		$('body').on("tap",".nav > div",function(){
 			var selfSort = $(this).attr('data-sort');
 			$(this).addClass('active').siblings('div').removeClass('active');
 			$('.notice_lists').children().remove();
@@ -27,18 +29,17 @@ $(function(){
 			up();
 			
 		});
-		$('body').on('click','.notice_list',function(){
-			var type = $(this).attr("data-type");
+		$('body').on('tap','.notice_list',function(){
 			var commentId = $(this).attr("data-id");
 			var url;
-			if (type == 1) {
-				url = "news_allComments.html"
+			if (sort == 1) {
+				url = "news_allComments.html";
 			}
-			else if(type == 2){
-				url = "../strategy/strategy_allComments.html"
+			else if(sort == 2){
+				url = "../strategy/strategy_allComments.html";
 			}
 			else{
-				url = "../game/game_allComments.html"
+				url = "../game/game_allComments.html";		
 			}
 			mui.openWindow({
 				url:url,

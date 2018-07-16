@@ -217,7 +217,8 @@
 					"html/news/news_search.html",
 					"html/news/news_post.html",
 					"html/game/game_detail.html",
-					"html/news/news_center.html"
+					"html/news/news_center.html",
+					"html/user/login.html"
 				],
 				"priority": 0
 			},
@@ -257,7 +258,8 @@
 					"html/news/news_center.html",
 					"html/news/news_search.html",
 					"html/game/game_classify_list.html",
-					"html/game/game_search.html"
+					"html/game/game_search.html",
+					"html/user/login.html"
 				],
 				"priority": 0
 			},
@@ -283,7 +285,8 @@
 				"resources": [],
 				"refer": [
 					"html/strategy/strategy_comment.html",
-					"html/strategy/strategy_allComments.html"
+					"html/strategy/strategy_allComments.html",
+					"html/user/login.html"
 				],
 				"priority": 0
 			},

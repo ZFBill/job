@@ -1,13 +1,7 @@
 $(function(){
-//	$('body').click(function(){
-//		mui.openWindow({
-//			url:"strategy_add.html"
-//		})
-//	})
-	
 
 	window.addEventListener('refresh',function(event){
-	    down()
+	    down();
 	});
 
 //	获取顶部搜索
@@ -31,7 +25,7 @@ $(function(){
 							"</div>"+
 						"</li>"
 				}
-				$('.strategy_headImgs').append(li)
+				$('.strategy_headImgs').append(li);
 			} else{
 				
 			}
@@ -39,7 +33,7 @@ $(function(){
 	});
 	
 	//头部游戏导航条点击
-	$('body').on('click','.tacI',function(){
+	$('body').on('tap','.tacI',function(){
 		var msg = $(this).find('.strategy_headImgart').text();
 	
 		mui.openWindow({
@@ -117,28 +111,19 @@ $(function(){
 			id:"strategy_search.html"
 		})
 	})
-	$('.bell').click(function(){
-		$.ajax({
-			type:"get",
-			url:config.data + "news/cancelMessage",
-			async:true,
-			data:{
-				userId:userId
-			},
-			success:function(data){
-				if (data.state) {
-					
-				} else{
-					
-				}
-			}
-		});
+
+	$('body').on("tap",".bell",function() {
+		userId==0?
+		mui.openWindow({
+			url: "../user/login.html",
+			id: "login.html"
+		})
+		:
 		mui.openWindow({
 			url:"../news/news_center.html",
 			id:"../news/news_center.html"
-		})
+		});
 	})
-	
 	
 	
 	

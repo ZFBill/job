@@ -10,13 +10,8 @@ input[type=search]{
 .before_search{
 	background-color: #7fcadf;
 }
-.search_list{
-	margin: 0 0.625rem;
-	margin-top: 0.75rem;
-	background-color: white;
-	
-}
 .search_lists{
+	margin-top: 0.75rem;
 	overflow: scroll;
 }
 .h5img{
@@ -93,6 +88,17 @@ input[type=search]{
 	right: 0.625rem;
 	top: 0.78125rem;
 }
+.search_liastImg{
+	display: inline-block;
+	width: 1.9375rem;
+	height: 1.9375rem;
+	/*background-image: url(../../Public/image/starActive.png);*/
+	background-position: center;
+	background-repeat:no-repeat;
+	background-size: contain;
+	margin-top: 1rem;
+	margin-left: 1.25rem;
+}
 .search_score{
 	color: #9C9C9C;
 	margin-top: 1.56rem;
@@ -119,10 +125,15 @@ input[type=search]{
 	border-radius: 5px;
 }
 .search_list{
-	
+	width: 100%;
+	height: 4rem;
+	line-height: 4rem;
+	background-color: white;
+	border-bottom: 1px solid #e7eaec;
 	overflow: hidden;
 	position: relative;
 }
+
 .search_line{
 	width: 90%;
 	border-bottom: 1px solid lightgray;

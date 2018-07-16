@@ -179,29 +179,21 @@ $(function() {
 			id: "news_search.html"
 		})
 	})
-	$('.bell').click(function() {
-		$.ajax({
-			type: "get",
-			url: config.data + "news/cancelMessage",
-			async: true,
-			data: {
-				userId: userId
-			},
-			success: function(data) {
-				if(data.state) {
 
-				} else {
-
-				}
-			}
-		});
+	$('body').on("tap",".bell",function() {
+		userId==0?
+		mui.openWindow({
+			url: "../user/login.html",
+			id: "login.html"
+		})
+		:
 		mui.openWindow({
 			url: "news_center.html",
 			id: "news_center.html"
-		})
+		});
 	})
 
-	$('body').on("click", ".news_art,.news_art2", function() {
+	$('body').on("tap", ".news_art,.news_art2", function() {
 		var th = $(this);
 		var id = th.attr('data-id');
 		$.ajax({

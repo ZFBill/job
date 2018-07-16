@@ -203,7 +203,7 @@
 						type:3
 					},
 					success:function(data){
-						var  g = data.gameList;
+						var  g = data.gameList,buttonToggle;
 						if (data.state) {
 							var list = '';
 							for (var i = 0; i < g.length; i++) {
@@ -226,16 +226,16 @@
 									  "<div class='fl tag font_12 border_green border_radius_twenty' data-id='" + tagId[j] + "'>" + result[j] + "</div>"
 							     }
 						        }
-									    var downloadToggle=plus.runtime.isApplicationExist({pname:g[i].game_packagename,action: ''});
+									   var downloadToggle=plus.runtime.isApplicationExist({pname:g[i].game_packagename,action: ''});
 					                     if(downloadToggle){
 						                      var buttonDown="打开";
 					                     }else{
 						                    var buttonDown="下载";
 					                    }
-					                 
-									
+					                 downloadToggle?buttonToggle="block":buttonToggle="none";
+		
 									list +=
-										"<li class='game_list ofh' data-id='"+ g[i].id +"'>"+
+										"<li class='game_list ofh' style='display:"+buttonToggle+"' data-id='"+ g[i].id +"'>"+
 											"<div class='color_9e9e9e fl game_listScore'>"+ (i+1+(page-1)*20) +"</div>"+
 											"<div class='game_listImg fl' style='background-image: url("+ config.img + encodeURI(g[i].game_title_img) +");'></div>"+
 											"<div class='fl' style='margin-top: 1.25rem;margin-left: 0.875rem;'>"+

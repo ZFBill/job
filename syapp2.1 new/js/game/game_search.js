@@ -1,11 +1,12 @@
 var val;
 $(function(){
 	
-	$('.search_img').click(function(){
+	$('body').on('input', 'input[type=text],.search_bar', function() {
 		val = $('.search_bar').val().replace(/[&\|\\\*^%$#@\-]/g,"");
 		$('.search_lists').children().remove();
 		
 		if(val){
+			
 			pages = 1
 			$.ajax({
 				type:"get",

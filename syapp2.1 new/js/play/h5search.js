@@ -100,7 +100,7 @@ $(function() {
 			});
 		})
 	
-	$('.search_img').click(function(){
+	$('body').on('input', 'input[type=text],.search_bar', function() {
 		val = $('.search_bar').val().replace(/[&\|\\\*^%$#@\-]/g,"");
 		$('.search_lists').children().remove();
 		
@@ -117,21 +117,51 @@ $(function() {
 					page:1
 				},
 				success:function(data){
-					alert(data)
 					if (data.state) {
 						
 						var  div = '';
-						var g = data.newsList;
+						var g = data.gameList;
 						if (g.length > 0) {
 							for (var i = 0; i < g.length; i++) {
 								div+=
-				
-								"<div class='search_list font_12 simHei' data-id='"+ g[i].id +"'>"+
-									
-									"<div class='fl overflow' style='margin-left: 1rem; width: 24em;'>"+ g[i].title +"</div>"+
+								"<div class='search_list font_12 simHei' data-id='"+ g[i].id +"' data-sort='" + g[i].sort + "' data-url='" + g[i].url + "'>"+
+									"<span class='search_liastImg fl' style='background-image:url(" + config.img + encodeURI(g[i].icon) + ")'></span>"+
+									"<div class='fl' style='margin-left: 1rem;'>"+ g[i].name +"</div>"+
 								"</div>"
 							}
 							$('.search_lists').append(div)
+							
+							$('body').on('click','.search_list',function(){
+								var url = $(this).attr('data-url');
+									mui.openWindow({
+										url: 'h5game.html',
+										id: 'h5game.html',
+										styles: {
+											top: 0, //新页面顶部位置
+											bottom: 0 //新页面底部位置
+											//		   width:100%,//新页面宽度，默认为100%
+											//		      height:100%,//新页面高度，默认为100%
+										},
+										extras: {
+											url: url
+										},
+										createNew: false, //是否重复创建同样id的webview，默认为false:不重复创建，直接显示
+										show: {
+											autoShow: true, //页面loaded事件发生后自动显示，默认为true
+											aniShow: "slide-in-right", //页面显示动画，默认为”slide-in-right“；
+											//    duration:animationTime//页面动画持续时间，Android平台默认100毫秒，iOS平台默认200毫秒；
+										},
+										waiting: {
+											autoShow: true, //自动显示等待框，默认为true
+											title: '正在加载...', //等待对话框上显示的提示内容
+											options: {
+												//      width:waiting-dialog-widht,//等待框背景区域宽度，默认根据内容自动计算合适宽度
+												//      height:waiting-dialog-height,//等待框背景区域高度，默认根据内容自动计算合适高度
+												//      ......
+											}
+										}
+									})
+							})
 						} else{
 							
 							var no_content = "<div class='no_content tac'>没有搜到任何内容</div>"
@@ -145,6 +175,7 @@ $(function() {
 			});
 		}
 	})
+	
 	
 	
 })

@@ -7,7 +7,7 @@ var type = 'hot';
 var firstImg;
 var title;
 $(function() {
-	$('body').on('click','a',function(event){
+	$('body').on('tap','a',function(event){
 		event.preventDefault();
 		var url = $(this).attr('href');
 		mui.openWindow({
@@ -72,7 +72,6 @@ $(function() {
 		newsId = self.newsId;
 		gameId = self.gameId;
 		up();
-		//alert(1);
 		$.ajax({
 			type: "get",
 			url: config.data + "news/getNewsByID",
@@ -132,7 +131,7 @@ $(function() {
 				}
 			}
 		});
-		$('body').on('click', '.more_secondComment,.comment_img', function() {
+		$('body').on('tap', '.more_secondComment,.comment_img', function() {
 			if(userId) {
 				var commentId = $(this).attr("data-id")
 				mui.openWindow({
@@ -156,7 +155,7 @@ $(function() {
 
 		})
 
-		$('body').on('click', '.hot', function() {
+		$('body').on('tap', '.hot', function() {
 
 			$('.news_post_commentContents').children().remove();
 			mui('.new_post_contents').pullRefresh().refresh(true);
@@ -167,7 +166,7 @@ $(function() {
 			up()
 
 		})
-		$('body').on('click', '.time', function() {
+		$('body').on('tap', '.time', function() {
 
 			$('.news_post_commentContents').children().remove();
 			mui('.new_post_contents').pullRefresh().refresh(true);
@@ -247,7 +246,7 @@ $(function() {
 		//			收藏部分结束	
 
 		//			点赞部分
-		$('body').on('click', '.thumbs', function() {
+		$('body').on('tap', '.thumbs', function() {
 			if(userId) {
 				var parentId = $(this).children('.thumb').attr("data-commentId")
 				var t = $(this).children('.thumb')
@@ -310,7 +309,54 @@ $(function() {
 
 		})
 
-		//			点赞部分结束
+		//  点赞部分结束
+		
+		//保存图片开始
+		$('body').on('tap', 'img', function() {
+			var picurl = $(this).attr("src")
+			var picname;
+			var btnArray = ['否', '是'];
+			mui.confirm('是否保存该图片？', 'ONE', btnArray, function(e) {
+				if(e.index == 1) {
+
+					if(picurl.indexOf("/") > 0) //如果包含有"/"号 从最后一个"/"号+1的位置开始截取字符串
+					{
+						picname = picurl.substring(picurl.lastIndexOf("/") + 1, picurl.length);
+					} else {
+						picname = picurl;
+					}
+
+					savePicture(picurl, picname)
+				} else {
+
+				}
+			})
+
+		})
+
+
+// 保存图片到相册中 
+        function savePicture(picurl, picname) {
+	         // 创建下载任务
+	         var dtask = plus.downloader.createDownload(picurl, {}, function(d, status) {
+		// 下载完成
+		         if(status == 200) {
+			//			alert("Download success: " + d.filename);
+			     plus.gallery.save(d.filename, function() {
+				   mui.toast('保存成功');
+			     }, function() {
+				  mui.toast('保存失败，请重试！');
+			     });
+		     } else {
+			    alert("Download failed: " + status);
+		    }
+
+	    });
+	      //dtask.addEventListener( "statechanged", onStateChanged, false );
+	       dtask.start();
+
+        }
+
 
 		//	滚动隐藏
 		function scroll(fn) {

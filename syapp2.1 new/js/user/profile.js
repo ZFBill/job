@@ -128,7 +128,8 @@ $(function() {
 				if(data.state) {
 
 				} else {
-
+                  mui.toast("昵称不能重名");
+                  return false;
 				}
 			}
 		})

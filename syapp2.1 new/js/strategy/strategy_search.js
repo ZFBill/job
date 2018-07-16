@@ -13,12 +13,15 @@ $(function() {
 				},
 				success: function(data) {
 					if(data.state) {
+						
 						var gn = data.gameName;
+						alert(JSON.stringify(gn))
 						var div = '';
 						for(var i = 0; i < gn.length; i++) {
 							div +=
-								"<div class='search_list'>" +
-								"<div class='fl' style='margin-left: 1rem;'>" + gn[i].game_name + "</div>" +
+								"<div class='search_list'>" 
+								+"<div class='fl' style='margin:0 0.5rem 0 1rem;'>"+gn[i].game_name+" :"+"</div>"+
+								"<div class='fl searchTitle' >" + gn[i].title + "</div>" +
 								"</div>"
 						}
 						$('.search_lists').append(div)

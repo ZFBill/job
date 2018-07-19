@@ -21,6 +21,7 @@
 	height: 5.5rem;
 	width: 100%;
 	background-color: #fff;
+	border-bottom: 1px solid #E7EAEC;
 }
 .me_liImg{
 	width: 3.5rem;
@@ -44,6 +45,7 @@ body{
 	font-size: 18px;
 }
 .game_list{
+	background:#fff;
 	height: 6.0625rem;
 	border-bottom: 1px solid #E7EAEC;
 }

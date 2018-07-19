@@ -24,8 +24,8 @@ $(function() {
 			data: {
 				"id": userInfojson.id
 			},
-			success: function(data) {
-				
+			timeout:20000,
+			success: function(data) {				
 				if(data.state) {
 					
 					$('.onlyId').text("ID:" + data.user.only_id);

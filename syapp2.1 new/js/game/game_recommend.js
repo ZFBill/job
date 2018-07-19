@@ -1,5 +1,4 @@
-$(function() {
-
+$(function() {    
 	mui.plusReady(function() {
 		total_height = plus.navigator.getStatusbarHeight() + 45;
 		$('.header_box').next().css("margin-top", total_height + 43 + "px");
@@ -30,8 +29,6 @@ $(function() {
 			sys: 2
 		},
 		success: function(data) {
-           // alert(JSON.stringify(data));
-		   
 			var c = data.carousel;
 			var divlast = "<div class='mui-slider-item mui-slider-item-duplicate' data-id='" + c[(c.length - 1)].id + "' data-gameId='" + c[(c.length - 1)].game_id + "'>" +
 				"<div class='slider_item  home" + (c.length - 1) + " '></div>" +
@@ -70,7 +67,6 @@ $(function() {
 			});
 
 		}
-
 	})
 
 	$('body').on('tap', '.mui-slider-item', function() {
@@ -274,11 +270,11 @@ $(function() {
 		data: {
 			sys: 2
 		},
+		timeout:20000,
 		success: function(data) {
 			if(data.state) {
 				var g = data.game;
 				var list = '';
-
 				for(var i = 0; i < g.length; i++) {
 							
 					var downloadToggle=plus.runtime.isApplicationExist({pname:g[i].game_packagename,action: ''});
@@ -360,6 +356,11 @@ $(function() {
 			} else {
 
 			}
+		},
+		error:function(){
+			$(".nav_cls_contains").css("display","none");
+			var errorHTML="<div style='margin-top:14rem'><img style='width:138px;height:180px;display:block;margin:0 auto;' src='../../Public/image/notonline.png' /></div>";
+       	    $('.error').html(errorHTML);
 		}
 	});
 	})
@@ -601,6 +602,7 @@ function getRank(sort) {
 		},
 		success: function(data) {
 			var g = data.game;
+			$(".nav_cls_contains").css("display","block");
 			if(data.state) {
 				var list = '';
 				for(var i = 0; i < g.length; i++) {
@@ -695,6 +697,11 @@ function getRank(sort) {
 			} else {
 
 			}
+		},
+		error:function(){
+		    $(".nav_cls_contains").css("display","none");
+			var errorHTML="<div style='margin-top:14rem'><img style='width:138px;height:180px;display:block;margin:0 auto;' src='../../Public/image/notonline.png' /></div>";
+       	    $('.error').html(errorHTML);
 		}
 	});
   });
@@ -712,6 +719,7 @@ function getRankup(page, sort) {
 			type: '',
 			sort: sort,
 		},
+		timeout:20000,
 		success: function(data) {
 			var g = data.game;
 			if(data.state) {
@@ -802,6 +810,11 @@ function getRankup(page, sort) {
 			} else {
 
 			}
+		},
+		error:function(){
+		    $(".nav_cls_contains").css("display","none");
+			var errorHTML="<div style='margin-top:14rem'><img style='width:138px;height:180px;display:block;margin:0 auto;' src='../../Public/image/notonline.png' /></div>";
+       	    $('.error').html(errorHTML);
 		}
 	});
 }

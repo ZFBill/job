@@ -7,6 +7,16 @@
 .before_header{
 	/*background-color: #7fcadf;*/
 }
+.errorContent{
+	display:flex;
+	align-items:center;
+	justify-content:center;
+	height:100%;
+}
+.no_content{
+	color: #9E9E9E;
+	margin-top: 8.5rem;
+}
 a,a:hover,a:link,a:hover,a:active,a:visited{ 
 	out-line: none;
     color: #000000; 
@@ -138,10 +148,10 @@ ul{
     -webkit-margin-after: 0;
 }
 .hidden{
-	display: none;
+	display:none;
 }
 .overflow{
-	width: 6em;
+	width:8em;
 	white-space:nowrap; 
 	text-overflow:ellipsis; 
 	-o-text-overflow:ellipsis; 

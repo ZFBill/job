@@ -121,12 +121,12 @@
 				</div>
 				
 			</div>-->
-			
-			
 		</div>
-			<!--定位用的-->
-				<div class="pen"></div>
-			<!--真的是定位用的-->
+		<!--定位用的-->
+	    <div class="pen"></div>
+		<!--真的是定位用的-->
+	   </div>
+	   <div class="error"></div>
 	</body>
 	<script type="text/javascript">
 			var soc = "3"
@@ -173,9 +173,12 @@
 						page:page,
 						sort:sort
 					},
+					timeout:20000,
 					success:function(data){
-						if (data.state) {
-							
+						$(".strategy").css("display","block");
+						$('.error').html("");
+						
+						if (data.state) {						
 							var str = data.strategy,imgToggle,portrait;
 							var div = "",imgSrc;
 							for (var i = 0; i < str.length; i++) {
@@ -197,10 +200,7 @@
 								}else{
 									portrait=str[i].portrait;
 								}
-if(str[i].id == 270){
-	alert(imgSrc)
-}
-								div +=
+						        div +=
 										"<div class='strategy_content' data-id='"+ str[i].id +"' data-userId='"+ str[i].user_id +"'>"+
 											"<div class='strategy_content_head'>"+							
 												"<div class='strategy_content_headImg fl' style='background-image: url(" + encodeURI(portrait) + ");' ></div>"+
@@ -246,6 +246,12 @@ if(str[i].id == 270){
 						} else{
 							
 						}
+					},
+					error:function(){
+						var errorHTML="<div style='margin-top:12rem'><img style='width:138px;height:180px;display:block;margin:0 auto;' src='../../Public/image/notonline.png' /></div>";
+						$(".strategy").css("display","none");
+						$(".error").html(errorHTML);
+						page=0;
 					}
 				});
 			}
@@ -255,12 +261,12 @@ if(str[i].id == 270){
 				$('.strategy_contents').children().remove();
 				page = 0;
 				mui('.strategy').pullRefresh().refresh(true);
-				up()
+				up();
+				topShow();
 				setTimeout(function() {
 					mui('.strategy').pullRefresh().endPulldown(true);
 				}, 1000);
-
-				//				 mui('#news_content').pullRefresh().endPulldown(true);
+				//mui('#news_content').pullRefresh().endPulldown(true);
 			}
 		</script>
 		

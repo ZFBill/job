@@ -16,6 +16,10 @@ input[type=text]{
 	text-overflow: ellipsis;
 	overflow: hidden;
 }
+.no_content{
+	color: #9E9E9E;
+	margin-top: 8.5rem;	
+}
 .search_img{
 	width: 1.25rem;
 	height: 1.25rem;

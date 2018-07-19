@@ -36,9 +36,8 @@
 				</div>
 				<div class="search_img"></div>
 			</header>
-		<div class="search_lists ">
-
-		</div>
+		<div class="search_lists"></div>
+		<div class="error"></div>
 		<script type="text/javascript">
 			mui.init({
 				swipeBack: true,
@@ -77,8 +76,7 @@
 							msg:val,
 							page:pages
 						},
-						success:function(data){
-							
+						success:function(data){							
 							if (data.state) {
 								let div = '';
 								let g = data.newsList;

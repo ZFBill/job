@@ -26,7 +26,6 @@
 
 		<div class="news_center">
 			<div class="notice_lists">
-
 				<!--<div class="notice_list ofh">
 	
 					<span class="notice_listImg fl"></span>
@@ -49,6 +48,7 @@
 			<div data-sort="2">攻略</div>
 			<div data-sort="3">游戏</div>
 		</div>
+		<div class="error"></div>
 		<script type="text/javascript">
 			var page = 0;
 			var sort = 1;
@@ -79,10 +79,8 @@
 			})
 
 			function up() {
-				page++;
-				
-				if(sort == 2) {
-					
+				page++;				
+				if(sort == 2) {		
 					$.ajax({
 						type: "get",
 						url: config.data + "users/newMessage",
@@ -92,9 +90,13 @@
 							page: page,
 							sort: sort
 						},
+						timeout:20000,
 						success: function(data) {
+							
+							mui('.news_center').pullRefresh().enablePullupToRefresh();
+                            $('.error').html("");
+                            
 							if(data.state) {
-
 								var t = data.tip;
                                 var portrait;
 								var div = '';
@@ -140,6 +142,13 @@
 							} else {
 
 							}
+						},
+						error:function(){
+							var errorHTML="<div style='margin-top:10rem'><img style='width:138px;height:180px;display:block;margin:0 auto;' src='../../Public/image/notonline.png' /></div>";
+       	                    $('.error').html(errorHTML);
+       	                    $(".notice_lists").empty();
+       	                    mui('.news_center').pullRefresh().disablePullupToRefresh();      	                   
+       	                    page = 0
 						}
 					});
 				} else {
@@ -152,13 +161,14 @@
 							page: page,
 							sort: sort
 						},
+						timeout:20000,
 						success: function(data) {
-							if(data.state) {
-
+							mui('.news_center').pullRefresh().enablePullupToRefresh();
+                             $('.error').html("");
+							if(data.state) {                              
 								var t = data.tip;
                                 var portrait;
 								var div = '';
-
 								for(var i = 0; i < t.length; i++) {
 									if(t[i].series == 1) {
 										var commentId = t[i].id
@@ -192,7 +202,8 @@
 										"</div>" +
 										"</div>"
 								}
-								$('.notice_lists').append(div)
+								$('.notice_lists').append(div);
+					
 								if(t.length < 10) {
 									mui('.news_center').pullRefresh().endPullupToRefresh(true);
 								} else {
@@ -201,6 +212,13 @@
 							} else {
 
 							}
+						},
+						error:function(){
+							var errorHTML="<div style='margin-top:10rem'><img style='width:138px;height:180px;display:block;margin:0 auto;' src='../../Public/image/notonline.png' /></div>";
+       	                    $('.error').html(errorHTML);
+       	                    $(".notice_lists").empty();
+       	                    mui('.news_center').pullRefresh().disablePullupToRefresh();      	                   
+       	                    page = 0
 						}
 					});
 				}

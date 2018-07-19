@@ -143,7 +143,7 @@ $(function() {
 			}
 		});
 
-		$('body').on('click', '.game_relatedInfocontent', function() {
+		$('body').on('tap', '.game_relatedInfocontent', function() {
 			mui.openWindow({
 				url: "../news/news_post.html",
 				id: "../news/news_post.html",
@@ -165,8 +165,7 @@ $(function() {
 				gameId: gameId
 			},
 			success: function(data) {
-				
-//				var portrait;
+
 				if(data.state) {
 
 					var com = data.comment,portrait;

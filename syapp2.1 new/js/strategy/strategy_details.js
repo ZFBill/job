@@ -111,7 +111,7 @@ $(function() {
 		})
 
 		//		长按保存图片
-		$('body').on('tap', 'img', function() {
+		$('body').on('longtap', 'img', function() {
 			var picurl = $(this).attr("src")
 			var picname;
 			var btnArray = ['否', '是'];
@@ -593,7 +593,8 @@ function detail() {
 				$('.news_userInfo_name').text(nickName);
 				$('.news_userInfo_date').text(str.add_time);
 				$('.news_post_content_detail').html(str.detail);
-				
+				$(".news_post_content_detail img").attr("data-preview-src","");
+                $(".news_post_content_detail img").attr("data-preview-group","1");
 				$('.news_post_content_detail img').css("max-width", "100%");
 				target_img = str.top_img_src;
 				target_title = str.title;

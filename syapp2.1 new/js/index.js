@@ -6,6 +6,7 @@ var newVer;
 var activeTab = subpages[Index];
 //选项卡点击事件
 var self;
+var dbQuit=0;//用于记录点击次数
 mui.plusReady(function () {
     var wgtVer = null;
 
@@ -228,7 +229,22 @@ mui.plusReady(function () {
         //     }
         //}
         //  alert(e.keyType+"\n"+e.keyCode);
-        return false;
+//      plus.runtime.quit();
+       dbQuit++
+       if(dbQuit==1){
+       	  mui.toast("再按一次退出")
+       }
+       if(dbQuit==2){
+       	   plus.runtime.quit();
+       	  setTimeout(()=>{
+       	  	dbQuit=0;
+       	  },3000)
+       }
+       
+       setTimeout(()=>{
+       	  	dbQuit=0;
+       },10000)
+       // return false;
     }
 });
 

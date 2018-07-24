@@ -181,8 +181,6 @@
 	<body>
 		<!--重写back-->
 		<div class="backImg"></div>
-
-		<!------->
 		<div class="header_box">
 			<div class="before_header"></div>
 			<header class="ui_flex_wrapper ui_flex_h backgroundColor_green color_white tac" id='header'>
@@ -474,10 +472,8 @@
 							<span class="fr font_12">热度</span>
 
 						</div>-->
-
 						<!--评论内容-->
 						<div class="game_comments simHei">
-
 							<div class="news_post_commentContents backgroundColor_white">
 								<!--<div class="news_post_commentContent">
 	
@@ -601,7 +597,7 @@
 			var page = 1,pageIndex="detail";
 		</script>
 		<script type="text/javascript">
-			mui.init({			
+			mui.init({
 				pullRefresh: {
 					container: "#game_detailContent", //下拉刷新容器标识，querySelector能定位的css选择器均可，比如：id、.class等
 					up: {
@@ -687,6 +683,7 @@
 			function down() {
 				switch (pageIndex){
 	              case "detail":
+	                  //location.reload();
 					break;
 					case "assess":
 					 detail_assess();

@@ -65,7 +65,6 @@ $(function() {
 					$('.game_company').text(g.game_company);
 					$('.game_infoScore').text(g.grade + "分");
 					$('.gameScore').text(g.grade)
-					//alert(g.grade)
 					if(g.tagList) {
 						var t = g.tagList.split(',');
 						for(var i = 0; i < t.length - 1; i++) {
@@ -102,7 +101,7 @@ $(function() {
 										//										"<img class='game_detail_content' style='background-image: url(" + config.img + encodeURI(gl[i].img_src) + ");'></img>" +
 										"</div>"
 								}
-								$('.game_detail_contents').append(div)
+								$('.game_detail_contents').append(div);
 							} else {
 
 							}
@@ -327,7 +326,6 @@ $(function() {
 		//		攻略页结束
 
 		$("#game_detail_download").click(function(ev) {
-			//	plus.downloader.clear(  );
 			event = ev || window.event;
 			event.stopPropagation();
 			var t = $(this);

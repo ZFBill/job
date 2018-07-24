@@ -419,6 +419,7 @@ $(function() {
 		$(this).siblings().children().removeClass('backgroundColor_white border_green color_green').css('background-color', '#E7EAEC')
 		$('.hot_rank').css('background-image', 'url(../../Public/image/' + name + '.png)')
 		$('.game_lists').children().remove()
+		$('.first_three').css("display","none")
 		getRank(sort);
 	})
 	$('.game_rank').children().eq(0).click(function() {
@@ -619,10 +620,13 @@ function getRank(sort) {
 						$('.third  .y_listImg').css('background-image', 'url(' + config.img + encodeURI(g[2].icon) + ')')
 						$('.third  .y_listName').text(g[2].game_name)
 						$('.third  .game_recommend_starScore').text(g[2].grade)	
-						var downloadToggle=plus.runtime.isApplicationExist({pname:g[i].game_packagename,action: ''});
-						if(downloadToggle){
-							$(`.y_listDownload:eq(${i})`).text("打开")
-						}
+//						var downloadToggle=plus.runtime.isApplicationExist({pname:g[i].game_packagename,action: ''});
+//						if(downloadToggle){
+//							$(`.y_listDownload:eq(${i})`).text("打开")
+//						}
+						setTimeout(()=>{
+							$('.first_three').css("display","flex")
+						})
 					} else {
 						var signs = '';
 						if(g[i].tagList && g[i].tagList !== "null") {

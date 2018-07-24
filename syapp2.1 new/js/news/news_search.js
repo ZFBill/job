@@ -28,14 +28,11 @@ $(function(){
 								"</div>"
 							}
 							$('.search_lists').empty().append(div);		
-						} else{					
-							var no_content = "<div class='no_content tac'>没有搜到任何内容</div>"
-							$('.search_lists').append(no_content)
 						}
 						
 					} else{
 						var no_content = "<div class='no_content tac'>没有搜到任何内容</div>"
-						$('.search_lists').append(no_content)
+						$('.search_lists').empty().append(no_content)
 					}
 				},
 				error:function(){

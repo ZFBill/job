@@ -119,7 +119,7 @@ function galleryImgs() {
 	$("#strategy_textarea").focus();
 	plus.gallery.pick(function(e) {
     mui.toast("正在上传,请等待");
-		var uploader = plus.uploader.createUpload(config.url_upload+"adminStrategy/img?title=strategy&token=token&url="+config.url_upload,{
+		var uploader = plus.uploader.createUpload(config.url_upload+"adminStrategy/img?title=strategy&url="+config.url_upload,{
 					method: "post"
 				}, function(t, status) {
 					 var res =JSON.parse(t.responseText);

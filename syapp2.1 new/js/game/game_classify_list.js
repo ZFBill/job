@@ -8,8 +8,7 @@ $(function(){
 		var self = plus.webview.currentWebview();
 		tagId = self.tagId;
 		tagName = self.tagName;
-		
-		//getGamebySign(tagId,tagName)
+		$('.game_nameHeader').text(tagName)
 	})
 	
 	$('body').on('tap','.tag',function(){
@@ -77,13 +76,26 @@ $(function(){
 							var li = '';
 							for (var i = 0; i < g.length; i++) {
 								var signs = '';
-								var result= g[i].tagList.split(",");
-								var resultId = g[i].tagId.split(",");
-								for (var j = 0; j < result.length; j++) {
-									signs+=
-											"<div class='fl tag font_12 border_green border_radius_twenty' data-id='"+ resultId[j] +"'>"+ result[j] +"</div>"
-								}
-							     var downloadToggle=plus.runtime.isApplicationExist({pname:g[i].game_packagename,action: ''});
+	                            
+	                            if (g[i].tagList) {
+		                            var result = g[i].tagList.split(",");
+		                            var resultId = g[i].tagId.split(",");
+		                            
+		                            if (result.length <= 3) {
+		                                for (var j = 0; j < result.length; j++) {
+		                                    signs +=
+													"<div class='fl tag font_12 border_green border_radius_twenty' data-id='" + resultId[j] + "'>" + result[j] + "</div>"
+		                                }
+		                            } else {
+		                                for (var j = 0; j < 3; j++) {
+		                                    signs +=
+													"<div class='fl tag font_12 border_green border_radius_twenty' data-id='" + resultId[j] + "'>" + result[j] + "</div>"
+		                                }
+		                            }
+		
+		                        }
+								
+							    var downloadToggle=plus.runtime.isApplicationExist({pname:g[i].game_packagename,action: ''});
 					            if(downloadToggle){
 						            var buttonDown="打开";
 					            }else{

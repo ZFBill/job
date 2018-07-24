@@ -3,9 +3,10 @@ body{
 }
 .game_nameHeader{
 	position: absolute;
-	left: 50%;
-	margin-left: -2rem;
+	/*left: 50%;*/
+	/*margin-left: -2rem;*/
 	font-size: 18px;
+	width: 100%;
 }
 .game_list{
 	height: 6.0625rem;

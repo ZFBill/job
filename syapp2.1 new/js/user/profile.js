@@ -116,6 +116,10 @@ $(function() {
 	$('.publish').click(function() {
 		var name = $('.personal_name').val().trim()
 		var bir = $('.personal_bir').val()
+		var nick_state = 1;
+		var mask=mui.createMask();//遮罩层
+		
+		/* 先验证昵称 */
 		$.ajax({
 			type: "get",
 			url: config.data + "users/updateNickName",
@@ -124,46 +128,48 @@ $(function() {
 				id: id,
 				nickName: name
 			},
+			beforeSend: function() {
+		        plus.nativeUI.showWaiting("正在保存...",'2000');
+		        mask.show();//显示遮罩层
+		    },
+		    complete: function() {
+		        plus.nativeUI.closeWaiting();
+		        mask.close();//关闭遮罩层
+		    },
 			success: function(data) {
 				if(data.state) {
-
+					
+					/* 修改生日  */
+					$.ajax({
+						type: "get",
+						url: config.data + "users/updateBirthday",
+						async: true,
+						data: {
+							id: id,
+							birthday: bir
+						},
+						success: function(data) {
+							if(data.state) {
+					
+							} else {
+					
+							}
+						}
+					});
+										
+					if (dataURLup){
+			           uploadHead(id, dataURLup,function(){
+				           mui.back()			
+			            });
+		            } else{		
+			            mui.back()
+		            }	
 				} else {
-                  mui.toast("昵称不能重名");
-                  return false;
+				   mui.toast('昵称不能重名');
+                   return false;
 				}
 			}
-		})
-
-		$.ajax({
-			type: "get",
-			url: config.data + "users/updateBirthday",
-			async: true,
-			data: {
-				id: id,
-				birthday: bir
-			},
-			success: function(data) {
-				if(data.state) {
-
-				} else {
-
-				}
-			}
-		});
-
-		if (dataURLup) {
-			uploadHead(id, dataURLup,function(){
-				mui.back()
-				
-			})
-		} else{
-			
-			mui.back()
-		}
-		
-		
-		
-		
+		});			
 	})
 
 })

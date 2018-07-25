@@ -169,10 +169,13 @@ body{
 }
 .news_img_content{
 	position: absolute;
-	bottom: 0.375rem;
+	bottom: 0rem;
 	width: 100%;
 	padding-left: 0.625rem;
 	padding-right: 0.625rem;
+	padding-bottom: 0.375rem;
+	background:-webkit-linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.7));
+	background:linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.7));
 	
 }
 .new_art_name{
@@ -191,12 +194,13 @@ body{
 .news_art_praise,.news_art_view{
 	width: 1.125rem;
 	height: 1.125rem;
-	background-image: url(../../Public/image/39D9371F-FB20-48E6-8801-EEBF4765BF46.png);
+	background-image:url(../../Public/image/whiteEye.png);
 	background-position: center;
 	background-repeat:no-repeat;
 	background-size: contain;
 	margin-left: 0.4rem;
 	margin-right: 0.2rem;
+	
 }
 
 .news_art_content{

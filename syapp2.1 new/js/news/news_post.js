@@ -316,11 +316,6 @@ $(function() {
 		//保存图片开始
 
 		$('body').on('longtap','img',function() {
-//        n++;
-//        if(n==2){
-//        	
-//          
-            console.log(1)
 			var picurl = $(this).attr("src")
 			var picname;
 			var btnArray = ['否', '是'];
@@ -339,7 +334,7 @@ $(function() {
 
 				}
 			})
-          //}
+
 		});
 
 

@@ -38,11 +38,14 @@ body{
 	height: 5.1875rem;
 	margin-top: 45px;
 	padding-top: 0.4375rem;
-	margin-left: 0.625rem;
+	/*margin-left: 0.625rem;*/
 }
 .strategy_head > ul > li{
 	
 	padding-right: 1.2rem;
+}
+.strategy_headImgs{
+	padding-left:0.625rem;
 }
 .strategy_headImg{
 	width: 3rem;
@@ -50,8 +53,7 @@ body{
 	background-position: center;
 	background-repeat:no-repeat;
 	background-size: contain;
-	border-radius: 50%;
-	
+	border-radius:50%;
 }
 .strategy_nav{
 	border-top: 1px solid #E7EAEC;

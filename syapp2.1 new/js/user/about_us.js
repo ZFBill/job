@@ -7,5 +7,10 @@ $(function(){
 	})
 	$('.back').click(function(){
 		mui.back()
-	})
+	});
+	mui.plusReady(function(){
+	    plus.runtime.getProperty(plus.runtime.appid,function(inf){
+             $('.version').text(`版本 : ${inf.version}`);
+        });
+    })
 })

@@ -43,6 +43,15 @@ $(function() {
 	
 	mui.init({
 		swipeBack: true, //启用右滑关闭功能
+		gestureConfig: {
+			tap: true, //默认为true
+			doubletap: true, //默认为false
+		    longtap: true, //默认为false
+		    swipe: true, //默认为true
+			drag: true, //默认为true
+			hold: false, //默认为false，不监听
+			release: false //默认为false，不监听
+		},
 		pullRefresh: {
 			container: ".new_post_contents", //下拉刷新容器标识，querySelector能定位的css选择器均可，比如：id、.class等
 			up: {
@@ -67,7 +76,6 @@ $(function() {
 	})
 	mui.plusReady(function() {
 		total_height = plus.navigator.getStatusbarHeight() + 45;
-
 		var self = plus.webview.currentWebview();
 		newsId = self.newsId;
 		gameId = self.gameId;
@@ -90,21 +98,14 @@ $(function() {
 					if(browse > 99) {
 						browse = 99
 					}
-					//					$.ajax({
-					//						type: "get",
-					//						url: config.base64 + n.detail_addr,
-					//						async: true,
-					//						success: function(data) {
-					//
-					//							$('.detail').html(data)
-					//						}
-					//					});
 
 					firstImg = n.img
 					title = n.title
+					$('.detail').html(n.detail);
 
-					$('.detail').html(n.detail)
-
+                    $(".detail img").attr("data-preview-src","");
+                    $(".detail img").attr("data-preview-group","1");
+                    
 					$('.news_post_content').attr("data-id", n.id)
 					$('.news_post_listImg').css("background-image", "url(" + config.img + encodeURI(n.icon) + ")")
 					$('h4').text(n.title)
@@ -112,6 +113,7 @@ $(function() {
 					$('.news_userInfo_name').text(add_user)
 					$('.news_userInfo_date').text(n.add_time)
 					$('.news_reviewNum').text(n.comment)
+					$(".news_post_list").removeClass("hidden")
 					if(n.game_id) {
 						$('.news_post_list').css("top", total_height + "px")
 						$('.new_post_contents').css("margin-top", total_height + 36 + "px")
@@ -312,7 +314,13 @@ $(function() {
 		//  点赞部分结束
 		
 		//保存图片开始
-		$('body').on('tap', 'img', function() {
+
+		$('body').on('longtap','img',function() {
+//        n++;
+//        if(n==2){
+//        	
+//          
+            console.log(1)
 			var picurl = $(this).attr("src")
 			var picname;
 			var btnArray = ['否', '是'];
@@ -331,8 +339,8 @@ $(function() {
 
 				}
 			})
-
-		})
+          //}
+		});
 
 
 // 保存图片到相册中 

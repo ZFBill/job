@@ -1,4 +1,4 @@
-var val;
+var val="";
 $(function(){
 	$('body').on('input', 'input[type=text],.search_bar', function() {
 		val = $('.search_bar').val().replace(/[&\|\\\*^%$#@\-]/g,"");
@@ -63,7 +63,9 @@ $(function(){
 			   }
 		    })
 		}else{
-			mui.toast("请输入搜索内容")
+			if(val==""){
+				mui.toast("请输入搜索内容")
+			}		
 		}
 		
 	});

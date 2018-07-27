@@ -212,17 +212,18 @@ html,body{
 .news_art_art {
 	margin: 0.6rem 0;
 	margin-left: 0.5rem;
+	/*padding-right:0.3rem;*/
 	color: #282828;
-	width: 92%;
+	width: 97%;
 	max-height: 2.6rem;
-	/*white-space:nowrap;*/
-	
-	overflow: hidden;
+	/*white-space:nowrap;*/	
+	/*overflow: hidden;*/
 	/** 隐藏超出的内容 **/
-	width: 20em;
-	white-space:nowrap; 
+/*	width: 20em;*/
+	/*white-space:nowrap; 
 	text-overflow:ellipsis; 
-	-o-text-overflow:ellipsis; 
+	-o-text-overflow:ellipsis; */
+
 	  
 }
 

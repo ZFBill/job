@@ -187,7 +187,7 @@
 					"xxhdpi": "Public/image/1080-1882.png"
 				}
 			}
-		},"ads":{"rp":false,"splash":false,"push":false},"adid":"127732250606"
+		},"ads":{"rp":false,"splash":false,"push":false}
 	},
 	"dependencies": {
 		"pages": {
@@ -286,8 +286,7 @@
 				"refer": [
 					"html/strategy/strategy_comment.html",
 					"html/strategy/strategy_allComments.html",
-					"html/user/login.html",
-					"html/play/h5game.html"
+					"html/user/login.html"
 				],
 				"priority": 0
 			},

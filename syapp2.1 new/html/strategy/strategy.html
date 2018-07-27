@@ -28,9 +28,7 @@
 							<div class="strategy_headImg"></div>
 							<div class="font_12 color_282828">阴阳师</div>
 						</div>
-					</li>-->
-					
-				
+					</li>-->				
 				</ul>
 			</div>
 			
@@ -248,7 +246,7 @@
 						}
 					},
 					error:function(){
-						var errorHTML="<div style='margin-top:12rem'><img style='width:138px;height:180px;display:block;margin:0 auto;' src='../../Public/image/notonline.png' /></div>";
+						var errorHTML="<div style='margin-top:12rem;'><img style='width:138px;height:180px;display:block;margin:0 auto;' src='../../Public/image/notonline.png' /></div>";
 						$(".strategy").css("display","none");
 						$(".error").html(errorHTML);
 						page=0;
@@ -266,7 +264,6 @@
 				setTimeout(function() {
 					mui('.strategy').pullRefresh().endPulldown(true);
 				}, 1000);
-				//mui('#news_content').pullRefresh().endPulldown(true);
 			}
 		</script>
 		

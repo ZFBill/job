@@ -4,15 +4,13 @@ var userId = localStorage.getItem("userId") || 22;
 var commentId;
 var targetCommentId;
 var targetUserId;
-$(function() {
-	
 	mui.init({
 		swipeBack: true, //启用右滑关闭功能
 		pullRefresh: {
 			container: ".news_allComments", //下拉刷新容器标识，querySelector能定位的css选择器均可，比如：id、.class等
 			up: {
-				height: 50, //可选.默认50.触发上拉加载拖动距离
-				auto: true, //可选,默认false.自动上拉加载一次
+				height:50, //可选.默认50.触发上拉加载拖动距离
+				auto:true, //可选,默认false.自动上拉加载一次
 				contentrefresh: "正在加载...", //可选，正在加载状态时，上拉加载控件上显示的标题内容
 				contentnomore: '没有更多评论了', //可选，请求完毕若没有更多数据时显示的提醒内容；
 				callback: up //必选，刷新函数，根据具体业务来编写，比如通过ajax从服务器获取新数据；
@@ -30,17 +28,14 @@ $(function() {
 		}
 	
 	})
-	
+$(function() {
 	mui.plusReady(function() {
-		
-		
 		var self = plus.webview.currentWebview();
 		newsId = self.newsId;
 		commentId = self.commentId;
 		targetUserId = self.targetUserId;
 		firstImg = self.firstImg;
 		title = self.title;
-		//alert(commentId);
 //		获取一级评论
      
 		$.ajax({
@@ -74,9 +69,6 @@ $(function() {
 					$('.comment_summary_art').text(c.news_title)
 					targetCommentId = $('.news_post_commentContent').attr("data-id");
 					targetUserId = $('.news_post_commentContent').attr("data-userId");
-					up();
-				} else{
-					
 				}
 			}
 		});
@@ -100,7 +92,7 @@ $(function() {
 
 
 	
-		$('body').on('click','.news_post_commentContent',function(){
+		$('body').on('tap','.news_post_commentContent',function(){
 			$('.news_secondComment_input').focus();
 //			targetCommentId = $(this).attr("data-id");
 			targetUserId = $(this).attr("data-userId")
@@ -136,17 +128,14 @@ $(function() {
 				});
 			}else{
 				mui.toast("发送内容不能为空")
-			}
-			
-		})
-		
-//		点击发布结束
-		
+			}		
+		})	
+       //点击发布结束	
 	})
-
+  //ready结束
 })
 
-
+//(function())结束
 
 
 
@@ -179,32 +168,27 @@ function up(){
 								"<div class='news_post_commentContent_content fl'>"+
 									"<div class='comment_user font_12'>"+
 										"<span>"+ com[i].selfNickName +"</span>"+
-										"<span style='color: #7A7A7A;' class='"+ ifHidden +"'>回复</span>"+
-										"<span class='"+ ifHidden +"'>"+ ifHidden + "</span>"+
+//										"<span style='color: #7A7A7A;' class='"+ ifHidden +"'>回复</span>"+
+//										"<span class='"+ ifHidden +"'>"+ ifHidden + "</span>"+
 									"</div>"+
 									"<div class='comment_content font_14'>"+ com[i].content +"</div>"+
 									"<div class='comment_info ofh'>"+
 										"<div class='font_12 color_9e9e9e fl'>"+ com[i].add_time +"</div>"+
-									"</div>"+
-		
+									"</div>"+	
 								"</div>"+
 							"</div>"
 					}
 					
 					$('.news_post_secondcommentContents').append(div);
 					
-					if(com.length < 10) {
-							
+					if(com.length < 10) {						
 						mui('.news_allComments').pullRefresh().endPullupToRefresh(true);
 						
-
 					} else {
-							
+						
 						mui('.news_allComments').pullRefresh().endPullupToRefresh(false);
 					
 					}
-				} else{
-					
 				}
 			}
 		});

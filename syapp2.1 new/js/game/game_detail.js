@@ -428,7 +428,7 @@ $(function() {
 		}	
 	});
 
-	$('body').on('click', '.comment_content', function() {
+	$('body').on('tap', '.comment_content,.comment_img', function() {
 		if(userId) {
 			mui.openWindow({
 				url: "game_allComments.html",

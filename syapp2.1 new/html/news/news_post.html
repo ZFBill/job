@@ -15,7 +15,7 @@
 	<style type="text/css">
 			.mui-preview-image.mui-fullscreen {
 				position: fixed;
-				z-index: 102;
+				z-index: 9999;
 				background-color: #000;
 			}
 			.mui-preview-header,
@@ -23,11 +23,19 @@
 				position: absolute;
 				width: 100%;
 				left: 0;
-				z-index: 101;
+				z-index: 101;			
 			}
-			.mui-preview-header {
+			.mui-preview-header{
 				height: 44px;
 				top: 0;
+				padding-top:20px;
+			}
+			.mui-preview-header:after{
+				content:"保存";
+				width:4rem;
+				color:#fff;
+				float:right;
+				margin-top:-1.5rem;
 			}
 			.mui-preview-footer {
 				height: 50px;

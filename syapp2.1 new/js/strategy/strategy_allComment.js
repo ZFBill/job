@@ -172,6 +172,10 @@ function up() {
 						"</div>"
 				}
 				$('.news_post_commentContentsecs').append(div);
+				
+				var num=$('.news_post_commentContentsecs>div').length;
+                $(".news_allReply").text("全部回复   ( "+num+" )");
+				
 				if(c.length < 10) {
 					mui('.strategy_all').pullRefresh().endPullupToRefresh(true);
 				} else {

@@ -180,7 +180,8 @@ function up(){
 					}
 					
 					$('.news_post_secondcommentContents').append(div);
-					
+					var num=$(".news_post_secondcommentContents>div").length;
+					$(".news_allReply").text("全部回复 ( "+num+" )");
 					if(com.length < 10) {						
 						mui('.news_allComments').pullRefresh().endPullupToRefresh(true);
 						

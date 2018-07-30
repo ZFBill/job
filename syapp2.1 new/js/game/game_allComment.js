@@ -151,7 +151,9 @@ function up() {
 						"</div>"
 				}
 				$('.news_post_commentContents').append(div);
-
+				
+				var num=$('.news_post_commentContents>div').length;
+                $(".news_allReply").text("全部回复   ( "+num+" )");
 				if(com.length < 10) {
 
 					mui('.game_post_commentContents').pullRefresh().endPullupToRefresh(true);

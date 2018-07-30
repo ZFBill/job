@@ -413,21 +413,24 @@ $(function() {
 			event.preventDefault();
 			if(userId) {
 				var content = $(this).prev().val();
-				$.ajax({
-					type: "get",
-					url: config.data + "news/comment",
-					async: true,
-					data: {
-						"targetCommentId": newsId,
-						"userId": userId,
+//			    alert(content);
+//				return false;
+				if(content){
+					$.ajax({
+					   type: "get",
+					   url: config.data + "news/comment",
+					   async: true,
+					   data: {
+						  "targetCommentId": newsId,
+						   "userId": userId,
 						"series": 1,
 						"content": content,
 						"news_img": firstImg,
 						"newsid": newsId,
 						"news_title": title
-					},
-					success: function(data) {
-						if(data.state == "1") {
+					   },
+					   success: function(data) {
+						 if(data.state == "1") {
 							
 							$('.news_secondComment_input').val("");
 			       //不刷新										
@@ -436,8 +439,12 @@ $(function() {
 						} else {
 							mui.toast("发送失败，请重试")
 						}
-					}
-				});
+					   }
+				    });
+				}else{
+					mui.toast("请填写内容");
+				}
+				
 			} else {
 				mui.openWindow({
 					url: "../user/login.html",

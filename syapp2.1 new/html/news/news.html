@@ -165,6 +165,10 @@
 		<script type="text/javascript">
 			mui.init({
 				swipeBack: true,
+				subpages:[{
+                    url:'news.html',
+                    id:'main.html',
+                }],
 				pullRefresh: {
 					container: "#news_content", //下拉刷新容器标识，querySelector能定位的css选择器均可，比如：id、.class等
 					up: {
@@ -275,6 +279,10 @@
 
 				//				 mui('#news_content').pullRefresh().endPulldown(true);
 			}
+			
+			window.addEventListener('reload',function(event){	
+			    location.reload();
+		    });
 		</script>
 	</body>
 

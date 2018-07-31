@@ -96,7 +96,7 @@ $(function() {
 								var div = ''
 								for(var i = 0; i < gl.length; i++) {
 									div +=
-										"<div style='margin:0.625rem 0.625rem;margin-left: 0;margin-top: 0.125rem;'>" +
+										"<div style='margin:0.625rem 0.625rem;margin-left: 0;margin-top: 0.125rem;flex-shrink:0;'>" +
 										"<img class='game_detail_content' src='" + config.img + encodeURI(gl[i].img_src) + "' data-preview-src='' data-preview-group='2' />" +
 										//										"<img class='game_detail_content' style='background-image: url(" + config.img + encodeURI(gl[i].img_src) + ");'></img>" +
 										"</div>"
@@ -687,8 +687,6 @@ function downloding(download) {
 }
 
 function loading(num) {
-	//	!$("#game_detail_download").hasClass("download_btn_active") ? $("#game_detail_download").addClass("download_btn_active") : "";
-
 	$(".download_loading").css("width", num + "%");
 
 }

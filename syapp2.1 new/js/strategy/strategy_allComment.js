@@ -49,10 +49,10 @@ $(function() {
 					firstUserid = com.user_id;
 					
 
-					if(com.strategy==0||com.strategy==null){
+					if(com.portrait==0||com.portrait==null){
 						portrait="../../Public/image/morentouxiang.png";
 					}else{
-					   portrait=com.strategy;
+					   portrait=com.portrait;
 					}
 					
 					$('.comment_user').text(com.nick_name)

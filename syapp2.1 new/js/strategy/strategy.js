@@ -154,7 +154,7 @@ $(function(){
 				     var gl = data.gameList;
 				for (var i = 0; i < gl.length; i++) {
 					li+=
-						"<li class='tacI' >"+
+						"<li class='tacI' style='flex-shrink:0;'>"+
 							"<div  style='width:3rem;'>"+
 								"<div class='strategy_headImg' style='background-image: url(" + config.img + encodeURI(gl[i].icon) + ");' ></div>"+
 								"<div class='font_12 color_282828 strategy_headImgart'>"+ gl[i].game_name +"</div>"+

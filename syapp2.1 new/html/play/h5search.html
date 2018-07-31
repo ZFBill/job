@@ -78,8 +78,8 @@
 						},
 						success:function(data){							
 							if (data.state) {
-								let div = '';
-								let g = data.newsList;
+								var div = '';
+								var g = data.newsList;
 								for (var i = 0; i < g.length; i++) {
 									div+=
 									"<div class='search_list font_12 simHei' data-id='"+ g[i].id +"'>"+

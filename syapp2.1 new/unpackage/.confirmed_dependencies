@@ -12,7 +12,11 @@
       "js/mui.js",
       "css/mui.css",
       "js/index.js",
-      "html/user/me.html"
+      "html/user/me.html",
+      "Public/image/tuijian1.png",
+      "Public/image/haowan2.png",
+      "Public/image/youxi2.png",
+      "Public/image/wode2.png"
     ],
     "refer": [
       "html/news/news.html",
@@ -29,7 +33,11 @@
       "html/game/game_detail.html",
       "html/news/news_center.html"
     ],
-    "resources": []
+    "resources": [
+      "css/mui.min.css",
+      "css/news/news.css",
+      "js/news/news.js"
+    ]
   },
   "html/news/news_post.html": {
     "refer": [

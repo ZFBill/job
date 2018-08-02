@@ -252,6 +252,7 @@ position: absolute;
 
 .news_newGame_content {
 	padding-right: 0.625rem;
+	flex-shrink: 0;
 }
 
 .news_newGame_contentImg {

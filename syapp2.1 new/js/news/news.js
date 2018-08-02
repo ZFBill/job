@@ -36,7 +36,7 @@ $(function() {
 				$('.news_artAlone > .news_art  .new_art_name').text(n[0].game_name)
 				$('.news_artAlone > .news_art  .news_art_art').text(n[0].title)
 				$('.news_artAlone > .news_art  .news_art_time').text(n[0].add_time)
-               //console.log(n[0].game_id)
+
 				if(n[1].game_id) {
 					$('.news_art2').attr({
 						"data-gameId": n[1].game_id

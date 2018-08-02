@@ -75,10 +75,12 @@
                 main = plus.android.runtimeMainActivity();  
             }  
             var shareInfo = plus.webview.currentWebview().shareInfo;  
+            
             sharehref.value = shareInfo.href;  
             sharehrefTitle.value = shareInfo.title;  
-            sharehrefDes.value = shareInfo.content;  
-            pageSourceId = shareInfo.pageSourceId;  
+            sharehrefDes.value = shareInfo.content; 
+            shareInfo.appkey="H5C62934A";
+            pageSourceId = shareInfo.pageSourceId; 
             console.log("pageSource:" + pageSourceId);  
         }  
         if(window.plus){  
@@ -138,10 +140,8 @@
             }  
             // 发送分享  
             if ( sb.s.authenticated ) {  
-                console.log("---已授权---");  
                 shareMessage(msg,sb.s);  
             } else {  
-                console.log("---未授权---");  
                 sb.s.authorize( function(){  
                         shareMessage(msg,sb.s);  
                     },function(e){  
@@ -157,15 +157,13 @@
            */  
           
         function shareMessage(msg,s){  
-              
-            console.log(JSON.stringify(msg));  
             s.send( msg, function(){  
-                console.log("分享到\""+s.description+"\"成功！ " );  
+//              alert("分享到\""+s.description+"\"成功！ " );  
                   
             }, function(e){  
-                console.log( "分享到\""+s.description+"\"失败: "+JSON.stringify(e) );  
+//              alert( "分享到\""+s.description+"\"失败: "+JSON.stringify(e) );  
               
-            } );  
+            });  
         }  
         // 分析链接  
         function shareHref(index){  
@@ -175,21 +173,18 @@
             ss&&ss.nativeClient&&(shareBts.push({title:'微信朋友圈',s:ss,x:'WXSceneTimeline'}),  
             shareBts.push({title:'微信好友',s:ss,x:'WXSceneSession'}));  
             ss=shares['qq'];  
-            ss&&ss.nativeClient&&shareBts.push({title:'QQ',s:ss});  
-           
-             shareAction(shareBts[index],true);  
+            ss&&ss.nativeClient&&shareBts.push({title:'QQ',s:ss});          
+            shareAction(shareBts[index],true);  
         }  
         mui.back = function() {  
             var sourcePage = plus.webview.getWebviewById(pageSourceId);  
             if (sourcePage) {  
                 sourcePage.evalJS("closeMask()");  
             }  
-        }  
-  
+        }   
         function closeShare() {  
             console.log("e:" + event.target.name);  
-        }  
-          
+        }           
         </script>  
   
 </html>  

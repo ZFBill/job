@@ -314,13 +314,25 @@ $(function() {
 		//  点赞部分结束
 		
 		//保存图片开始
-
-		$('body').on('longtap','img',function() {
-			var picurl = $(this).attr("src")
+		$('body').on('longtap', 'img', function() {
+			var picurl = $(this).attr("src");
+		   saveImg(picurl);
+		});
+		
+		
+		$('body').on('tap','.mui-preview-header',function(){
+          let num=$(".mui-preview-indicator").text();        
+          num=num.substring(0,1)-1;
+          let url=$(".mui-preview-image img:eq("+num+")").attr("src");
+          saveImg(url);
+		})
+		
+			
+		function saveImg(picurl){
 			var picname;
 			var btnArray = ['否', '是'];
 			mui.confirm('是否保存该图片？', 'ONE', btnArray, function(e) {
-				if(e.index == 1) {
+				if(e.index == 1){
 
 					if(picurl.indexOf("/") > 0) //如果包含有"/"号 从最后一个"/"号+1的位置开始截取字符串
 					{
@@ -328,15 +340,12 @@ $(function() {
 					} else {
 						picname = picurl;
 					}
-
 					savePicture(picurl, picname)
-				} else {
-
 				}
-			})
-
-		});
-
+			});
+			
+		}
+		
 
 // 保存图片到相册中 
         function savePicture(picurl, picname) {
@@ -404,21 +413,24 @@ $(function() {
 			event.preventDefault();
 			if(userId) {
 				var content = $(this).prev().val();
-				$.ajax({
-					type: "get",
-					url: config.data + "news/comment",
-					async: true,
-					data: {
-						"targetCommentId": newsId,
-						"userId": userId,
+//			    alert(content);
+//				return false;
+				if(content){
+					$.ajax({
+					   type: "get",
+					   url: config.data + "news/comment",
+					   async: true,
+					   data: {
+						  "targetCommentId": newsId,
+						   "userId": userId,
 						"series": 1,
 						"content": content,
 						"news_img": firstImg,
 						"newsid": newsId,
 						"news_title": title
-					},
-					success: function(data) {
-						if(data.state == "1") {
+					   },
+					   success: function(data) {
+						 if(data.state == "1") {
 							
 							$('.news_secondComment_input').val("");
 			       //不刷新										
@@ -427,8 +439,12 @@ $(function() {
 						} else {
 							mui.toast("发送失败，请重试")
 						}
-					}
-				});
+					   }
+				    });
+				}else{
+					mui.toast("请填写内容");
+				}
+				
 			} else {
 				mui.openWindow({
 					url: "../user/login.html",

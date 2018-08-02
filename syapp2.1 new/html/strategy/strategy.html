@@ -138,6 +138,10 @@
 	<script type="text/javascript">
 			mui.init({
 				swipeBack: true,
+				subpages:[{
+                    url:'strategy.html',
+                    id:'strategy.html',
+                }],
 				pullRefresh: {
 					container: ".strategy", //下拉刷新容器标识，querySelector能定位的css选择器均可，比如：id、.class等
 					up: {
@@ -265,6 +269,10 @@
 					mui('.strategy').pullRefresh().endPulldown(true);
 				}, 1000);
 			}
+			
+			window.addEventListener('reload',function(event){	
+			    location.reload();
+		    });
 		</script>
 		
 		<script src="../../js/strategy/strategy.js" type="text/javascript" charset="utf-8"></script>

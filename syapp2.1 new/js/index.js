@@ -236,12 +236,12 @@ mui.plusReady(function () {
        }
        if(dbQuit==2){
        	   plus.runtime.quit();
-       	  setTimeout(()=>{
+       	  setTimeout(function(){
        	  	dbQuit=0;
        	  },3000)
        }
        
-       setTimeout(()=>{
+       setTimeout(function(){
        	  	dbQuit=0;
        },10000)
        // return false;

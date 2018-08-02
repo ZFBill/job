@@ -624,7 +624,7 @@ function getRank(sort) {
 //						if(downloadToggle){
 //							$(`.y_listDownload:eq(${i})`).text("打开")
 //						}
-						setTimeout(()=>{
+						setTimeout(function(){
 							$('.first_three').css("display","flex")
 						})
 					} else {

@@ -99,7 +99,11 @@
         },
         "NativeObj":{
         	"description": "原生对象"
-        },"Share":{},"OAuth":{}
+        },
+        "Share":{},
+        "OAuth":{
+        	
+        }
 	},
 	"plus": {
 		"splashscreen": {
@@ -108,7 +112,7 @@
 		},
 		"runmode": "liberate",/*应用的首次启动运行模式，可取liberate或normal，liberate模式在第一次启动时将解压应用资源（Android平台File API才可正常访问_www目录）*/
 		"signature": "Sk9JTiBVUyBtYWlsdG86aHIyMDEzQGRjbG91ZC5pbw==",/*可选，保留给应用签名，暂不使用*/
-		"distribute": {"plugins":{"share":{"weixin":{"appid":"wx3c40d1c9660dfaf3","appsecret":"6bb4455d150f0b2cff16c9ea4ce42547","description":"可选，微信分享"},"qq":{"appid":"wx3c40d1c9660dfaf3","description":"QQ分享"}}},
+		"distribute": {"plugins":{"share":{"weixin":{"appid":"H5C62934A","appsecret":"6bb4455d150f0b2cff16c9ea4ce42547","description":"可选，微信分享"},"qq":{"appid":"H5C62934A","description":"QQ分享"}}},
 			"apple": {
 				"appid": "",/*iOS应用标识，苹果开发网站申请的appid，如io.dcloud.HelloH5*/
 				"mobileprovision": "",/*iOS应用打包配置文件*/
@@ -204,7 +208,11 @@
 					"css/index.css",
 					"js/mui.js",
 					"css/mui.css",
-					"js/index.js"
+					"js/index.js",
+					"Public/image/tuijian1.png",
+					"Public/image/haowan2.png",
+					"Public/image/youxi2.png",
+					"Public/image/wode2.png"
 				],
 				"refer": [
 					"html/strategy/strategy.html"
@@ -212,7 +220,11 @@
 				"priority": 0
 			},
 			"html/news/news.html": {
-				"resources": [],
+				"resources": [
+					"css/mui.min.css",
+					"css/news/news.css",
+					"js/news/news.js"
+				],
 				"refer": [
 					"html/news/news_search.html",
 					"html/news/news_post.html",
@@ -471,22 +483,16 @@
 		"idle": {
 			"resources": [
 				"Public/image/haowan1.png",
-				"Public/image/wode2.png",
 				"Public/image/xing1.png",
-				"Public/image/tuijian1.png",
-				"Public/image/haowan2.png",
 				"Public/css/vssver2.scc",
 				"Public/image/lingdang2.png",
 				"Public/image/wode1.png",
 				"fonts/mui.ttf",
-				"Public/image/youxi2.png",
-				"js/news/news.js",
 				"Public/image/shou.png",
 				"Public/image/lingdang.png",
-				"css/mui.min.css",
-				"Public/image/starActive.png",
-				"css/news/news.css"
+				"Public/image/starActive.png"
 			]
 		}
-	}
+	},
+	"unpackage":[]
 }

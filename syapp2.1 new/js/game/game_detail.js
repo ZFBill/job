@@ -96,7 +96,7 @@ $(function() {
 								var div = ''
 								for(var i = 0; i < gl.length; i++) {
 									div +=
-										"<div style='margin:0.625rem 0.625rem;margin-left: 0;margin-top: 0.125rem;'>" +
+										"<div style='margin:0.625rem 0.625rem;margin-left: 0;margin-top: 0.125rem;flex-shrink:0;'>" +
 										"<img class='game_detail_content' src='" + config.img + encodeURI(gl[i].img_src) + "' data-preview-src='' data-preview-group='2' />" +
 										//										"<img class='game_detail_content' style='background-image: url(" + config.img + encodeURI(gl[i].img_src) + ");'></img>" +
 										"</div>"
@@ -251,6 +251,64 @@ $(function() {
 				}
 			}
 		});
+
+
+
+    $('body').on('longtap', 'img', function() {
+			var picurl = $(this).attr("src");
+		   saveImg(picurl);
+	});
+		
+		
+	$('body').on('tap','.mui-preview-header',function(){
+          var num=$(".mui-preview-indicator").text();        
+          num=num.substring(0,1)-1;
+          var url=$(".mui-preview-image img:eq("+num+")").attr("src");
+          saveImg(url);
+	});
+
+
+    function saveImg(picurl){
+			var picname;
+			var btnArray = ['否', '是'];
+			mui.confirm('是否保存该图片？', 'ONE', btnArray, function(e) {
+				if(e.index == 1){
+
+					if(picurl.indexOf("/") > 0) //如果包含有"/"号 从最后一个"/"号+1的位置开始截取字符串
+					{
+						picname = picurl.substring(picurl.lastIndexOf("/") + 1, picurl.length);
+					} else {
+						picname = picurl;
+					}
+					savePicture(picurl, picname)
+				}
+			});		
+    }
+
+    function savePicture(picurl){
+		var dtask = plus.downloader.createDownload(picurl, {}, function(d, status) {
+		// 下载完成
+		  if(status == 200) {
+			plus.gallery.save(d.filename, function() {
+				mui.toast('保存成功');
+			}, function() {
+				mui.toast('保存失败，请重试！');
+			});
+		  } else {
+			  alert("Download failed: " + status);
+		  }
+
+	   });
+	   //dtask.addEventListener( "statechanged", onStateChanged, false );
+	    dtask.start();
+	}
+
+
+
+
+
+
+
 
 		$('body').on('click', '.game_similarContent', function() {
 
@@ -428,7 +486,7 @@ $(function() {
 		}	
 	});
 
-	$('body').on('click', '.comment_content', function() {
+	$('body').on('tap', '.comment_content,.comment_img', function() {
 		if(userId) {
 			mui.openWindow({
 				url: "game_allComments.html",
@@ -629,8 +687,6 @@ function downloding(download) {
 }
 
 function loading(num) {
-	//	!$("#game_detail_download").hasClass("download_btn_active") ? $("#game_detail_download").addClass("download_btn_active") : "";
-
 	$(".download_loading").css("width", num + "%");
 
 }

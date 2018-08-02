@@ -58,11 +58,11 @@ $(function() {
 					$('.comment_user').text(com.nick_name)
 					$('.comment_content').text(com.content)
 					if(com.img) {
-						$('.allCom_img').attr('src', config.img + encodeURI(com.img))
+						$('.allCom_img').attr('src', config.img + encodeURI(com.target_img))
 					} else {
 						$('.allCom_img').addClass('hidden')
 					}
-					$('.comment_summary').attr('data-id',com.strategyid)
+					$('.comment_summary').attr('data-id',com.targetid)
 					if (com.strategy_img) {
 						$('.comment_summary_img').css('background-image','url(' + config.img + encodeURI(strategy) + ')')
 					} else{

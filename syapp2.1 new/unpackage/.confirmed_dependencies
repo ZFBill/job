@@ -214,26 +214,36 @@
   "html/play/h5search.html": {
     "refer": [
       "html/play/h5game.html"
-    ]
+    ],
+    "resources": []
   },
   "html/news/news_allComments.html": {
     "refer": [
       "html/news/news_post.html"
-    ]
+    ],
+    "resources": []
   },
   "html/game/game_allComments.html": {
     "refer": [
       "html/game/game_detail.html"
-    ]
+    ],
+    "resources": []
   },
   "html/strategy/strategy_search_result.html": {
     "refer": [
       "html/strategy/strategy_details.html"
-    ]
+    ],
+    "resources": []
   },
   "html/game/game_classify_sign.html": {
     "refer": [
       "html/game/game_detail.html"
+    ],
+    "resources": []
+  },
+  "html/strategy/strategy_allComments.html": {
+    "refer": [
+      "html/strategy/strategy_details.html"
     ]
   }
 }

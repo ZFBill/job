@@ -49,7 +49,7 @@ $(function(){
 							game_name:gameName,
 							game_title_img:game_icon
 						},
-						success:function(data){							
+						success:function(data){		
 							if (data.state) {
 								mui.toast('评论成功');
 								mui.back();

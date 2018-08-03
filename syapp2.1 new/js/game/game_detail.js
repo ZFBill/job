@@ -911,7 +911,7 @@ function detail_strategy(){
 
                         var total=(total_10+total_8+total_6+total_4+total_2)/num_total;                    
                         if(!Object.is(total,NaN)){
-                        	$(".gameScore").text(total.toFixed(1));
+                        	$(".gameScore,.game_infoScore").text(total.toFixed(1));
                         }
 						
 							

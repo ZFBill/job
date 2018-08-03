@@ -11,11 +11,14 @@ $(function(){
 		$('.game_nameHeader').text(tagName)
 	})
 	
-	$('body').on('tap','.tag',function(){
+	$('body').on('tap','.tag',function(e){
+		e.stopPropagation()
 		$('.game_lists').children().remove();
 		tagId = $(this).attr('data-id');
 		tagName = $(this).text();
-		getGamebySign(tagId,tagName)
+		$('.game_nameHeader').text(tagName);
+        page = 1
+        up();
 	})
 	
 	

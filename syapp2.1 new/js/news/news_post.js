@@ -112,7 +112,7 @@ $(function() {
 					$('.news_post_listName').text(n.game_name)
 					$('.news_userInfo_name').text(add_user)
 					$('.news_userInfo_date').text(n.add_time)
-					$('.news_reviewNum').text(n.comment)
+//					$('.news_reviewNum').text(n.comment)
 					$(".news_post_list").removeClass("hidden")
 					if(n.game_id) {
 						$('.news_post_list').css("top", total_height + "px")
@@ -647,7 +647,13 @@ function up(){
 							"</div>"
 					};
 
-					$('.news_post_commentContents').append(comment)
+					$('.news_post_commentContents').append(comment);
+					var reviewNum=$('.news_post_commentContent').length;	
+					if(reviewNum > 99) {
+						reviewNum = 99
+					}
+					$(".news_reviewNum").text(reviewNum);
+					
 
 					if($('.thumb').attr('data-state')) {
 						$(this).css("background-image", "url(../../Public/image/diangoodone.png)")
@@ -680,7 +686,6 @@ function up(){
 			},
 			success: function(data) {
 				if(data.state) {
-
 					var com = data.comment;
 					var comment = "";
 					var towLen
@@ -741,7 +746,13 @@ function up(){
 							"</div>"
 					};
 
-					$('.news_post_commentContents').append(comment)
+					$('.news_post_commentContents').append(comment);
+					var reviewNum=$('.news_post_commentContent').length;	
+					if(reviewNum > 99) {
+						reviewNum = 99
+					}
+					$(".news_reviewNum").text(reviewNum);
+					
 
 					if($('.thumb').attr('data-state')) {
 						$(this).css("background-image", "url(../../Public/image/diangoodone.png)")

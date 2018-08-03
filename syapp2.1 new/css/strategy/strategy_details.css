@@ -31,10 +31,14 @@ a{
 	position: fixed;
 	z-index: 99;
 }
+.imgFirst{
+	margin:0.6rem 0rem;
+	max-height:10rem;
+	overflow: hidden;
+}
 .news_post_listImg{
 	width: 1.8125rem;
 	height: 1.8125rem;
-	/*background-image: url("../../Public/image/share.png");*/
 	background-color: yellow;
 	border-radius: 10px;
 	background-position: center;

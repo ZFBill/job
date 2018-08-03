@@ -356,18 +356,14 @@
 			
 		</div>
 		<!-- 错误结束 -->
-		<script type="text/javascript">
-			var soc = "2"
-		</script>
-		<script src="../../js/socket.js" type="text/javascript" charset="utf-8"></script>
-		<script src="../../js/mySocket.js" type="text/javascript" charset="utf-8"></script>
 		<script src="../../js/game/game_recommend.js" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript">
+			var soc = "2"
 			var page = 1;
 			var up3 = 1;
 			var up2 = 1;
-		</script>
-		<script type="text/javascript">
+			activeBell()//激活头部bell回复
+
 			mui.init({
 				swipeBack: true,
 			     subpages:[{
@@ -488,7 +484,7 @@
 			
 			
 			window.addEventListener('reload',function(event){	
-			    location.reload();
+			    activeBell();
 		    });
 		</script>
 

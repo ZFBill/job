@@ -88,7 +88,8 @@
   "html/strategy/strategy_details.html": {
     "refer": [
       "html/strategy/strategy_comment.html",
-      "html/strategy/strategy_allComments.html"
+      "html/strategy/strategy_allComments.html",
+      "html/play/h5game.html"
     ],
     "resources": []
   },
@@ -237,13 +238,15 @@
   },
   "html/game/game_classify_sign.html": {
     "refer": [
-      "html/game/game_detail.html"
+      "html/game/game_detail.html",
+      "html/game/game_classify_list.html"
     ],
     "resources": []
   },
   "html/strategy/strategy_allComments.html": {
     "refer": [
       "html/strategy/strategy_details.html"
-    ]
+    ],
+    "resources": []
   }
 }

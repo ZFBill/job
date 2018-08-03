@@ -39,7 +39,7 @@ $(function(){
 	$('body').on('click','.strategy_content',function(){
 		mui.openWindow({
 			url:"../strategy/strategy_details.html",
-			id:"../strategy/strategy_details.html",
+			id:"strategy_details.html",
 			extras:{
 				strategyId: $(this).attr('data-id'),
 				anchor:true
@@ -54,7 +54,6 @@ $(function(){
 		var btnarr = ["确定", "取消"];
 		mui.confirm("你确定删除吗？", "操作提示", btnarr, function(e) {
 			if(e.index == 0) {
-				//alert(1);
 				$.ajax({
 					type:"get",
 					url:config.data+"users/getDelCollect",

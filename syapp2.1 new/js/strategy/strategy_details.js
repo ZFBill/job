@@ -526,7 +526,9 @@ $(function() {
 									"<div class='news_post_commentContent_content fl'>" +
 									"<div class='comment_user font_12'>" + com[i].nick_name + "</div>" +
 									"<div class='comment_content font_14'>" + com[i].content + "</div>" +
-									"<img class='" + img + "' src='" + config.img + encodeURI(com[i].img) + "' width='100%' />" +
+									"<div  class='imgFirst'>"+
+									 "<img class='" + img + "' src='" + config.img + encodeURI(com[i].img) + "' width='100%' />" +
+									"</div>"+
 									"<div class='comment_info ofh'>" +
 									"<div class='font_12 color_9e9e9e fl'>" + com[i].add_time + "</div>" +
 									"<div class='fr color_9e9e9e comment_imgs'>" +

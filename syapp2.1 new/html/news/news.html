@@ -1,8 +1,6 @@
 <!doctype html>
 <html>
-
-	<head> 
-		
+	<head> 	
 		<meta charset="UTF-8">
 		<title></title>
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
@@ -52,13 +50,11 @@
 					</div>
 					<div class="news_art_content ">
 						<div class="news_art_art font_14 font_bold fl ofh">
-							就会爆发看都不看节哀顺变丹江口市就会爆发看都不看节哀顺变丹
-							<!--<span class="official backgroundColor_green color_white tac">官方</span>-->
+							<!--就会爆发看都不看节哀顺变丹江口市就会爆发看都不看节哀顺变丹-->
 						</div>
 					</div>
-					<!--此行定位的，不用理-->
 					<div class="news_art_time font_12">
-						8小时前
+						<!--8小时前-->
 					</div>
 				</div>
 
@@ -67,9 +63,7 @@
 						<div class="news_img_content color_white">
 							<div class="news_img_header fl"></div>
 							<div class="fl  new_art_name font_14 overflow">游戏名称</div>
-							<div class="fr font_12" style="margin-top: 1.75rem;">
-								
-								
+							<div class="fr font_12" style="margin-top: 1.75rem;">							
 								<div class="fr news_art_viewNum" style="width: 1.8rem;">1122</div>
 								<div class="fr news_art_view"></div>
 							</div>
@@ -77,17 +71,13 @@
 					</div>
 					<div class="news_art_content ">
 						<div class="news_art_art font_14 font_bold fl ofh">
-							就会爆发看都不看节哀顺变丹江口市就会爆发看都不看节哀顺变丹
-							<!--<span class="official backgroundColor_green color_white tac">官方</span>-->
+							<!--就会爆发看都不看节哀顺变丹江口市就会爆发看都不看节哀顺变丹-->
 						</div>
-
 					</div>
 					<!--此行定位的，不用理-->
 					<div class="news_art_time font_12">
-						8小时前
+						<!--8小时前-->
 					</div>
-					<!--。。。。。-->
-
 				</div>
 
 			</div>
@@ -151,18 +141,11 @@
 				</div>-->
 			</div>
 		</div>
-
-		<script type="text/javascript">
-			var soc = "1"
-		</script>
-		<script src="../../js/socket.js" type="text/javascript" charset="utf-8"></script>
-		<script src="../../js/mySocket.js" type="text/javascript" charset="utf-8"></script>
-		<script type="text/javascript">
-			var page = 1
-		</script>
-		
 		<script src="../../js/news/news.js" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript">
+			var page = 1;
+			var soc = "1"
+			activeBell()//激活头部bell回复
 			mui.init({
 				swipeBack: true,
 				subpages:[{
@@ -276,12 +259,10 @@
 				setTimeout(function() {
 					mui('#news_content').pullRefresh().endPulldown(true);
 				}, 1000);
-
-				//				 mui('#news_content').pullRefresh().endPulldown(true);
 			}
 			
 			window.addEventListener('reload',function(event){	
-			    location.reload();
+                 activeBell();
 		    });
 		</script>
 	</body>

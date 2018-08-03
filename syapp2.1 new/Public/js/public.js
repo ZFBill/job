@@ -53,10 +53,10 @@ var config = {
 //	data:"http://192.168.2.108:8877/",
 //  data:"http://192.168.2.117:8877/",
 //	data:"http://182.61.26.179:8877/",
-//	data:"http://www.oneyouxi.com.cn:8877/",
+//	data:"http://192.168.0.207:8877/",
 //	data:"http://192.168.0.67:8877/",
-	data:"http://192.168.0.207:8877/",
-//  data:"http://www.oneyouxi.com.cn:8877/",
+//	data:"http://192.168.0.207:8877/",
+    data:"http://www.oneyouxi.com.cn:8877/",
 	base64: "http://base64.oneyouxi.com.cn/",
 //	url_upload:"http://182.61.26.179:8878/",
 	url_upload:"https://admin.oneyouxi.com.cn/",
@@ -71,25 +71,24 @@ if(userInfojson) {
 	var userId = 0
 }
 
-//开发环境
-//var config ={
-//	img:"http://testimg.oneyouxi.com.cn/",
-//	apk:"http://testapk.oneyouxi.com.cn/",
-//	data:"http://192.168.2.155:8877/"
-//}
-//$.ajax({
-//	type:"get",
-//	url:"http://www.oneyouxi.com.cn:8878/users/serverAddress",
-//	async:false,
-//	success:function(data){
-//		if (data.state) {
-//			for(var i = 0 ; i<data.address.length;i++ ){
-//				
-//				config[data.address[i].type] = data.address[i].addr
-//			}
-//		} else{
-//			
-//		}
-//	}
-//});
-//console.log(config.data)
+
+function activeBell(){
+	if(userId){
+	    $.ajax({
+	       type:"get",
+	       url:config.data+"news/getTip",
+	       async:true,
+	       data: {
+               "userId": userId
+	       },
+	       success:function(data){
+	       	   if(data.state==1){
+	       	   	  $(".bell").addClass("bell_active");
+	       	   }else{
+	       	   	  $(".bell").removeClass("bell_active");
+	       	   }
+              
+	    }
+      });
+	}
+}
